@@ -23,3 +23,4 @@
 # 운영체제
 [쉽게 배우는 운영체제](http://www.yes24.com/Product/Goods/62054527)를 통해 학습한 내용을 정리합니다.
 - [운영체제 개요- (정의/ 역할/ 목표/ 역할/ 구성)](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%A0%95%EC%9D%98-%EC%97%AD%ED%95%A0-%EB%AA%A9%ED%91%9C-%EC%97%AD%ED%95%A0-%EA%B5%AC%EC%84%B1)
+- [컴퓨터 구조와 성능향상- (컴퓨터 구성/ CPU와 메모리/ 메모리 종류/ 부팅/ 성능향상/ 병렬처리)](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-1.-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B5%AC%EC%84%B1-CPU%EC%99%80-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%A2%85%EB%A5%98-%EB%B6%80%ED%8C%85-%EC%84%B1%EB%8A%A5%ED%96%A5%EC%83%81-%EB%B3%91%EB%A0%AC%EC%B2%98%EB%A6%AC)
