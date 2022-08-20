@@ -1,14 +1,16 @@
+# 규칙  
+#### Android Developers 파헤치기 시리즈   
+공식문서(Document/Medium/Youtube)를 1순위로 참고할 것     
+그래도 이해가 되지 않을 때 다른 사람이 작성한 기술블로그를 보며 내용을 추가할 것 
+#### 운영체제 시리즈  
+책을 읽고 공부한 내용을 충분히 이해하고 나만의 언어로 단권화한 필기본을 만들 것  
+안드로이드, 코틀린이랑 연관지으며 공부하기위해 노력할 것   
+#### 코틀린 시리즈
+공식문서를 1순위로 참고할 것  
+사용방법을 더 알고 싶을 때 다른 기술 블로그를 참고할 것  
+
+
 # Android Developers 파헤치기
-
-안드로이드 공식문서를 참고해 학습한 내용을 기록합니다.  
-✔[Android Developer - Document](https://developer.android.com/?hl=ko)  
-✔[Android Developers - Medium](https://medium.com/androiddevelopers)   
-✔[Android Developer - Youtube](https://www.youtube.com/c/AndroidDevelopers)  
-✔[Android - github](https://github.com/android)  
-✔[Git repositories on android](https://android.googlesource.com/)  
-✔[Android Weekly](https://androidweekly.net/)   
-✔[CodePath Android Cliffnotes](https://guides.codepath.com/android)  
-
 - [Activity](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)  
 - [Fragment - 1편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)  
 - [Fragment - 2편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CFragment-2%ED%8E%B8FragmentR)  
