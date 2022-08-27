@@ -33,7 +33,7 @@
 - [HTTP 통신 라이브러리: HttpClient~Retrofit](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)
 
 # 운영체제
-[쉽게 배우는 운영체제](http://www.yes24.com/Product/Goods/62054527)를 통해 학습한 내용을 정리합니다.
+✍️[면접질문 정리](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md) 
 - [운영체제 개요](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%A0%95%EC%9D%98-%EC%97%AD%ED%95%A0-%EB%AA%A9%ED%91%9C-%EC%97%AD%ED%95%A0-%EA%B5%AC%EC%84%B1)
 - [컴퓨터 구조와 성능향상](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-1.-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B5%AC%EC%84%B1-CPU%EC%99%80-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%A2%85%EB%A5%98-%EB%B6%80%ED%8C%85-%EC%84%B1%EB%8A%A5%ED%96%A5%EC%83%81-%EB%B3%91%EB%A0%AC%EC%B2%98%EB%A6%AC)
 - [프로세스와 스레드](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-3.-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%AC%B8%EB%A7%A5%EA%B5%90%ED%99%98%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%83%81%ED%83%9C)
