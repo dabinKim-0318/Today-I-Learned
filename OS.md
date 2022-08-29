@@ -713,7 +713,7 @@ cpu 실행하고 있는 도중에 입출력 장치에서 필요할 때 마다 �
 </details>
 
 
-# 프로세스<a name = "outline"></a>
+# 메모리<a name = "outline"></a>
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>메모리 구조의 순서가 어떻게 되는가? CPU에서 가까운 순으로 말해보시오.</strong></span></summary>
