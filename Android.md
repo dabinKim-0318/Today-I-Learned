@@ -158,7 +158,8 @@
  </details>
  
  <details>
- <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView와 ListView의 차이?   </strong></span></summary>    
+ <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView와 ListView의 차이?   </strong></span></summary>  
+  
 - `AdapterView`
    - AdapterView는 많은 양의 data를 효율적으로 표시하고 Adapter가 관리하는 데이터를 출력(data set의 형태로 눈에 보이도록)할 수 있게 해주는 View이다.
    
@@ -492,55 +493,139 @@
 - 다시 부모 액티비티에서 `onActivityRexult`메서드를 오버라이딩하여 자식 액티비티에서 보낸 결과코드와 데이터를 받아 처리하는 코드 작성
 - 이후 자식 액티비티 finish->부모 액티비티 resume
 - 이때 `onActivityResult`메서드 작동
-   
+  
+***  
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>안드로이드가 리소스(resource)를 접근하는 방식에 대해서 설명하시오.</strong></span></summary>
-<hr>
 
-<hr>
+- `소스 파일`
+  -  R 클래스를 사용한다.
+  - 자동으로 생성되는 클래스로서 resource의 id가 배정되는 클래스
+  - R클래스에 접근하는 문법 : R.resourceType.resourceName : R.string.app_name
+  - R 클래스로 접근하여 얻는 데이터는 int형으로 이를 원하는 객체로 바꾸려면 변환해주는 메소드를 사용 : getResource.getString(R.string.app_name);
+- `XML파일`
+  - R 클래스의 역할을 @가 대신한다. 
+ 
+***  
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>디바이스를 회전할 때 Activity에서 일어나는 과정에 대해 설명하시오</strong></span></summary>
-<hr>
 
-<hr>
+- `과정`
+  - Activity lifecycle 에서 onDestroy()가 호출되고 onCreate()가 호출
+  -  onCreate()를 다시 하기 때문에 Activity 안에 데이터는 다시 초기화=
+  - 만약 사용자가 화면에 중요한 내용을 작성중에 있었고 구성변경이 일어난다면 화면의 데이터는 날아감아감
+
+- `데이터 보존법`
+  - `AAC Viewmodel`
+  - `onSaveInstanceState()`
+    - 데이터=instanceState=Bundle 객체에 저장된 키-값 쌍의 컬렉션
+    - onStop다음에 호출
+    - onCreate: Bundle이 null인지 확인 필요
+    - onRestoreInstanceState: null확인 필요 없음
+  - `매니페스트에 android:configChanges 설정`
+    - android:configChanges="keyboardHidden|orientation|screenSize"
+    - onDestroy() -> onCreate() 대신에 onConfigurationChanged() 
+    - 만약 화면 전환에 따라 layout을 다르게 바꿔 주고 싶다면 이 메서드를 오버라이딩
+
+***
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Singleton Pattern에 대해 설명하시오</strong></span></summary>
-<hr>
 
-<hr>
+ - 디자인 패턴 중 하나로, 클래스의 객체화를 "single" 객체로 만드는 것
+ - 불필요한 메모리 사용 막을 수 있음
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Viewholder Pattern이란 무엇인가?</strong></span></summary>
-<hr>
 
-<hr>
+ - `정의`
+  - 각 뷰 객체를 뷰 홀더에 보관함으로써 findViewById()와 같은 반복적 호출 메서드를 줄여 효과적으로 속도 개선을 할 수 있는 패턴
+ 
+- 'ViewHolder'
+  - 각 뷰를 보관하는 Holder 객체
+  - 예를들어 ListView의 각 아이템 data를 업데이트 할때마다 findViewById호출하면 성능저하(ViewGroup 밑에 있는 모든 뷰들을 전부 한 번씩 순회하며 id값을 비교하는 과정을 거치기 때문에 자원이 많이 듭니다)
+  - 따라서, ItemView의 id같은 요소를 바로 엑세스 할 수 있도록 저장해두고 사용하기 위한 객체
+  
+- `사용법`
+  - ViewHolder생성
+  - view의 setTag호출해서 view의 tag에 생성된 ViewHoler 저장
+  - viewHolder가 최초 1회만 생성되고 이후 else문을 통해서 view에서 getTag를 호출해 ViewHolder를 꺼내와서 ViewHolder에 접근이 가능한 형태가 만들어지는 것
+
+***  
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>MVC, MVP, MVVM에 대해서 설명하시오</strong></span></summary>
-<hr>
 
-<hr>
+- `아키텍쳐`
+  - 시스템 구성과 동작 원리 등 최상의 소프트웨어를 구성하는 설계도
+- `디자인패턴`
+  - 좋은 코드를 설계하기 위한 방법론
+  
+- `MVC`
+  - VIEW: Activity, Fragment
+  - Model: Room이나 서버에서 데이터 처리하는 로직(Call해서 데이터 가져오기 등)
+  - Controller: 사용자의 이벤트를 처리하고 데이터를 xml에 꽂아주는 로직
+  - Model이 해야하는 일을 View에서 하면서 Model과 View사이 의존성
+  
+- `MVP`
+  - MVC는 View내부에서 데이터 요청, 이벤트 모두 처리했는데
+  - mvp는 데이터 요청 작업을 View가 Presenter에게 요청해서 Presenter가 하는 방식임
+  - view로 이벤트 들어오면 presenter가 1:1로 담당하고 presenter을 거쳐서 모델에 요청하니까  view와 presenter사이 의존성이 높음
+  - view하나 만들때마다 presenter도 같이 만듦
+
+- `MVVM`
+  - Model: 어플리케이션에서 사용되는 데이터와 그 데이터를 처리하는 부분(서버통신, 로컬db처리)
+  - View: 사용자에게 보여지는 UI
+  - ViewModel: View를 나타내 주기 위한 Model이자 View를 나타내기 위한 데이터 처리를 하는 부분
+  - ViewModel은 View를 참조하지 않기 때문에 독립적
+  
+***  
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>액티비티 스택에 대해 설명하시오</strong></span></summary>
-<hr>
 
-<hr>
+- `정의`
+  - 여러 Activity 는 Stack 형태로 관리된다.  OneActivity에서 TwoActivity를 부르면 위에 쌓이고, TwoActivity에서 ThreeActivity를 부르면 위에 쌓이고  
+
+- `관리`
+  - `1. AndroidManifest의 LaunchMode의 옵션`
+    - `standard`
+     - 새 인스턴스를 생성하고 여러 번 인스턴스화 가능
+    - `singleTop`
+     -  기존에 생성된 것이 있다면 이 것을 재활용
+    - `singletask`
+     - 스택의 루트에만 존재가능
+     - 무조건 새로운 루트 생성해서 거기부터 새 인스턴스 만들어서 스택 다시 쌓기
+     - 다른 액티비티를 호출할경우 그 액티비티는 새로 생성된 Task 위에 쌓임 (singInstance와의 차ㅣ)
+    - `singleInstance`
+     - singleTask 는 새로운 태스크에 2~3~ 이상의 액티비티 스택을 쌓을수 있는 반면, singleInstance는 오직 하나의 태스크에 하나의 액티비티만 존재
+  - `2. Intent Flag`
+    - `NEW_TASK`
+     - singletask랑 비슷
+    - `SINGLE_TOP` 
+      -  기존에 생성된 것이 있다면 이 것을 재활용
+    - `CLEAR_TOP`  
+     - 액티비티의 스택을 제거하고 새로운 액티비를 가장 top으로 만든다. 
 </details>
 
 <details>
