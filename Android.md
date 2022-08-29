@@ -1,6 +1,6 @@
 
 
-# 안드로이드 기초 <a name = "reason"></a>
+# 🐳안드로이드 기초 <a name = "reason"></a>
 <details>
 <summary><span style="border-bottom:0.05em solid"><strong>안드로이드 4대 컴포넌트에 대해 설명하시오</strong></span></summary>
 <br />
@@ -360,17 +360,24 @@
  </details>
  
   <details>
- <summary>📌안드로이드의 메모리 관리 방식?</summary>
+  <summary><span style="border-bottom:0.05em solid"><strong>📌안드로이드의 메모리 관리 방식? </strong></span></summary>    
 <br />
    
- - 안드로이드 런타임(ART)와 Dalvik 가상 머신은 페이징과 메모리 매핑을 통해 메모리를 관리함
+- 안드로이드는 액티비티, 서비스리시버, 콘텐츠프로바이더를 실행하기 위해 앱이 실행되는 과정에서 프로세스 생성
+  - 실행중인 모든 앱은 컴포넌트가 모두 종료되어도 다음에 이앱을 다시 실행할 가능성이 높음->프로세스 바로 제거X
+  - 사용자에 의해 다시 앱이 실행되면 남아있던 프로세스가 존재하는 경우 바로 실행됨
+  
+- 이 과정에서 쌓여있던 많은 프로세스로 인해 메모리가 부족해지면
+  - 프로세스 우선순위=사용빈도에 따라 프로세스를 종료하여 메모리 확보
    
 ***
  </details>
  
 <details>
- <summary>📌어노테이션이란?</summary>
-   
+    <summary><span style="border-bottom:0.05em solid"><strong>📌어노테이션이란?</strong></span></summary>    
+
+ <br/>
+  
 - 일종의 메타데이터
 - 컴파일/런타임 과정에서 코드를 어떻게 처리할 지 알려주는 정보
   - 컴파일러에게 코드 문법 에러를 체크하도록 정보 제공
@@ -381,11 +388,10 @@
    
 ***
 </details>
- 
- </details>
- 
- <details>
- <summary>ViewPager?</summary>
+
+<details>
+      <summary><span style="border-bottom:0.05em solid"><strong>ViewPager?</strong></span></summary>    
+  
 <br />
   
 - `정의`
@@ -417,7 +423,7 @@
  
  
 <details>
- <summary>ViewPager2?</summary>
+    <summary><span style="border-bottom:0.05em solid"><strong>ViewPager2?</strong></span></summary>    
 <br />
   
 - `등장배경`
@@ -462,7 +468,7 @@
   </details>
 
 <p></p>
-<h2>안드로이드 심화</h2>
+<h2>🐋안드로이드 심화</h2>
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</strong></span></summary>
@@ -547,7 +553,7 @@
 </details>
 
 <p></p>
-<h2>안드로이드 응용</h2>
+<h2>🐬안드로이드 응용</h2>
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Dependency Injection이란?</strong></span></summary>
