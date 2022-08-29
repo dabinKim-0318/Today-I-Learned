@@ -2,85 +2,349 @@
 
 # 안드로이드 기초 <a name = "reason"></a>
 <details>
-   <summary> 안드로이드 4대 컴포넌트에 대해 설명하시오 🙋‍♀️</summary>
+   <summary> 안드로이드 4대 컴포넌트에 대해 설명하시오</summary>
 <br />
-# 4대 컴포넌트 → 구성요소/진입점/수명주기 Activity,Service,BroadCast Receiver, Content Provider
 
-## 💘One Pager 요약
 
 ![ㅁㄴㅇ](https://user-images.githubusercontent.com/84564695/187105028-837f6503-2830-4f8b-9ee1-67f187b9194e.jpg)
+👉[click](https://www.notion.so/4-Activity-Service-BroadCast-Receiver-Content-Provider-6e2dcace26b443f488fc4b27489c8254)
 
-
-## ✅질문
-
-### 질문) **Content Provider와 Content Resolver 차이**
-
-**Content Provider** : 어플리케이션 내에서 사용할 수 있는 데이터를 ‘공유’하기 위한 컴포넌트
-
-Ex) 연락처,이미지 등 (카카오톡)
-
-**Content Resolver** : 앱이 ContentProvider를 접근할 때에는, Content Resolver를 통해 접근하게 됨.
-
-기본적으로 CRUD 함수들 제공 -> 다른 앱의 데이터베이스를 조작할 수 있음.
-
-Ex) contentResolver.query()
-
-### 질문) **Broadcast Receiver 를 사용할 때, Broadcast를 수신하는 기능 말고 Broadcast 를 송신할 수는 없을까요?**
-
-Broadcast Receiver를 이용하여 앱간의 데이터 전달이나 Broadcast 를 송신할 수 있습니다.
-
-상호작용할 앱 모두에 Broadcast Receiver를 등록하고, sendBroadcast() 를 이용하여 Intent 를 주고 받는 방식으로 동작시켜줍니다.
-
-### 질문)  **Content Provider를 이용해 구현해 본 앱이나 기능이 있으신가요?**
-
-**Content Provider**는 앱간의 정보공유를 가능해게 해주는 컴포넌트입니다.
-
-무엇인지는 알고 있었지만 실제로 사용해 본 적은 없어, 없다고 답했습니다.
-
-이후 찾아본 정보에 의하면 **Content Provider**를 구현하기 위해서는 우선 Content Uri 를 디자인 해야합니다. 이후 **query , insert , update , delete** 를 구현한 뒤 **intent**를 교환하여 앱간의 정보교환이 이루어지게 됩니다.
-
-## ✅4대 컴포넌트
-
-`Activity, Service, Broadcast Receiver, Content Provider`
-
-- 앱 구성 요소는 Android **앱의 필수적인 기본 구성 요소**
-- 각 구성 요소는 **시스템이나 사용자가 앱에 들어올 수 있는 진입점**
-- 다른 구성 요소에 **종속되는 구성** 요소도 존재
-- 각 유형은 뚜렷한 목적을 수행하고 **각자 나름의 수명 주기**가 있어 구성 요소의 생성 및 소멸 방식을 정의
-
-## ✅Activity, Service, BroadCast Receiver, Content Provider
-
-- `Activity`
-    - 사용자와 **상호작용하는 interface / 진입점**
-    - 안드로이드 시스템과 안드로이드 앱의 주요 상호작용을 도움
-
-![ee JPG](https://user-images.githubusercontent.com/84564695/187105045-2368d1e7-50e7-43b2-9fb5-7ee40a8a9682.jpg)
-
-
-- `Service`
-    - **백그라운드에서 앱을 실행하기 위함**
-    - Activity와 다르게 사용자 인터페이스, **UI를 제공하지 않음**
-    - 앱이 백그라운드 상태에 있을때도 계속 실행할 수 있기 때문에 사용자가 다른 앱에 있는 동안 백그라운드에서 음악을 재생하거나 네트워크를 통해 다운로드하거나 가능
-    - **Service**라는 클래스를 상속한 SubClass를 작성함으로서 구현 가능
-    
-![캡처 JPG](https://user-images.githubusercontent.com/84564695/187105048-bf2c1b29-b3ba-4409-94ef-0ef6334c213a.jpg)
-
-    
-- `Broadcast Receivr`
-    - BroadCast Receiver는 안**드로이드 시스템이 앱에 알려야하는 BroadCast(방송/사건)이 생길때 이벤트를 앱에 전달해서 앱에 진입할 수 있는 진입점 역할**을 함
-        - ex)앱이 사용자에게 예정된 이벤트에 대해 알리는 알림을 게시하기 위한 알람을 예약할 경우, 그 **알람을 앱의 Broadcast Receiver에 전달하면 알람이 울릴 때까지 앱을 실행하고 있을 필요가 없음**
-        - **현재 실행되고 있지 않은 앱에도** Android 시스템에서 Broadcast를 전달할 수 있다.
-        - 대다수의 브로드캐스트는 안드로이드 시스템에서 발생
-            - ex)화면이 꺼졌거나 배터리가 부족하거나 사진을 캡처했다고 알리는 브로드캐스트가 대표적앱도 브로드캐스트를 발생 할 수 있음
-            - 다른 앱에 일부 데이터가 기기에 다운로드되었고 이를 사용할 수 있다는 것을 알리는 데 사용
-    - **BroadCast Receive**라는 클래스를 상속해서 구현 가능
-- `Content Provider`
-    - Content Provoder는 **안드로이드 앱 간에 파일시스템, SQLite 데이터베이스 등 앱이 엑세스 할 수 있는 앱 데이터를 공유**할 수 있게 함
-        - 다른 앱은 콘텐츠 제공자를 통해 해당 데이터를 쿼리하거나, 콘텐츠 제공자가 허용할 경우에는 수정도 가능
-        - ex) Android 시스템은 사용자의 연락처 정보를 관리하는 콘텐츠 제공자를 제공. 적절한 권한을 가진 앱이라면 콘텐츠 제공자(예: ContactsContract.Data)를 쿼리하여 특정한 인물에 대한 정보를 읽고 쓸 수 있음
-    - **Content Provider**라는 클래스를 상속해서 구현 가능
-   
+   ***
  </details>
 
-<br>
+<details>
+   <summary> 📌안드로이드 실행환경 </summary>
+<br />
+- 안드로이드는 크게 4가지로 구성되어있습니다.
+- 리눅스 커널, 라이브러리, 어플리케이션 프레임워크, 어플리케이션입니다.
+- 리눅스 커널은 OS로 스마트폰의 메모리나 프로세스 등을 관리합니다.
+- 라이브러리는 안드로이드에 있는 다양한 기능을 라이브러리를 제공하며 안드로이드 앱을 구동해주는 dalvik 가상머신을 포함합니다.
+- 어플리케이션 프레임워크는 사용자의 이벤트에 따라 출력을 담당하는 환경을 제공합니다. 생명주기도 여기서 관리. 
+ - 어플리케이션은 실제로 동작하는 앱을 말합니다.
+   ***
+ </details>
  
+ <details>
+   <summary> 안드로이드는 다른 플랫폼에 비해 어떠한 장점이 있는가 </summary>
+<br />
+   
+- 오픈소스이므로 안정성과 버그 수정이 빠르다  
+- 자바를 주 언어로 사용하여 자바 개발자들이 쉽게 개발할 수 있음
+- 리눅스 커널을 OS로 사용하여 하드웨어에 대한 드라이버 소스가 풍부함 
+***
+ </details>
+ 
+   <details>
+   <summary> Activity란? </summary>
+   
+<br />
+- Android 앱의 필수적인 기본 구성 요소(컴포넌트) 중 하나입니다
+- Activity는 사용자와 상호작용하기 위한 진입점입니다.
+- 사용자 인터페이스(UI) 화면을 구성하는 컴포넌트입니다
+- 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다. 
+ 
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
+   
+***
+ </details>
+ 
+ <details>
+   <summary> Fragment란? </summary>
+- 정의
+   - 프래그먼트는 앱의 전체 UI에서 어딘가에 반복적으로 재사용 가능한 부분을 말합니다.  
+- 등장배경
+   - 1) Activity 안에 코드가 길어지게 되면 코드가 길어지니까 유지보수할 때 관리가 어려워짐
+     2) 안드로이드 디바이스는 휴대폰,태블릿 등 다양하기 때문에 태블릿UI를 고려할 때 단순 Activity로 화면을 그리기에 한계가 있음
+- 특징
+   - 1) 프래그먼트는 자체 레이아웃(xml파일을 정의할 수 있음)을 가질 수 있으며 자체 생명 주기를 보유
+   - 2) 프래그먼트는 독립적으로 존재할 수 없고, 반드시 Activity나 다른 프래그먼트에 호스칭 되어야함
+   - 3) 프래그먼트는 자체 UI를 개별적인 청크로써 사용할 수 있습니다. 개별 청크 단위로 다른 곳에서 재사용
+- 사용법
+   - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
+   - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너(=이 위치에 프래그먼트 자체 UI가 배치될 것입니다~ 라고 위치를 지정해두는 것)를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
+  * 주의할 점은 두 방법 모두 Activity UI 레이아웃 안에 FragmentContainerView 를 정의함으로써 해당 프래그먼트가 배치될 위치를 정의해야 한다는 점입니다.
+   
+ 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)
+***
+ </details>
+   
+ </details>
+ 
+ <details>
+   <summary> Activity와 Fragment의 차이 </summary>
+<br />
+- 목적성
+   - Activity는 앱 전체적인 사용자 인터페이스(UI)에 포함될 요소들을 배치하는 곳입니다. Fragment는 단일 화면이나 화면 일부에 관한 사용자 인터페이스(UI)를 정의하는데 적합합니다.
+ - 종속성
+    - 프래그먼트는 액티비티나 다른 프래그먼트에 종속되어야 합니다. 액티비티나 프래그먼트 내의 공간을 효율적으로 이용하기 위해 사용됩니다. 하나의 액티비티나 프래그먼트는 0개 또는 여러개의 프래그먼트를 포함할 수 있습니다. 액티비티는 다른 액티비티나 프래그먼트에 종속되지 않고 독립적으로 존재할 수 있습니다.
+   - 따라서 액티비티는 AndroidMenifest파일에 Activity컴포넌트를 등록하면 안드로이드 시스템에서 관리되고, 프래그먼트는 독립적으로 존재할 수 없어 Menifest에 등록하지 않고 Activity나 상위 Fragment에 호스팅해야합니다.
+ - 재사용성
+   - 프래그먼트는 여러개의 액티비티나 프래그먼트 안에서 재사용될 수 있어 재사용 가능한 컴포넌트처럼 동작할 수 있습니다.
+
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)
+***
+ </details>
+ 
+   <details>
+   <summary> Activity의 LifeCycle </summary>
+<br />
+ 액티비티는 크게 3가지 상태가 존재합니다.먼저 running 실행 상태는 액티비티 스택의 최상위에 있으며 포커스를 가지고 있어 사용자에게 보이는 상태입니다. pasued 일시 중지 상태는 사용자에게 보이기는 하지만 다른 액티비티가 위에 있어 포커스를 받지 못하는 상태입니다.
+stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보이지 않는 상태를 말합니다.
+   
+   ![image (1)](https://user-images.githubusercontent.com/84564695/187110702-3f13eb5c-d5bb-4ead-a403-ba0e27f84d31.png)
+
+   👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0#%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0%EB%9E%80)
+    
+***
+ </details>
+
+   <details>
+   <summary> Fragment의 LifeCycle </summary>
+<br />
+   
+     ![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
+
+   👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
+ 
+***
+ </details>
+ 
+<details>
+   <summary> RecyclerView란? </summary>
+<br />
+   
+***
+ </details>
+ 
+ <details>
+   <summary> RecyclerView와 ListView의 차이? </summary>
+<br />
+   
+***
+ </details>
+ 
+  <details>
+   <summary> View가 그려지는 과정 </summary>
+<br />
+   
+***
+ </details>
+ 
+  <details>
+   <summary>Intent와 IntentFilter란? </summary>
+<br />
+   
+***
+ </details>
+ 
+   <details>
+   <summary>ANT이란? </summary>
+<br />
+   
+***
+ </details>
+ 
+<details>
+ <summary>인플레이션이란? </summary>
+<br />
+   
+***
+ </details>
+ 
+ <details>
+ <summary>Context란? </summary>
+<br />
+   
+***
+ </details>
+ 
+ <details>
+ <summary>안드로이드 매니페스트 파일이란? </summary>
+<br />
+   
+***
+ </details>
+ 
+  <details>
+ <summary> Thread, Looper, Handler에 대해 설명하라 </summary>
+<br />
+   
+***
+ </details>
+ 
+   <details>
+ <summary>디스플레이(display), 윈도우(window), 서피스(surface), 뷰(view), 뷰 그룹(view group), 뷰 컨테이너(view container), 레이아웃(layout)에 대해 설명하라</summary>
+<br />
+   
+***
+ </details>
+ 
+<details>
+ <summary>노티피케이션이란?</summary>
+<br />
+   
+***
+ </details>
+ 
+ <details>
+ <summary>Task란?</summary>
+<br />
+   
+***
+ </details>
+ 
+  <details>
+ <summary>안드로이드의 메모리 관리 방식?</summary>
+<br />
+   
+***
+ </details>
+ 
+<details>
+ <summary>어노테이션이란?</summary>
+<br />
+   
+***
+</details>
+ 
+ 
+<details>
+ <summary>ViewPager?</summary>
+<br />
+   
+***
+ </details>
+ 
+ 
+# 안드로이드 심화 <a name = "reason"></a>
+<details>
+   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
+<br />
+   
+***
+ </details>
+ 
+ <details>
+   <summary> 부모 액티비티에서 자식 액티비티의 결과 값을 받아오기 위해 어떻게 해야하는가?</summary>
+<br />
+   
+***
+ </details>
+ 
+  <details>
+   <summary> 안드로이드가 리소스(resource)를 접근하는 방식에 대해서 설명하시오.</summary>
+<br />
+   
+***
+ </details>
+ 
+   <details>
+   <summary> 디바이스를 회전할 때 Activity에서 일어나는 과정에 대해 설명하시오.</summary>
+<br />
+   
+***
+ </details>
+ 
+<details>
+   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
+<br />
+   
+***
+ </details>
+ 
+<details>
+   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
+<br />
+   
+***
+ </details>
+ 
+     <details>
+   <summary> MVC, MVP, MVVM에 대해서 설명하시오</summary>
+<br />
+   
+***
+ </details>
+ 
+      <details>
+   <summary>액티비티 스택에 대해 설명하시오</summary>
+<br />
+   
+***
+ </details>
+ 
+ # 안드로이드 응용 <a name = "reason"></a>
+<details>
+   <summary> Dependency Injection이란?</summary>
+<br />
+   
+ </details>
+ 
+ <details>
+   <summary> Koin과 Dagger의 차이점은?</summary>
+<br />
+   
+ </details>
+ 
+  
+ <details>
+   <summary> SharedPreferences란?</summary>
+<br />
+   
+ </details>
+ 
+  <details>
+   <summary> DiffUtil이란?</summary>
+<br />
+   
+ </details>
+ 
+   <details>
+   <summary>직렬화와 역직렬화란?</summary>
+<br />
+   
+ </details>
+ 
+    <details>
+   <summary>Immutable이란?</summary>
+<br />
+   
+ </details>
+ 
+     <details>
+   <summary>Image Loading 라이브러리에는 어떤 것이 있는가?</summary>
+<br />
+   
+ </details>
+ 
+      <details>
+   <summary>Android Ktx이란?</summary>
+<br />
+   
+ </details>
+ 
+       <details>
+   <summary>데이터바인딩이란?</summary>
+<br />
+   
+ </details>
+ 
+        <details>
+   <summary>GSON이란?</summary>
+<br />
+   
+ </details>
+ 
+  
+        <details>
+   <summary>Retrofit과 Okhttp란?</summary>
+<br />
+   
+ </details>
+ 
+         <details>
+   <summary>Volley와 Retrofit의 차이는?</summary>
+<br />
+   
+ </details>
