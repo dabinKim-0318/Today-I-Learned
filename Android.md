@@ -15,6 +15,7 @@
 <details>
    <summary> 📌안드로이드 실행환경 </summary>
 <br />
+   
 - 안드로이드는 크게 4가지로 구성되어있습니다.
 - 리눅스 커널, 라이브러리, 어플리케이션 프레임워크, 어플리케이션입니다.
 - 리눅스 커널은 OS로 스마트폰의 메모리나 프로세스 등을 관리합니다.
@@ -38,10 +39,12 @@
    <summary> Activity란? </summary>
    
 <br />
-- Android 앱의 필수적인 기본 구성 요소(컴포넌트) 중 하나입니다
-- Activity는 사용자와 상호작용하기 위한 진입점입니다.
-- 사용자 인터페이스(UI) 화면을 구성하는 컴포넌트입니다
-- 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다. 
+   
+- `정의`
+  - Android 앱의 필수적인 기본 구성 요소(컴포넌트) 중 하나입니다 
+  - Activity는 사용자와 상호작용하기 위한 진입점입니다. 
+  - 사용자 인터페이스(UI) 화면을 구성하는 컴포넌트입니다 
+  - 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다.  
  
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
    
@@ -50,16 +53,17 @@
  
  <details>
    <summary> Fragment란? </summary>
-- 정의
+   
+- `정의`
    - 프래그먼트는 앱의 전체 UI에서 어딘가에 반복적으로 재사용 가능한 부분을 말합니다.  
-- 등장배경
+- `등장배경`
    - 1) Activity 안에 코드가 길어지게 되면 코드가 길어지니까 유지보수할 때 관리가 어려워짐
      2) 안드로이드 디바이스는 휴대폰,태블릿 등 다양하기 때문에 태블릿UI를 고려할 때 단순 Activity로 화면을 그리기에 한계가 있음
-- 특징
+- `특징`
    - 1) 프래그먼트는 자체 레이아웃(xml파일을 정의할 수 있음)을 가질 수 있으며 자체 생명 주기를 보유
    - 2) 프래그먼트는 독립적으로 존재할 수 없고, 반드시 Activity나 다른 프래그먼트에 호스칭 되어야함
    - 3) 프래그먼트는 자체 UI를 개별적인 청크로써 사용할 수 있습니다. 개별 청크 단위로 다른 곳에서 재사용
-- 사용법
+- `사용법`
    - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
    - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너(=이 위치에 프래그먼트 자체 UI가 배치될 것입니다~ 라고 위치를 지정해두는 것)를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
   * 주의할 점은 두 방법 모두 Activity UI 레이아웃 안에 FragmentContainerView 를 정의함으로써 해당 프래그먼트가 배치될 위치를 정의해야 한다는 점입니다.
@@ -73,12 +77,12 @@
  <details>
    <summary> Activity와 Fragment의 차이 </summary>
 <br />
-- 목적성
+- `목적성`
    - Activity는 앱 전체적인 사용자 인터페이스(UI)에 포함될 요소들을 배치하는 곳입니다. Fragment는 단일 화면이나 화면 일부에 관한 사용자 인터페이스(UI)를 정의하는데 적합합니다.
- - 종속성
+ - `종속성`
     - 프래그먼트는 액티비티나 다른 프래그먼트에 종속되어야 합니다. 액티비티나 프래그먼트 내의 공간을 효율적으로 이용하기 위해 사용됩니다. 하나의 액티비티나 프래그먼트는 0개 또는 여러개의 프래그먼트를 포함할 수 있습니다. 액티비티는 다른 액티비티나 프래그먼트에 종속되지 않고 독립적으로 존재할 수 있습니다.
    - 따라서 액티비티는 AndroidMenifest파일에 Activity컴포넌트를 등록하면 안드로이드 시스템에서 관리되고, 프래그먼트는 독립적으로 존재할 수 없어 Menifest에 등록하지 않고 Activity나 상위 Fragment에 호스팅해야합니다.
- - 재사용성
+ - `재사용성`
    - 프래그먼트는 여러개의 액티비티나 프래그먼트 안에서 재사용될 수 있어 재사용 가능한 컴포넌트처럼 동작할 수 있습니다.
 
    
@@ -89,12 +93,15 @@
    <details>
    <summary> Activity의 LifeCycle </summary>
 <br />
- 액티비티는 크게 3가지 상태가 존재합니다.먼저 running 실행 상태는 액티비티 스택의 최상위에 있으며 포커스를 가지고 있어 사용자에게 보이는 상태입니다. pasued 일시 중지 상태는 사용자에게 보이기는 하지만 다른 액티비티가 위에 있어 포커스를 받지 못하는 상태입니다.
-stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보이지 않는 상태를 말합니다.
+
+- 액티비티는 크게 3가지 상태가 존재합니다.
+   - running 실행 상태는 액티비티 스택의 최상위에 있으며 포커스를 가지고 있어 사용자에게 보이는 상태입니다. 
+   - pasued 일시 중지 상태는 사용자에게 보이기는 하지만 다른 액티비티가 위에 있어 포커스를 받지 못하는 상태입니다.
+   - stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보이지 않는 상태를 말합니다.
    
    ![image (1)](https://user-images.githubusercontent.com/84564695/187110702-3f13eb5c-d5bb-4ead-a403-ba0e27f84d31.png)
 
-   👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0#%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0%EB%9E%80)
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0#%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0%EB%9E%80)
     
 ***
  </details>
@@ -103,9 +110,9 @@ stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보�
    <summary> Fragment의 LifeCycle </summary>
 <br />
    
-     ![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
+![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
 
-   👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
+👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
  
 ***
  </details>
@@ -114,11 +121,66 @@ stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보�
    <summary> RecyclerView란? </summary>
 <br />
    
+ - [정의](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
+   - 리사이클러뷰는 사용자가 관리하는 많은 수의 데이터 집합(Data Set)을 개별 아이템 단위로 구성하여 화면에 출력하는 뷰그룹(ViewGroup)이며, 한 화면에 표시되기 힘든 많은 수의 데이터를 스크롤 가능한 리스트로 표시해주는 위젯입니다
+- `등장배경`
+   - 리사이클러뷰 전에 스크롤 가능한 리스트로 표현하기 위해서 ListView를 사용했었습ㄴ,ㅣ다. ListView는 한번에 ItemView를 그리기 어려웠음->속임수1)눈에 보이는 ItemView만 생성->속임수2)맨위에 있던 ItemView를 그려져야할 위치에 재사용->문제1)개발자들 요구사항 증가->문제2)다른 뷰에서 제공하는 비슷한 기능이 ListView에 추가되며 혼란->문제3)애니메이션 처리 문제->문제3)재사용될 ItemView인지 분기처리 필요->문제4)Adapter는 변경된 Item Data의 Position알 수 없음===>저 구글인데요 미안합니다 RecyclerView만들게요 ㅠㅠ ㅎㅎ
+   
+ - [특징](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
+   -  RecyclerView의 내부 아키텍쳐는 컴포넌트(Component)기반 아키텍쳐입니다.
+   - 그 중 Layout Manager, Item Animator, Adapter 라는 3가지 컴포넌트가 가장 중요합니다
+    - **Layout Manager** :RecyclerView의 모양 책임. ItemView를 올바른 위치에 배치해주는 컴포넌트 
+      - 선형/격자형/엇갈린 격자형
+      - 때문에 RecyclerView 본인은 자기 자신이 선형 모양이 될지, 격자형 모양이 될지, 엇갈린 격자형 모양이 될지에 관해 알고 있지 않고, 각 ItemView가 어느 위치에 놓여야 하는지에 관해서도 관여하지 않습니다.
+    - **ItemAnimator** :ItemView의 애니메이션을 담당하는 컴포넌트
+    - **Adapter** :RecyclerView에 ItemView를 생성/제공/data set이 변경되었을 때 리사이클러뷰에게 알리는 컴포넌트
+      - ItemView외에도 ListView와 다르게 ViewHolder 생성 강제
+   
+ - [동작원리](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-RecyclerView%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83-2%ED%83%84ViewHolder%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
+   ![image](https://user-images.githubusercontent.com/84564695/187114067-896686a6-c52b-40f3-9782-8fa09f5fa7a6.jpg)
+1) 사용자 스크롤이 일어나면 레이아웃 매니저가 RecyclerView에게 view를 요청
+2) RecyclcerView는 원하는 ViewHoler가 있는지 ViewHolder로 이루어진 리스트 Cache를 먼저 방문한다고 했습니다.
+3) 캐시에 없으면 adapter에게 배치되어야할 ItemView의 ViewHoler type이 뭔지 물어보고 Recycled Pool에 요청
+   Recycled Pool은 getRecycledView의 파라미터로 ViewType을 전달하면, ViewType에 맞는 ViewHolder를 return해줍니다. ViewType마다 ViewHolder Pool을 가지고 있습니다
+4) Pool에 있으면 반환, 없으면 adapter에게 createViewHolder로 아이템 생성.
+5) pool에서 viewholder를 찾으면 adapter에서 bindview를 하고 LayoutManager에게 리턴.
+6) LayoutManager는 addView를 수행하고 adapter의 onViewAttachedToWindow가 호출됨.
+
+   *캐시와 Recycled Pool은 RecyclerView안에 이미 선언되어있음.
+   *캐시 사이즈 변경 가능 기본용량 2개
+   *pool 사이즈 변경 가능 기본용량 5개
+   
+  
+   
 ***
  </details>
  
  <details>
    <summary> RecyclerView와 ListView의 차이? </summary>
+   
+- `AdapterView`
+   - AdapterView는 많은 양의 data를 효율적으로 표시하고 Adapter가 관리하는 데이터를 출력(data set의 형태로 눈에 보이도록)할 수 있게 해주는 View이다.
+   
+ - `ListView`
+   - ListView는 수직 스크롤 가능하도록 만드는 뷰이고 AdapterView중 가장 많이 사용되기도 합니다
+   - ListView는 AdapterView이기 때문에 Adapter을 사용해야하며 ArrayAdapter, BaseAdapter를 통해 구현할 수 있습니다
+   - View를 재활용하지 않거나 ViewHolder를 사용하지 않으면 매번 같은 view를 inflate하고 findViewById를 호출해서 비효율적입니다
+   - `성능개선`
+     - **1) View재활용: inflate줄이기**
+       - 사용자의 눈에 보이는 View만 생성해두고 스크롤이 발생하면 맨 위에 있던 View를 가장 아래로 가져오고 그 안에 들어간 data만 바꾸는 방법 
+       - 실제 화면에 그려지는 아이템을 convertView라는 배열로 관리합니다. 화면에 보여지는 만큼 convertView를 생성하고 스크롤하면 이 View를 재활용합니다. 즉 convertView는 ListView의 재활용 View입니다
+     - **2) ViewHolder사용하기: findViewById줄이기( ViewGroup 밑에 있는 모든 뷰들을 전부 한 번씩 순회하며 id값을 비교하는 과정을 거치기 때문에 자원이 많이 듭니다)**
+       - view는 재활용하는데, 정작 데이터 셋팅할 때 convertView의 자식뷰(textView 등) 정보를 매번 findViewById()를 통해 다시 가져와 재연결하기 때문에 비효율적입니다. 문제는 ViewHolder패턴을 이용하면 해결가능합니다
+       - ViewHolder는 ItemView의 각 요소를 바로 엑세스 할 수 있도록 저장해두고 사용하기 위한 객체입니다
+       -  converView의 tag에 viewHolder를 넣어주면 view를 재활용할때 viewHolder의 정보도 함께 불러올 수 있습니다
+   
+- `차이`
+   - 수직 스크롤밖에 안됨 
+   - 애니메이션 처리 문제
+   - ViewHolder강제 유뮤
+   - item배치만 담당하는 layoutManager유무
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-Adapter-AdapterView%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
 <br />
    
 ***
