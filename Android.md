@@ -174,10 +174,13 @@
        - ViewHolder는 ItemView의 각 요소를 바로 엑세스 할 수 있도록 저장해두고 사용하기 위한 객체입니다
        -  converView의 tag에 viewHolder를 넣어주면 view를 재활용할때 viewHolder의 정보도 함께 불러올 수 있습니다
    
+- `장점`
+   - ListView는 간단하게 리스트를 만드는 부분에 있어서는 장점을 가지고 있다. [ex) 텍스트만 있는 리스트]
+   - 간단한 아이템 형태를 만드는 경우에는 빠르게 적용이 가능한 ArrayAdapter를 제공한다.
 - `차이`
    - 수직 스크롤밖에 안됨 
    - 애니메이션 처리 문제
-   - ViewHolder강제 유뮤
+   - ViewHolder강제 유뮤 -> 고비용의 findViewById
    - item배치만 담당하는 layoutManager유무
    
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-Adapter-AdapterView%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
@@ -187,8 +190,15 @@
  </details>
  
   <details>
-   <summary> View가 그려지는 과정 </summary>
+   <summary> 📌View가 그려지는 과정 </summary>
 <br />
+   
+- 액티비티가 포커스를 얻으면 자신의 레이아웃을 그리도록 한다
+- 액티비티에 레이아웃의 계층구조 중 루트 노드를 제공해야함
+- 레이아웃의 루트노드에서 시작해 레이아웃 트리를 따라 이동
+- 부모 뷰는 자식 뷰 이전에 그려짐
+- 자식 뷰는 전위순회 방식으로 그려짐
+- measure, layout 단계가 있음
    
 ***
  </details>
@@ -197,19 +207,42 @@
    <summary>Intent와 IntentFilter란? </summary>
 <br />
    
+   ![KakaoTalk_20220711_214321306](https://user-images.githubusercontent.com/84564695/187116433-7aa6c027-efae-4969-9055-73116e342793.jpg)
+👉[click](https://www.notion.so/Intent-pending-intent-sticky-intent-4cf97968d28a4a18b4403118c1793a5a)
+   
 ***
  </details>
  
    <details>
-   <summary>ANT이란? </summary>
+   <summary>ANR이란? </summary>
 <br />
+   
+   ![KakaoTalk_20220713_205339727](https://user-images.githubusercontent.com/84564695/187116773-21dcca73-785b-4770-ba89-a8d7369f5af1.jpg)
+
+ - `정의`
+   - 앱의 UI 스레드가 너무 오랫동안 차단되면 나타나는 오류 
+ 
+ - `원인`
+   - 메인스레드인 UI스레드는 제약사항이 있는데요. 반드시 화면 UI그리기를 담당하는 것입니다
+   - UI를 순차적으로 그려내기 위해 메인 스레드 하나에서만 UI작업을 합니다
+   - 만약 UI이벤트 작업에 5초 안에 응답하지 않으면 
+   - 안드로이드 시스템은 ANR(Android Not Responsing)이라는 팝업창을 띄웁니다
+ 
+ - `해결방안`
+   - 이러한 문제점을 막기위해 불안정한 UI관련 작업이나 비동기 작업(애니메이션 등) , High Cost의 연산작업 (Database 처리등) 등은 Worker Thread를 따로 만들어 처리하도록 합니다.
+
+👉[click](https://www.notion.so/ANR-Thread-Looper-UI-486f771483564e67883aeac814fae8ef)
    
 ***
  </details>
  
 <details>
- <summary>인플레이션이란? </summary>
+ <summary>📌인플레이션이란? </summary>
 <br />
+   
+자바 소스코드에서 xml의 구성요소들을 사용할 수 있게 객체로 만들어주는것
+
+메모리상에 실제로 객체화되어 앱에 보여지는 것
    
 ***
  </details>
@@ -218,6 +251,12 @@
  <summary>Context란? </summary>
 <br />
    
+- Context는 Android 시스템에서 구현체를 제공하는 추상클래스이다
+- gc에 의해 수집되지 않는다
+   
+  ![KakaoTalk_20220711_214307895](https://user-images.githubusercontent.com/84564695/187117252-d356bea3-e488-4f39-a50d-a2a2444bcac8.jpg)
+ 
+ 👉[click](https://www.notion.so/Context-Application-Activity-2e40351127744b188cb72f6d9222b571)
 ***
  </details>
  
@@ -225,13 +264,30 @@
  <summary>안드로이드 매니페스트 파일이란? </summary>
 <br />
    
+- 매니페스트는 앱의 이름, 버전, 구성요소, 권한 등 앱의 실행에 있어 필요한 각종 정보들이 저장되어있는 파일이다.
+- 안드로이드 프로젝트의 최상위에 위치하고 있다.
+
 ***
  </details>
  
   <details>
  <summary> Thread, Looper, Handler에 대해 설명하라 </summary>
 <br />
+
+- 안드로이드는 메인스레드와 백그라운드 스레드 및 스레드간 통신을 위해 핸들러(Handler)와 루퍼(Looper)을 제공함
+- `루퍼`
+   - Main 스레드는 Looper를 가지지만, 기본적으로는 Looper를 가지지않음 스레드당 하나만 가질 수 있음
+   - 루프(Loop)를 실행하고 그 루프(Loop) 안에서 메시지 큐(Message Queue)로 전달되는 메시지가 존재하는지 검사
+   - 메시지 들어오면 꺼내서 핸들러에게 전달함
+
+- `핸들러`
+   - 루퍼에 의해 새로운 메시지가 포착되면 해당 메시지를 처리할 핸들러(Handler) 메서드를 실행
+   - 새로 생성된 스레드들과 메인 스레드와의 통신을 담당함.
+   - 루퍼를 통해 전달되는 메시지를 받아서 처리하는 일종의 명령어 처리기
+   - 루퍼는 앱이 실행되면 자동으로 하나 생성되어 무한루프를 돌지만 핸들러는 개발자가 직접 생성
    
+ 
+ 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%8A%A4%EB%A0%88%EB%93%9CThread%EC%99%80-%EC%BD%94%EB%A3%A8%ED%8B%B4)
 ***
  </details>
  
@@ -239,6 +295,15 @@
  <summary>디스플레이(display), 윈도우(window), 서피스(surface), 뷰(view), 뷰 그룹(view group), 뷰 컨테이너(view container), 레이아웃(layout)에 대해 설명하라</summary>
 <br />
    
+- `디스플레이` : 안드로이드 단말기가 가지는 하드웨어 화면
+- `윈도우` : 화면에서 눈에 보이는 것을 담는 가장 기본적인 "공간"이자, 뭔가를 그릴 수 있는 "창"
+- `서피스` : 윈도우에 그림을 그릴 때 화면에 합성되는 픽셀을 저장.  화면에 표시되는 모든 Window는 자신만의 Surface가 포함되어 있습니다
+- `뷰 = 위젯`: 사용자가 보고 상호작용 할 수 있는 모든 것입니다. View객체는 "위젯"이라고도 하고, Button, TextView와 같은 클래스는 View class를 상속한 서브클래스 입니다 이처럼 View는 Button, TestView 등 어떤 기능을 하는 컴포넌트 입니다.
+- `뷰 그룹 = 레이아웃`: View를 상속받고 있고, 하위에 여러 ViewGroup, View들을 포함하고 있습니다.(ViewGroup 안에 ViewGroup을 포함할 수 있음) ViewGroup은 자신이 포함한 ViewGroup, View 객체들의 위치를 결정합니다 ViewGroup은 "레이아웃"이라고도 하며 LinearLayout 또는 ConstraintLayout은 ViewGroup을 상속한 서브 클래스 입니다
+- `뷰 컨테이너` : 다른 뷰를 포함하고 있는 뷰
+
+   
+
 ***
  </details>
  
@@ -246,6 +311,9 @@
  <summary>노티피케이션이란?</summary>
 <br />
    
+ - 앱이 forground에서 실행 상태가 아니여도 사용자에게 정보를 제공할 수 있는 UI형태입니다.
+   
+ 👉[click]([https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%8A%A4%EB%A0%88%EB%93%9CThread%EC%99%80-%EC%BD%94%EB%A3%A8%ED%8B%B4](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CNotification))   
 ***
  </details>
  
@@ -253,18 +321,39 @@
  <summary>Task란?</summary>
 <br />
    
+![KakaoTalk_20220712_204050466](https://user-images.githubusercontent.com/84564695/187118833-5c18a7b8-bac4-4afa-a654-982969f36f02.jpg)
+
+ - `정의`  
+  - 안드로이드 task는 stack 형식으로 쌓이는 activity들의 집합입니다 가장 아래에 있는 activity는 roomActivity라고 부르고 어플리케이션 런쳐로부터 시작됩니다. 가장 최근에 쌓인 activity는 topActivity라고 합니다.
+ - `Intent Flag`  
+   - Intent Flag는 안드로이드에서 Activity를 호출하다 보면 발생하는 Activity중복문제나 흐름을 제어하고 싶을 때 사용합니다
+ - `Frag 사용 2가지 방법`  
+   - 매니페스트 속성으로 지정
+   - 소스코드로 제어
+ 
+ 👉[click](https://www.notion.so/Task-Activity-Root-Top-intent-Flag-7d1c0158dec64864b43f6014801572ea)
+   
 ***
  </details>
  
   <details>
- <summary>안드로이드의 메모리 관리 방식?</summary>
+ <summary>📌안드로이드의 메모리 관리 방식?</summary>
 <br />
+   
+ - 안드로이드 런타임(ART)와 Dalvik 가상 머신은 페이징과 메모리 매핑을 통해 메모리를 관리함
    
 ***
  </details>
  
 <details>
- <summary>어노테이션이란?</summary>
+ <summary>📌어노테이션이란?</summary>
+   
+- 일종의 메타데이터
+- 컴파일/런타임 과정에서 코드를 어떻게 처리할 지 알려주는 정보
+  - 컴파일러에게 코드 문법 에러를 체크하도록 정보 제공
+  - 런타임시 특정 기능 실행하도록 정보 제공
+  - 소프트웨어 개발 툴이 빌드나 배치 시 코드를 자동으로 생성할 수 있도록 정보를 제공
+   
 <br />
    
 ***
@@ -274,7 +363,20 @@
 <details>
  <summary>ViewPager?</summary>
 <br />
+  
+- `정의`
+   - 데이터를 페이지 단위로 표시하고, 뷰를 스와이프해서 페이지를 전환할 수 있도록 만들어주는 컨테이너
    
+- `사용방법`
+   - 추상클래스인 PagerAdapter의 하위클래스인 FragmentPagerAdater, FragmentStateAdapter 중 하나를 상속받아 만들 수 있음
+   - `FragmentPagerAdapter`
+PagerAdapter를 상속하고 있는 추상 클래스입니다
+모든 프래그먼트를 메모리에 저장해두기 때문에 빠르게 스와이핑해도 메모리에 로드된 프래그먼트를 가져다 쓰므로 버벅이지 않고 화면이 잘 넘어갑니다.
+하지만 많은 개수의 프래그먼트를 가지고 있다면 저장해야할 프래그먼트도 많아지므로 메모리 측면에서 부담이 될 수 있습니다
+FragmentStatePagerAdapter
+PagerAdapter를 상속하고 있는 추상 클래스입니다
+필요에 따라 메모리에서 Fragment를 제거하고 다시 생성하며 상태를 유지합니다.
+메모리에는 각 프래그먼트의 상태값만 계속 저장(이게 무슨 말일까,,)하기 때문에 메모리 입장에서는 부담이 덜합니다.
 ***
  </details>
  
