@@ -684,10 +684,11 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>GSON이란?</strong></span></summary>
-<hr>
+
    <p>JSON과 JAVA 사이의 직렬화와 역직렬화를 도와주는 라이브러리</p>
 
-<hr>
+***
+   
 </details>
 
 
@@ -716,16 +717,23 @@
   - 3. 결과값을 메인스레드에서 바로 사용할 수 있음
   - 하지만 이 둘을 같이 쓰는 이유는, OkHttp가 제공하는 Intercepter를 통해 API가 통신되는 모든 활동을 모니터링 할 수 있으며 서버 통신 시간 조절이 가능하다는 장점!
   - 결과적으로, 최고의 성능을 내기 위해서 둘 다 사용하는 게 보편적
+
+[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)
+   
+***
    
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Volley와 Retrofit의 차이는?</strong></span></summary>
-- 1. 높은 성능
+- 1. 빠르다
 - 2. 뛰어난 가독성
+   - Annotation으로 HTTP 메소드를 정의함으로서 코드의 구현이 쉬워지며 개발자들은 행위를 손쉽게 알아볼 수 있게 되어 직관적으로 코드를 설계
 - 3. 쉬운 유지보수
+   - XML을 자동을 파싱해주는 Converter 연동을 지원
    
 [👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)   
+   
    
 </details>
