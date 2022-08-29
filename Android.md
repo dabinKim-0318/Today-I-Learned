@@ -2,7 +2,7 @@
 
 # 안드로이드 기초 <a name = "reason"></a>
 <details>
-   <summary> 안드로이드 4대 컴포넌트에 대해 설명하시오</summary>
+<summary><span style="border-bottom:0.05em solid"><strong>안드로이드 4대 컴포넌트에 대해 설명하시오</strong></span></summary>
 <br />
 
 
@@ -13,31 +13,34 @@
  </details>
 
 <details>
-   <summary> 📌안드로이드 실행환경 </summary>
+<summary><span style="border-bottom:0.05em solid"><strong>📌안드로이드 실행환경</strong></span></summary>
 <br />
    
 - 안드로이드는 크게 4가지로 구성되어있습니다.
-- 리눅스 커널, 라이브러리, 어플리케이션 프레임워크, 어플리케이션입니다.
-- 리눅스 커널은 OS로 스마트폰의 메모리나 프로세스 등을 관리합니다.
-- 라이브러리는 안드로이드에 있는 다양한 기능을 라이브러리를 제공하며 안드로이드 앱을 구동해주는 dalvik 가상머신을 포함합니다.
-- 어플리케이션 프레임워크는 사용자의 이벤트에 따라 출력을 담당하는 환경을 제공합니다. 생명주기도 여기서 관리. 
- - 어플리케이션은 실제로 동작하는 앱을 말합니다.
+  - `리눅스 커널`: OS로 스마트폰의 메모리나 프로세스 등을 관리합니다.
+  - `라이브러리`: 안드로이드에 있는 다양한 기능을 라이브러리를 제공하며 안드로이드 앱을 구동해주는 dalvik 가상머신을 포함합니다.
+  - `어플리케이션 프레임워크`: 사용자의 이벤트에 따라 출력을 담당하는 환경을 제공합니다. 생명주기도 여기서 관리. 
+  - `어플리케이션`: 실제로 동작하는 앱을 말합니다.
+   
    ***
+   
  </details>
  
  <details>
-   <summary> 안드로이드는 다른 플랫폼에 비해 어떠한 장점이 있는가 </summary>
+<summary><span style="border-bottom:0.05em solid"><strong>안드로이드는 다른 플랫폼에 비해 어떠한 장점이 있는가</strong></span></summary>
 <br />
    
-- 오픈소스이므로 안정성과 버그 수정이 빠르다  
-- 자바를 주 언어로 사용하여 자바 개발자들이 쉽게 개발할 수 있음
-- 리눅스 커널을 OS로 사용하여 하드웨어에 대한 드라이버 소스가 풍부함 
+- `오픈소스`
+   - 비용부담x
+   - 전세계 개발자 피드백 ->안전성 높고 버그x
+
+- `리눅스 커널을 OS로` 
+   - 다양한 하드웨어에 대한 드라이버 소스가 풍부함 
 ***
  </details>
  
    <details>
-   <summary> Activity란? </summary>
-   
+<summary><span style="border-bottom:0.05em solid"><strong>Activity란? </strong></span></summary>   
 <br />
    
 - `정의`
@@ -52,7 +55,7 @@
  </details>
  
  <details>
-   <summary> Fragment란? </summary>
+  <summary><span style="border-bottom:0.05em solid"><strong> Fragment란?  </strong></span></summary>    
    
 - `정의`
    - 프래그먼트는 앱의 전체 UI에서 어딘가에 반복적으로 재사용 가능한 부분을 말합니다.  
@@ -71,11 +74,9 @@
  👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)
 ***
  </details>
-   
- </details>
  
  <details>
-   <summary> Activity와 Fragment의 차이 </summary>
+     <summary><span style="border-bottom:0.05em solid"><strong> Activity와 Fragment의 차이  </strong></span></summary>    
 <br />
    
 - `목적성`
@@ -92,7 +93,7 @@
  </details>
  
    <details>
-   <summary> Activity의 LifeCycle </summary>
+      <summary><span style="border-bottom:0.05em solid"><strong>  Activity의 LifeCycle </strong></span></summary>    
 <br />
 
 - 액티비티는 크게 3가지 상태가 존재합니다.
@@ -108,7 +109,7 @@
  </details>
 
    <details>
-   <summary> Fragment의 LifeCycle </summary>
+       <summary><span style="border-bottom:0.05em solid"><strong>  Fragment의 LifeCycle  </strong></span></summary>    
 <br />
    
 ![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
@@ -119,7 +120,7 @@
  </details>
  
 <details>
-   <summary> RecyclerView란? </summary>
+    <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView란?  </strong></span></summary>    
 <br />
    
  - [정의](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
@@ -157,8 +158,7 @@
  </details>
  
  <details>
-   <summary> RecyclerView와 ListView의 차이? </summary>
-   
+ <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView와 ListView의 차이?   </strong></span></summary>    
 - `AdapterView`
    - AdapterView는 많은 양의 data를 효율적으로 표시하고 Adapter가 관리하는 데이터를 출력(data set의 형태로 눈에 보이도록)할 수 있게 해주는 View이다.
    
@@ -193,7 +193,7 @@
  </details>
  
   <details>
-   <summary> 📌View가 그려지는 과정 </summary>
+    <summary><span style="border-bottom:0.05em solid"><strong> 📌View가 그려지는 과정  </strong></span></summary>    
 <br />
    
 - 액티비티가 포커스를 얻으면 자신의 레이아웃을 그리도록 한다
@@ -207,7 +207,7 @@
  </details>
  
   <details>
-   <summary>Intent와 IntentFilter란? </summary>
+     <summary><span style="border-bottom:0.05em solid"><strong>Intent와 IntentFilter란? </strong></span></summary>    
 <br />
    
    ![KakaoTalk_20220711_214321306](https://user-images.githubusercontent.com/84564695/187116433-7aa6c027-efae-4969-9055-73116e342793.jpg)
@@ -217,7 +217,7 @@
  </details>
  
    <details>
-   <summary>ANR이란? </summary>
+    <summary><span style="border-bottom:0.05em solid"><strong> ANR이란?  </strong></span></summary>    
 <br />
    
    ![KakaoTalk_20220713_205339727](https://user-images.githubusercontent.com/84564695/187116773-21dcca73-785b-4770-ba89-a8d7369f5af1.jpg)
@@ -240,7 +240,7 @@
  </details>
  
 <details>
- <summary>📌인플레이션이란? </summary>
+    <summary><span style="border-bottom:0.05em solid"><strong>📌인플레이션이란? </strong></span></summary>    
 <br />
    
 자바 소스코드에서 xml의 구성요소들을 사용할 수 있게 객체로 만들어주는것
@@ -251,7 +251,7 @@
  </details>
  
  <details>
- <summary>Context란? </summary>
+       <summary><span style="border-bottom:0.05em solid"><strong>Context란? </strong></span></summary>    
 <br />
    
 - Context는 Android 시스템에서 구현체를 제공하는 추상클래스이다
@@ -264,17 +264,37 @@
  </details>
  
  <details>
- <summary>안드로이드 매니페스트 파일이란? </summary>
+       <summary><span style="border-bottom:0.05em solid"><strong> manifest파일</strong></span></summary>    
 <br />
    
 - 매니페스트는 앱의 이름, 버전, 구성요소, 권한 등 앱의 실행에 있어 필요한 각종 정보들이 저장되어있는 파일이다.
 - 안드로이드 프로젝트의 최상위에 위치하고 있다.
 
+- `manifest태그`
+    - 최상위에 위치
+    - 패키지명, 앱버전코드, 앱버전 이름 정의
+   
+ - `application태그`
+    - 앱 아이콘, 앱 이름
+   
+- `activity`
+    -   클래스명, 액티비티 이름, intent filter태그
+   
+- `service, receiver, provider`
+    -   각 내용 정의
+
+- `permission`
+    -   앱에 필요한 권한 정의
+   
+- `use-sdk`
+    -   최소 안드로이드 SDK
+   
 ***
+   
  </details>
  
-  <details>
- <summary> Thread, Looper, Handler에 대해 설명하라 </summary>
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong> Thread, Looper, Handler에 대해 설명하라 </strong></span></summary>    
 <br />
 
 - 안드로이드는 메인스레드와 백그라운드 스레드 및 스레드간 통신을 위해 핸들러(Handler)와 루퍼(Looper)을 제공함
@@ -295,11 +315,11 @@
  </details>
  
    <details>
- <summary>디스플레이(display), 윈도우(window), 서피스(surface), 뷰(view), 뷰 그룹(view group), 뷰 컨테이너(view container), 레이아웃(layout)에 대해 설명하라</summary>
+  <summary><span style="border-bottom:0.05em solid"><strong> 디스플레이(display), 윈도우(window), 서피스(surface), 뷰(view), 뷰 그룹(view group), 뷰 컨테이너(view container), 레이아웃(layout)에 대해 설명하라 </strong></span></summary>    
 <br />
    
 - `디스플레이` : 안드로이드 단말기가 가지는 하드웨어 화면
-- `윈도우` : 화면에서 눈에 보이는 것을 담는 가장 기본적인 "공간"이자, 뭔가를 그릴 수 있는 "창"
+- `윈도우` : 화면에서 눈에 보이는 것을 담는 가장 기본적인 "공간"이자, 뭔가를 그릴 수 있는 "창" . 사용자로부터 입력받아 앱에 전달
 - `서피스` : 윈도우에 그림을 그릴 때 화면에 합성되는 픽셀을 저장.  화면에 표시되는 모든 Window는 자신만의 Surface가 포함되어 있습니다
 - `뷰 = 위젯`: 사용자가 보고 상호작용 할 수 있는 모든 것입니다. View객체는 "위젯"이라고도 하고, Button, TextView와 같은 클래스는 View class를 상속한 서브클래스 입니다 이처럼 View는 Button, TestView 등 어떤 기능을 하는 컴포넌트 입니다.
 - `뷰 그룹 = 레이아웃`: View를 상속받고 있고, 하위에 여러 ViewGroup, View들을 포함하고 있습니다.(ViewGroup 안에 ViewGroup을 포함할 수 있음) ViewGroup은 자신이 포함한 ViewGroup, View 객체들의 위치를 결정합니다 ViewGroup은 "레이아웃"이라고도 하며 LinearLayout 또는 ConstraintLayout은 ViewGroup을 상속한 서브 클래스 입니다
@@ -311,7 +331,7 @@
  </details>
  
 <details>
- <summary>노티피케이션이란?</summary>
+     <summary><span style="border-bottom:0.05em solid"><strong>노티피케이션이란? </strong></span></summary>    
 <br />
    
  - 앱이 forground에서 실행 상태가 아니여도 사용자에게 정보를 제공할 수 있는 UI형태입니다.
@@ -321,7 +341,7 @@
  </details>
  
  <details>
- <summary>Task란?</summary>
+        <summary><span style="border-bottom:0.05em solid"><strong>Task란? </strong></span></summary>    
 <br />
    
 ![KakaoTalk_20220712_204050466](https://user-images.githubusercontent.com/84564695/187118833-5c18a7b8-bac4-4afa-a654-982969f36f02.jpg)
@@ -446,17 +466,27 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</strong></span></summary>
-<hr>
 
-<hr>
+- `이유`
+   - 액티비티간 전달할 수 있는 데이터의 타입은 보통 기본형
+   - 그 이유는, intent를 이용해서 액티비티의 데이터를 전달하는 과정에서 현재 실행중인 앱 프로세스가 시스템 프로세스로 실행중인 액티비티 매니저 서비스 프로세스에게 전달되는데, 이 경우 프로세스간 통신이기 때문에 intent에 있는 값들을 복사해 넘기는 방식으로 처리되기 때문에 객체 주소를 바로 넘기지 못하는 문제 발생
+- `해결법`
+   - 자신이 임의로 만든 클래스 객체를 전달하기 위해선 Serializable, Parceable 인터페이스를 상속받아 객체를 직렬화하여 넘기는 방식 사용
+   
+***
+  
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>부모 액티비티에서 자식 액티비티의 결과 값을 받아오기 위해 어떻게 해야하는가?</strong></span></summary>
-<hr>
 
-<hr>
+- 부모 액티비티에서 `startActivityForResult`메소드에 intent, request코드 파라미터로 넘김
+- 자식 액티비에서 `setResult`메소드에 결과 코드, 데이터를 파라미터로 넘김
+- 다시 부모 액티비티에서 `onActivityRexult`메서드를 오버라이딩하여 자식 액티비티에서 보낸 결과코드와 데이터를 받아 처리하는 코드 작성
+- 이후 자식 액티비티 finish->부모 액티비티 resume
+- 이때 `onActivityResult`메서드 작동
+   
 </details>
 
 
@@ -507,6 +537,15 @@
 <hr>
 </details>
 
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Vector, 비트맵 차이</strong></span></summary>
+
+- `벡터`: 리사이징 되어도 안꺠짐, 모든 해상도에서 자유자재로 활용할 수 있어서 특정 해상도에 제한되어 있지 않음
+   - SVG
+- `비트맵`: 픽셀로 구성, 자유자제로 바꾸거나 움직이기 불가
+   - PNG,JPEG
+</details>
+
 <p></p>
 <h2>안드로이드 응용</h2>
 
@@ -541,7 +580,7 @@
    - 컴파일이 빠름
    - 런타임 에러 가능
    
-[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-HiltRepository%ED%8C%A8%ED%84%B4)
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-HiltRepository%ED%8C%A8%ED%84%B4)
    
  ***
    
@@ -575,7 +614,7 @@
    - 추상메서드인 areItemsTheSame, areContentsTheSame을 반드시 오버라이딩
    - item의 id같은 고유 항목을 비교해서 newItem과 oldItem이 동일 항목인지 계산
    
-[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-DiffUtil-ListAdapter-notifyDataSetChanged%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-DiffUtil-ListAdapter-notifyDataSetChanged%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
 
  ***
   
@@ -675,7 +714,7 @@
    - 각 xml파일마다 binding class가 자동으로 생성됨
    -  binding class를 인스턴스화를 위해 DataBindingUtil 이라는 클래스 안의 setContentView() 메소드를 통해 활성 뷰를 해당 레이아웃으로 설정
    
-[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CDataBinding)
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CDataBinding)
    
  ***
    
@@ -718,7 +757,7 @@
   - 하지만 이 둘을 같이 쓰는 이유는, OkHttp가 제공하는 Intercepter를 통해 API가 통신되는 모든 활동을 모니터링 할 수 있으며 서버 통신 시간 조절이 가능하다는 장점!
   - 결과적으로, 최고의 성능을 내기 위해서 둘 다 사용하는 게 보편적
 
-[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)
    
 ***
    
@@ -733,7 +772,7 @@
 - 3. 쉬운 유지보수
    - XML을 자동을 파싱해주는 Converter 연동을 지원
    
-[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)   
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)   
    
    
 </details>
