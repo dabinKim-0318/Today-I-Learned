@@ -217,134 +217,285 @@ stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보�
  </details>
  
  
-# 안드로이드 심화 <a name = "reason"></a>
+
+<p></p>
+<h2>안드로이드 심화</h2>
+
 <details>
-   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
-<br />
-   
-***
- </details>
- 
- <details>
-   <summary> 부모 액티비티에서 자식 액티비티의 결과 값을 받아오기 위해 어떻게 해야하는가?</summary>
-<br />
-   
-***
- </details>
- 
-  <details>
-   <summary> 안드로이드가 리소스(resource)를 접근하는 방식에 대해서 설명하시오.</summary>
-<br />
-   
-***
- </details>
- 
-   <details>
-   <summary> 디바이스를 회전할 때 Activity에서 일어나는 과정에 대해 설명하시오.</summary>
-<br />
-   
-***
- </details>
- 
+   <summary><span style="border-bottom:0.05em solid"><strong>액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
 <details>
-   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
-<br />
-   
-***
- </details>
- 
+   <summary><span style="border-bottom:0.05em solid"><strong>부모 액티비티에서 자식 액티비티의 결과 값을 받아오기 위해 어떻게 해야하는가?</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
 <details>
-   <summary> 액티비티간 데이터 전달에서 임의의 클래스 객체를 바로 전달하지 못하는 이유는 무엇이고 전달하기 위해서는 어떤 처리가 필요한가?</summary>
-<br />
-   
-***
- </details>
- 
-     <details>
-   <summary> MVC, MVP, MVVM에 대해서 설명하시오</summary>
-<br />
-   
-***
- </details>
- 
-      <details>
-   <summary>액티비티 스택에 대해 설명하시오</summary>
-<br />
-   
-***
- </details>
- 
- # 안드로이드 응용 <a name = "reason"></a>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드가 리소스(resource)를 접근하는 방식에 대해서 설명하시오.</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
 <details>
-   <summary> Dependency Injection이란?</summary>
-<br />
-   
- </details>
- 
- <details>
-   <summary> Koin과 Dagger의 차이점은?</summary>
-<br />
-   
- </details>
- 
-  
- <details>
-   <summary> SharedPreferences란?</summary>
-<br />
-   
- </details>
- 
-  <details>
-   <summary> DiffUtil이란?</summary>
-<br />
-   
- </details>
- 
-   <details>
-   <summary>직렬화와 역직렬화란?</summary>
-<br />
-   
- </details>
- 
-    <details>
-   <summary>Immutable이란?</summary>
-<br />
-   
- </details>
- 
-     <details>
-   <summary>Image Loading 라이브러리에는 어떤 것이 있는가?</summary>
-<br />
-   
- </details>
- 
-      <details>
-   <summary>Android Ktx이란?</summary>
-<br />
-   
- </details>
- 
-       <details>
-   <summary>데이터바인딩이란?</summary>
-<br />
-   
- </details>
- 
-        <details>
-   <summary>GSON이란?</summary>
-<br />
-   
- </details>
- 
-  
-        <details>
-   <summary>Retrofit과 Okhttp란?</summary>
-<br />
-   
- </details>
- 
-         <details>
-   <summary>Volley와 Retrofit의 차이는?</summary>
-<br />
-   
- </details>
+   <summary><span style="border-bottom:0.05em solid"><strong>디바이스를 회전할 때 Activity에서 일어나는 과정에 대해 설명하시오</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Singleton Pattern에 대해 설명하시오</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Viewholder Pattern이란 무엇인가?</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>MVC, MVP, MVVM에 대해서 설명하시오</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>액티비티 스택에 대해 설명하시오</strong></span></summary>
+<hr>
+
+<hr>
+</details>
+
+<p></p>
+<h2>안드로이드 응용</h2>
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Dependency Injection이란?</strong></span></summary>
+<hr>
+   <p>의존성 주입이란 외부에서 의존 객체를 주입해줘서 결합도를 줄여주는 것을 말합니다.</p>
+   <p>생성자에서 주입하는 방식과 setter를 사용하는 방법이 있습니다.</p>
+   <p>장점은 (1) 종속성이 감소해 변경에 대한 여파가 줄어들고, (2)재사용성이 증가하고, (3) 테스트가 용이합니다.</p>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Koin과 Dagger의 차이점은?</strong></span></summary>
+<hr>
+   <p><strong>Koin</strong></p>
+   <ul>
+      <li>런타임과정에 DI 주입</li>
+   </ul>
+   <ul>
+      <li>컴파일이 빠름</li>
+   </ul>
+   <ul>
+      <li>런타임 에러 가능</li>
+   </ul>
+   <ul>
+      <li>Module에서 선언한 DI를 캐시에 저장하고 by inject로 캐시를 조회해서 객체를 가져옴</li>
+   </ul>
+   <p><strong>Dagger</strong></p>
+   <ul>
+      <li>Annotation을 통해 컴파일과정에 DI 주입</li>
+   </ul>
+   <ul>
+      <li>컴파일은 느리지만 런타임에서 에러 발생하지 않음</li>
+   </ul>
+   <ul>
+      <li>컴파일 시 오버헤드 발생</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>SharedPreferences란?</strong></span></summary>
+<hr>
+   <ul>
+      <li>키-값 쌍이 포함된 파일을 가리킴</li>
+   </ul>
+   <ul>
+      <li>데이터를 파일로 저장하므로 앱을 삭제하면 데이터도 삭제됨</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>DiffUtil이란?</strong></span></summary>
+<hr>
+   <p>두 목록 간의 차이점을 찾고 업데이트되어야 할 목록을 반환함</p>
+   <p>추가 및 제거 작업할 아이템을 찾기위해 O(n) 소요</p>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>직렬화와 역직렬화란?</strong></span></summary>
+<hr>
+   <p><strong>직렬화</strong></p>
+   <ul>
+      <li>객체를 연속적인 데이터로 변형해 전송 가능한 형태로 만드는것</li>
+   </ul>
+   <ul>
+      <li>JVM 메모리에 상주되어있는 객체를 바이트 형태로 변환</li>
+   </ul>
+   <p><strong>역직렬화</strong></p>
+   <ul>
+      <li>직렬화된 파일을 다시 객체의 형태로 만드는것</li>
+   </ul>
+   <ul>
+      <li>직렬화된 바이트 형태의 데이터를 객체로 변환해 JVM으로 상주시킴</li>
+   </ul>
+   <p><strong>직렬화해야하는 이유</strong></p>
+   <ul>
+      <li>디스크에 저장하거나 통신에는 value type만 가능하고 reference타입은 불가능</li>
+   </ul>
+   <ul>
+      <li>PC마다 사용하고 있는 메모리 주소는 다르다.</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Immutable이란?</strong></span></summary>
+<hr>
+   <p>값을 변경할 수 없는 것</p>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Image Loading 라이브러리에는 어떤 것이 있는가?</strong></span></summary>
+<hr>
+   <p><strong>Glide</strong></p>
+   <ul>
+      <li>화질이 더 안좋음</li>
+   </ul>
+   <ul>
+      <li>메모리 덜 씀</li>
+   </ul>
+   <p><strong>Picasso</strong></p>
+   <ul>
+      <li>화질 좋음</li>
+   </ul>
+   <ul>
+      <li>메모리 더 씀</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Android Ktx이란?</strong></span></summary>
+<hr>
+   <ul>
+      <li>코틀린 개발용 확장 라이브러리</li>
+   </ul>
+   <ul>
+      <li>확장함수, 람다, 이름이 지정된 매개변수, 코루틴 등 지원</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>데이터바인딩이란?</strong></span></summary>
+<hr>
+   <p><strong>데이터바인딩</strong></p>
+   <ul>
+      <li>데이터를 결합시켜 동기화하는 방식</li>
+   </ul>
+   <p><strong>안드로이드 데이터바인딩 라이브러리</strong></p>
+   <ul>
+      <li>UI 컴포넌트와 데이터를 programmatic하게 연결하지 않고, 선언형으로 결합하도록 도와줌</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>GSON이란?</strong></span></summary>
+<hr>
+   <p>JSON과 JAVA 사이의 직렬화와 역직렬화를 도와주는 라이브러리</p>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Retrofit과 Okhttp란?</strong></span></summary>
+<hr>
+   <p><strong>Retrofit</strong></p>
+   <ul>
+      <li>Type-safe한 HttpClient 라이브러리</li>
+   </ul>
+   <ul>
+      <li>Type-safe : 네트워크로부터 전달된 데이터를 우리 프로그램에서 필요한 형태의 객체로 받을 수 있음</li>
+   </ul>
+   <ul>
+      <li>보통 Http 요청을 위해서는 <strong>연결, 캐싱, 재시도, 스레딩, 응답 분석, 오류 처리</strong> 등을 해야하는데, 라이브러리는 이것들을 알아서 해줌</li>
+   </ul>
+   <p><strong>OkHttp</strong></p>
+   <ul>
+      <li>REST API와 HTTP통신을 간편하게 구현할 수 있도록 도와주는 라이브러리</li>
+   </ul>
+
+<hr>
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Volley와 Retrofit의 차이는?</strong></span></summary>
+<hr>
+   <p><strong>Volley</strong></p>
+   <ul>
+      <li>용량이 작고 빠른 실행 속도</li>
+   </ul>
+   <ul>
+      <li>동시 네트워크 연결</li>
+   </ul>
+   <ul>
+      <li>요청 우선순위 지원</li>
+   </ul>
+   <ul>
+      <li>JSON Object나 Array 반환</li>
+   </ul>
+   <p><strong>Retrofit</strong></p>
+   <ul>
+      <li>속도가 빠르다</li>
+   </ul>
+   <p></p>
+   <figure/></a></figure>
+
+<hr>
+</details>
