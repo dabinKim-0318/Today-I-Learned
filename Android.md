@@ -77,6 +77,7 @@
  <details>
    <summary> Activity와 Fragment의 차이 </summary>
 <br />
+   
 - `목적성`
    - Activity는 앱 전체적인 사용자 인터페이스(UI)에 포함될 요소들을 배치하는 곳입니다. Fragment는 단일 화면이나 화면 일부에 관한 사용자 인터페이스(UI)를 정의하는데 적합합니다.
  - `종속성`
@@ -184,6 +185,8 @@
    - item배치만 담당하는 layoutManager유무
    
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-Adapter-AdapterView%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+   
+   
 <br />
    
 ***
@@ -359,8 +362,9 @@
 ***
 </details>
  
+ </details>
  
-<details>
+ <details>
  <summary>ViewPager?</summary>
 <br />
   
@@ -368,19 +372,74 @@
    - 데이터를 페이지 단위로 표시하고, 뷰를 스와이프해서 페이지를 전환할 수 있도록 만들어주는 컨테이너
    
 - `사용방법`
-   - 추상클래스인 PagerAdapter의 하위클래스인 FragmentPagerAdater, FragmentStateAdapter 중 하나를 상속받아 만들 수 있음
-   - `FragmentPagerAdapter`
-PagerAdapter를 상속하고 있는 추상 클래스입니다
-모든 프래그먼트를 메모리에 저장해두기 때문에 빠르게 스와이핑해도 메모리에 로드된 프래그먼트를 가져다 쓰므로 버벅이지 않고 화면이 잘 넘어갑니다.
-하지만 많은 개수의 프래그먼트를 가지고 있다면 저장해야할 프래그먼트도 많아지므로 메모리 측면에서 부담이 될 수 있습니다
-FragmentStatePagerAdapter
-PagerAdapter를 상속하고 있는 추상 클래스입니다
-필요에 따라 메모리에서 Fragment를 제거하고 다시 생성하며 상태를 유지합니다.
-메모리에는 각 프래그먼트의 상태값만 계속 저장(이게 무슨 말일까,,)하기 때문에 메모리 입장에서는 부담이 덜합니다.
-***
+   - 추상클래스인 PagerAdapter의 하위클래스인 Fragment/Pager/Adater, Fragment/State/Pager/Adapter 중 하나를 상속받아 만들 수 있음
+   - **`FragmentPagerAdapter`** => attach / detach
+     - PagerAdapter를 상속하고 있는 추상 클래스입니다
+     - 모든 프래그먼트를 메모리에 저장해두기 때문에 빠르게 스와이핑해도 메모리에 로드된 프래그먼트를 가져다 쓰므로 버벅이지 않고 화면이 잘 넘어갑니다.
+     - 하지만 많은 개수의 프래그먼트를 가지고 있다면 저장해야할 프래그먼트도 많아지므로 메모리 측면에서 부담이 될 수 있습니다
+     -  fragment의 인스턴스는 메모리에 모두 저장해두고 화면에 보이거나 사라지는 fragment의 View만 붙였다가(attach) 떼면서(datach) ViewPager를 구현
+   - **`FragmentStatePagerAdapter`** => add / remove
+     - PagerAdapter를 상속하고 있는 추상 클래스입니다
+     - 필요에 따라 메모리에서 Fragment를 제거하고 다시 생성하며 상태를 유지합니다.
+     - 메모리에는 각 프래그먼트의 상태값만 계속 저장하기 때문에 메모리 입장에서는 부담이 덜합니다.
+     - 상태(프래그먼트 로벌변수값/프래그먼트 뷰의 상태)를 저장해두고 인스턴스를 add()메소드 호출로 다시 생성 후 저장해둔 상태값으로 세팅하기 때문에 인스턴스가 재생성되어도 페이지를 보여주는데 필요한 데이터들이 초기화되지 않는 것
+
+   
+- `둘의 차이`
+   - FragmentPagerAdapter는 프래그먼트를 제거하지 않고 View만 붙였다 떼었다했지만, FragmentStatePagerAdapter는 프래그먼트는 제거하고 상태만 저장한다
+
+- `attach/detach  add/remove 시점`
+   - 사용자가 보고있는 position의 "다음" position의 view를 미리 attach/add한다는 것과 동시에 position의 2번째 이전 position의 view를 detach/remove한다는 것입니다.
+   - viewPager를 사용할 때 양 사이드의 화면을 조금 보여줘야 하는 상황이 있을 수 있기때문
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
  </details>
  
  
+<details>
+ <summary>ViewPager2?</summary>
+<br />
+  
+- `등장배경`
+   - 2019년 ViewPager2가 등장했습니다. 
+   - PagerAdapter.notifyDataSetChanged()를 호출하면 메모리에 저장되어 있는 모든 페이지의 인스턴스에 대해 갱신처리가 이루어지는 로직입니다 
+   - 이때 내부적으로 PagerAdapter.getItemPosition() 메소드를 호출해 새로운 포지션을 가져오게끔 되어있는데, getItemPosition()이 리턴하는 값이 POSITION_UNCHANGED(포지션에 변경이 없음)으로 고정되어 있던 것입니다.
+   - 따라서 notifyDataSetChanged()를 호출해 페이지 갱신 로직을 요청해도 페이지에 변경이 없다는 상태로 고정되어있어 갱신이 이루어지지 않은 것입니다.이러한 문제점으로 인해 구글은 ViewPager2를 새롭게 등장시켰습니다!
+   
+- `변경점`
+  - **Vertical Scrolling 지원**: ViewPager는 좌우 슬와이핑만 가능했지만 ViewPager2는 위아래 스와이핑도 지원합니다
+  - **Right to Left Scrolling**: 오른쪽에서 왼쪽으로 읽는 문화권의 나라를 위해 오른쪽->왼쪽 방향의 스와이핑을 지원합니다
+
+- `개선된 기능`
+  - **데이터 갱신 이슈**: ViewPager의 문제였던 notifyDataSetChanged의 문제를 해결했습니다
+  - **View 재활용 가능**: ViewPager의 PagerAdapter를 이용해 View를 item으로 할때는 View 재활용이 불가능했지만 ViewPager2에서는 RecyclerView.Adapter를 이용하기 때문에 DiffUtil 통한 View 재활용이 가능합니다
+   
+- `마이그레이션`
+  - FragmentPagerAdapter, FragmentStatePagerAdapter->FragmentStateAdapter
+  - PagerAdapter->RecyclerView.Adapter
+  - getCount()->getItemCount()
+  - getItem()->getCreateItem()
+
+- `구현방법`
+ - **page를 view로 구현: RecyclerView.Adapter**
+    - RecyclerView.Adapter를 상속하므로->ViewHodler를 재활용(FrameLayout)
+ - **page를 Fragment로 구현: FragmentStateAdapter**
+    - fragment 인스턴스를 페이지 수만큼 생성해 메모리에 올려두는게 아니라 position에 가까워지면 생성(add)하고 멀어지면 remove
+    - 추상클래스
+    - 내부적으로 RecyclerView.Adapter상속
+    - 추상메서드인 createFragment, getItemCount 오버라이딩
+    - 이외 다른 RecyclerView.Adapter의 콜백메소드는 FragmentStateAdaper가 오버라이딩하고있음
+   
+- `생성자 함수`
+  - **1. fragmentManager, lifecycle** ->2,3이 내부적으로 호출하는 찐 생성자 함수
+  - **2. fragmentActivity** ->Fragment가 호스팅되어있는 Activity인 인스턴스 / ViewPager2를 Activity에 배치할때 사용
+  - **3. fragment** ->fragment 인스턴스 / ViewPager2를 Fragment에 배치할때 사용
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager2%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+ 
+***
+   
+  </details>
 
 <p></p>
 <h2>안드로이드 심화</h2>
