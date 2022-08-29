@@ -512,110 +512,109 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Dependency Injection이란?</strong></span></summary>
-<hr>
-   <p>의존성 주입이란 외부에서 의존 객체를 주입해줘서 결합도를 줄여주는 것을 말합니다.</p>
-   <p>생성자에서 주입하는 방식과 setter를 사용하는 방법이 있습니다.</p>
-   <p>장점은 (1) 종속성이 감소해 변경에 대한 여파가 줄어들고, (2)재사용성이 증가하고, (3) 테스트가 용이합니다.</p>
 
-<hr>
-</details>
+- `정의`
+  - 의존성 주입이란 외부에서 의존 객체를 주입해줘서 넘겨주는 것
 
+- `DI Framework`
+  - 의존성 주입을 위해서 넘겨주는 무언가가 필요한게 이 역할을 하는게 DI Framework
+  - Dagger2, Hilt
+ 
+ - `Dagger2`
+   - UI가 있는 프로그램인 안드로이드 프로그램같은 경우 객체 별 생명주기 관리가 매우 중요하다. 
+   - 근데 프로젝트가 커질수록 의존성 인스턴스들을 생명주기까지 고려하면서 잘 관리하는게 여간 쉽지 않다. 
+   - 의존성 인스턴스 관리좀 해주는 거 뭐 없나? 해서 등장한게 대표적인 DI Framework인 Dagger2이다.
+   - Annotation을 통해 컴파일과정에 DI 주입
+   - 컴파일은 느리지만 런타임에서 에러 발생하지 않음
+   - 컴파일 시 오버헤드 발생
+   
+ - `Hilt`
+   - Dagger2를 기반으로하여 만들어진 라이브러리
+   - Hilt는 안드로이드 JetPack에서 제공하는 전용 DI Framework(JetPack의 ViewModel에 대한 의존성 주입 구현하기 좋다.)
+   - Component(의존성 객체 생성해서 주입하는 역할), Scope(각 컴포넌트 수명주기) 기본 제공
+   - 컴포넌트의 라이프 사이클을 자동관리->DI 환경 구축 비용 감소
 
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Koin과 Dagger의 차이점은?</strong></span></summary>
-<hr>
-   <p><strong>Koin</strong></p>
-   <ul>
-      <li>런타임과정에 DI 주입</li>
-   </ul>
-   <ul>
-      <li>컴파일이 빠름</li>
-   </ul>
-   <ul>
-      <li>런타임 에러 가능</li>
-   </ul>
-   <ul>
-      <li>Module에서 선언한 DI를 캐시에 저장하고 by inject로 캐시를 조회해서 객체를 가져옴</li>
-   </ul>
-   <p><strong>Dagger</strong></p>
-   <ul>
-      <li>Annotation을 통해 컴파일과정에 DI 주입</li>
-   </ul>
-   <ul>
-      <li>컴파일은 느리지만 런타임에서 에러 발생하지 않음</li>
-   </ul>
-   <ul>
-      <li>컴파일 시 오버헤드 발생</li>
-   </ul>
-
-<hr>
+   
+ - `Koin`
+   - 엄밀히 DI는 아님
+   - 런타임과정에 DI 주입
+   - 컴파일이 빠름
+   - 런타임 에러 가능
+   
+[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-HiltRepository%ED%8C%A8%ED%84%B4)
+   
+ ***
+   
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>SharedPreferences란?</strong></span></summary>
-<hr>
-   <ul>
-      <li>키-값 쌍이 포함된 파일을 가리킴</li>
-   </ul>
-   <ul>
-      <li>데이터를 파일로 저장하므로 앱을 삭제하면 데이터도 삭제됨</li>
-   </ul>
 
-<hr>
+- 키-값 쌍이 포함된 파일을 가리킴
+- 데이터를 파일로 저장하므로 앱을 삭제하면 데이터도 삭제됨
+   
+   
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>DiffUtil이란?</strong></span></summary>
-<hr>
-   <p>두 목록 간의 차이점을 찾고 업데이트되어야 할 목록을 반환함</p>
-   <p>추가 및 제거 작업할 아이템을 찾기위해 O(n) 소요</p>
 
-<hr>
+ - `정의`
+    - RecyclerView에서 item의 difference를 찾기 위한 Util클래스
+    - 차이알고리즘을 사용하여 최소 업데이트 수를 계산하는 원리
+   
+ - `등장배경`
+    - 리사이클러뷰에 등록된 관찰자에게 데이터 집합이 변경되었음을 알리는 메서드로 notifyDataSetChanged를 많이 사용
+    - 하지만, 몇개의 itemview의 항목이나 구조가 변경되었든 상관없이 초기의 뷰홀더 개수만큼 뷰홀더를 "다시" 생성하고 bind하니, 아이템의 수가 많은 경우 모든 아이템을 한번에 변경하느라 깜빡이는 현상도 발생
+    - 이외 RecyclerView.Adapter가 가진 데이터 변경 이벤트 메서드는 notifyDataSetChanged를 포함해서 총 5가지 but 포지션 계산 번거러움
+   
+ - `사용방법`
+   - DiffUtil의 내부 클래스이자 abstract static class인 ItemCallback 클래스의 인스턴스를 생성
+   - 추상메서드인 areItemsTheSame, areContentsTheSame을 반드시 오버라이딩
+   - item의 id같은 고유 항목을 비교해서 newItem과 oldItem이 동일 항목인지 계산
+   
+[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-DiffUtil-ListAdapter-notifyDataSetChanged%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+
+ ***
+  
 </details>
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>직렬화와 역직렬화란?</strong></span></summary>
-<hr>
-   <p><strong>직렬화</strong></p>
-   <ul>
-      <li>객체를 연속적인 데이터로 변형해 전송 가능한 형태로 만드는것</li>
-   </ul>
-   <ul>
-      <li>JVM 메모리에 상주되어있는 객체를 바이트 형태로 변환</li>
-   </ul>
-   <p><strong>역직렬화</strong></p>
-   <ul>
-      <li>직렬화된 파일을 다시 객체의 형태로 만드는것</li>
-   </ul>
-   <ul>
-      <li>직렬화된 바이트 형태의 데이터를 객체로 변환해 JVM으로 상주시킴</li>
-   </ul>
-   <p><strong>직렬화해야하는 이유</strong></p>
-   <ul>
-      <li>디스크에 저장하거나 통신에는 value type만 가능하고 reference타입은 불가능</li>
-   </ul>
-   <ul>
-      <li>PC마다 사용하고 있는 메모리 주소는 다르다.</li>
-   </ul>
+   <summary><span style="border-bottom:0.05em solid"><strong>📌직렬화와 역직렬화란?</strong></span></summary>
 
-<hr>
+- `직렬화`
+  - 객체를 연속적인 데이터로 변형해 전송 가능한 형태로 만드는것
+  - JVM 메모리에 상주되어있는 객체를 바이트 형태로 변환
+
+- `역직렬화`
+  - 직렬화된 파일을 다시 객체의 형태로 만드는것
+  - 직렬화된 바이트 형태의 데이터를 객체로 변환해 JVM으로 상주시킴
+
+- `직렬화해야하는 이유`
+  - 디스크에 저장하거나 통신에는 value type만 가능하고 reference타입은 불가능
+  - PC마다 사용하고 있는 메모리 주소는 다르다.  
+ 
+***
+   
 </details>
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Immutable이란?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>📌Immutable이란?</strong></span></summary>
 <hr>
    <p>값을 변경할 수 없는 것</p>
 
+***   
+   
 <hr>
 </details>
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Image Loading 라이브러리에는 어떤 것이 있는가?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>📌Image Loading 라이브러리에는 어떤 것이 있는가?</strong></span></summary>
 <hr>
    <p><strong>Glide</strong></p>
    <ul>
@@ -637,7 +636,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Android Ktx이란?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>📌Android Ktx이란?</strong></span></summary>
 <hr>
    <ul>
       <li>코틀린 개발용 확장 라이브러리</li>
@@ -652,17 +651,34 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>데이터바인딩이란?</strong></span></summary>
-<hr>
-   <p><strong>데이터바인딩</strong></p>
-   <ul>
-      <li>데이터를 결합시켜 동기화하는 방식</li>
-   </ul>
-   <p><strong>안드로이드 데이터바인딩 라이브러리</strong></p>
-   <ul>
-      <li>UI 컴포넌트와 데이터를 programmatic하게 연결하지 않고, 선언형으로 결합하도록 도와줌</li>
-   </ul>
+   
+![ㅁㄴㅇ2](https://user-images.githubusercontent.com/84564695/187128272-fddd333a-4695-4661-bd9a-4f1d9d95dbb3.jpg)
 
-<hr>
+- `ViewBinding`
+  - 등장배경: 기존의 findViewById를 호출해서 특정 뷰 객체의 참조값을 사용하는 반복적인 코드를 해결하기 위해View Binding 등장
+  - 목적: Fragment나 Activity에서 원하는 뷰 객체의 참조를 간편하게 바로 가져다 쓸 수 있도록 함
+  - 특징: 빌드과정에서 생성 / 끝에 Binding / 카멜표기 / getRoot()메서드 자동 포함
+  - binding class: ID가 존재하는 모든 뷰의 참조값이 멤버변수로 / rootView(모든 뷰들 중 가장 top에 존재하는 뷰 객체의 참조) / getRoot(root view 객체의 참조값을 반환)
+  - findViewById와의 차이
+    - null safety - 뷰 직접 참조로 없는 아이디로 널포인트 익셉션 발생 안함.
+    - type safety - 뷰 타입이 일치함으로 Class Cast Exception 발생 안하지.
+ 
+- `DataBinding`
+  - 등장배경: viewbinding의 역할을 하면서 레이아웃에서 데이터와 뷰 연결작업을 하고 싶어 Databinding등장
+  - 특징
+     - 장점: databinding은 null안전성을 가지며 뷰를 참조할 수 있는 viewBinding역할을 함
+동시에 activity, fragment에서 데이터 연결 작업을 하지 않아도 되어서 역할 분리 확실해짐
+     - 단점:  뷰 바인딩이 상대적으로 간단하며 퍼포먼스 효율이 좋고 용량이 절약된다는 장점이 있다.실제로 구글 공식문서에서는 단순히 findViewById를 대체하기 위한 거라면, 뷰 바인딩을 사용할 것을 권장
+   
+- `사용법`
+   - 레이아웃의 루트태그를 < layout >으로 감싸주고 그 안에 < data >태그를 추가
+   - 각 xml파일마다 binding class가 자동으로 생성됨
+   -  binding class를 인스턴스화를 위해 DataBindingUtil 이라는 클래스 안의 setContentView() 메소드를 통해 활성 뷰를 해당 레이아웃으로 설정
+   
+[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CDataBinding)
+   
+ ***
+   
 </details>
 
 
@@ -677,48 +693,39 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Retrofit과 Okhttp란?</strong></span></summary>
-<hr>
-   <p><strong>Retrofit</strong></p>
-   <ul>
-      <li>Type-safe한 HttpClient 라이브러리</li>
-   </ul>
-   <ul>
-      <li>Type-safe : 네트워크로부터 전달된 데이터를 우리 프로그램에서 필요한 형태의 객체로 받을 수 있음</li>
-   </ul>
-   <ul>
-      <li>보통 Http 요청을 위해서는 <strong>연결, 캐싱, 재시도, 스레딩, 응답 분석, 오류 처리</strong> 등을 해야하는데, 라이브러리는 이것들을 알아서 해줌</li>
-   </ul>
-   <p><strong>OkHttp</strong></p>
-   <ul>
-      <li>REST API와 HTTP통신을 간편하게 구현할 수 있도록 도와주는 라이브러리</li>
-   </ul>
-
-<hr>
+   
+2007/11/05 : Android가 발표
+2011/09/29 : HttpURLConnection을 권장하는 블로그가 나옴
+2013/05/06 : OkHttp 1.0.0이 릴리즈 됨
+2013/05/14 : Retrofit 1.0.0이 릴리즈 됨
+2013/05/21 : Volley가 릴리즈 됨
+2016 : Android6.0에서 HttpClient가 삭제 됨
+2016/03/12 : Retrofit2가 릴리즈 됨
+   
+   - 둘 다 같은 회사(Square)에서 만든 HTTP 통신 라이브러리입니다. 
+   
+ - `OkHttp`
+   - 통신을 동기화로할지 비동기 처리로할지 선택가능(Volley는 불가)
+   
+- `Retrofit`
+   - OkHttp를 래핑하여 더 Type-safe하고, 더 직관적으로 사용할 수 있도록 인터페이스로 만들어진 게 Retrofit입니다. 
+   
+- `Retrofit이 OkHttp보다 좋은점`
+  - 1. 어노테이션(Annotation) 사용으로 코드의 가독성이 좋고, 직관적인 설계가능.
+  - 2. 통신 결과값을 JSON으로 변환해줄 필요가 없음
+  - 3. 결과값을 메인스레드에서 바로 사용할 수 있음
+  - 하지만 이 둘을 같이 쓰는 이유는, OkHttp가 제공하는 Intercepter를 통해 API가 통신되는 모든 활동을 모니터링 할 수 있으며 서버 통신 시간 조절이 가능하다는 장점!
+  - 결과적으로, 최고의 성능을 내기 위해서 둘 다 사용하는 게 보편적
+   
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Volley와 Retrofit의 차이는?</strong></span></summary>
-<hr>
-   <p><strong>Volley</strong></p>
-   <ul>
-      <li>용량이 작고 빠른 실행 속도</li>
-   </ul>
-   <ul>
-      <li>동시 네트워크 연결</li>
-   </ul>
-   <ul>
-      <li>요청 우선순위 지원</li>
-   </ul>
-   <ul>
-      <li>JSON Object나 Array 반환</li>
-   </ul>
-   <p><strong>Retrofit</strong></p>
-   <ul>
-      <li>속도가 빠르다</li>
-   </ul>
-   <p></p>
-   <figure/></a></figure>
-
-<hr>
+- 1. 높은 성능
+- 2. 뛰어난 가독성
+- 3. 쉬운 유지보수
+   
+[👉clike](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)   
+   
 </details>
