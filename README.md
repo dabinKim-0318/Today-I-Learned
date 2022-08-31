@@ -56,8 +56,8 @@
 - <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md"><b>👽Android</b></a>
 - <a href="https://www.notion.so/47a704ce86ed41838b701ec99a47873d?v=3eb74155d87b4227b33881c690d800ec"> <b>😈Kotlin</b></a>
 - <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md"><b>💻Operating System</b></a>
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Algorithm"><b>🧠Algorithm</b></a>
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Network"><b>🌐Network</b></a>
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Git"><b>🤖Git</b></a>
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/%EC%86%90%EC%BD%94%EB%94%A9">✏️ **손코딩 문제**</a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Algorithm.md"><b>🧠Algorithm</b></a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Network.md"><b>🌐Network</b></a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Git.md"><b>🤖Git</b></a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/%EC%86%90%EC%BD%94%EB%94%A9.md">✏️ **손코딩 문제**</a>
 <br>
