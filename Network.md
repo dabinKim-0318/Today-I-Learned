@@ -4,103 +4,119 @@
 <h2>전산 기본</h2>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>OSI 7계층에 대해서 설명해주세요.</strong></span></summary>
-<hr>
-   <p>나눈 이유 : 통신이 일어나는 과정을 단계별로 알수있고, 문제가 생기면 그 단계만 수정하면 됨</p>
-   <ul>
-      <li><strong>물리 </strong>: 데이터 전송 ex) 리피터, 케이블, 허브</li>
-   </ul>
-   <ul>
-      <li><strong>데이터링크 </strong>: 물리 계층으로 송수신되는 정보 관리, Mac 주소로 통신 ex) 브릿지, 스위치</li>
-   </ul>
-   <ul>
-      <li><strong>네트워크 </strong>: 데이터를 목적지까지 전달, 라우터로 경로를 선택해 IP 지정, 경로에 따라 패킷 전달 ex) 라우터, IP</li>
-   </ul>
-   <ul>
-      <li><strong>전송 </strong>: 통신을 활성화 ex) TCP, UDP</li>
-   </ul>
-   <ul>
-      <li><strong>세션 </strong>: 데이터가 통신하기 위한 논리적 연결 담당 ex) API, Socket</li>
-   </ul>
-   <ul>
-      <li><strong>표현 </strong>: 데이터 표현에 대한 독립성을 제공하고 암호화 ex) JPEG, MPEG</li>
-   </ul>
-   <ul>
-      <li><strong>응용 </strong>: 최종 목적지, 응용프로그램과 연관하여 서비스 수행 ex) HTTP, FTP, DNS</li>
-   </ul>
-   <figure/></a></figure>
+   <summary><span style="border-bottom:0.05em solid"><strong>TCP/IP</strong></span></summary>
+   
+- TCP/IP는 **패킷 통신**을 위한 통신 규약이다.
+- **현재의 인터넷에서 컴퓨터들이 서로 정보를 주고받는데 쓰이는 프로토콜의 모음**
+- TCP/IP는 **인터넷 프로토콜인 IP**와 **전송 조절 프로토콜인 TCP**로 이루어져 있다.
+- SMTP, HTTP, HTTPS, FPS 등 우리에게 친숙한 인터넷 서비스 대부분이 TCP/IP 기반으로 이루어져 있다.
+- IP는 복잡한 네트워크 망에서 빠른 길을 찾는 역할을 한다.
+  - **데이터의 순서, 손실에 대해 고려하지 않는다**
+  - 단순 데이터 전달만을 담당.
+  - **IP는 신뢰도가 낮다**
 
-<hr>
-</details>
+- TCP는 데이터를 잘게 잘라 보내면서, 패킷에 **일련의 번호를 붙여 순서를 재조합**하고 **손실을 찾아내 교정**한다.
+  - **TCP는 복잡한 만큼 신뢰도가 높다**
 
+**(데이터의 정확성 확인은 TCP가, 패킷을 목적지까지의 전송은 IP가 담당**
+   
+</details>   
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>TCP/IP 4계층에 대해서 설명해주세요.</strong></span></summary>
-<hr>
-   <p>1계층 네트워크 액세스 : 물리+데이터링크, MAC주소 사용</p>
-   <p>2계층 인터넷 : 네트워크, 통신 노드간의 IP패킷을 전송하는 기능과 라우팅 기능 담당</p>
-   <p>3계층 전송 : 전송, 통신 노드간의 연결 제어 및 신뢰성 있는 데이터 전송 담당</p>
-   <p>4계층 응용 : 세션+표현+응용, 응용 프로그램 구현</p>
+   <summary><span style="border-bottom:0.05em solid"><strong>OSI 7계층</strong></span></summary>
+   
+- `정의` : 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것
+- `나눈 이유`
+     - 한눈에 보기 쉽고 이해하기 쉽다
+     - 네트워크에 이상이 생기면 어디에서 생긴 문제인지 파악하고 해당 계층만 고치면 됨
+     - OSI 7계층 생기기 이전엔 표준이 없으니까 데이터 전송이 어려웠음
+      
+<img width="500" alt="01" src="https://user-images.githubusercontent.com/84564695/187700599-9ace277b-44ad-427e-9a65-01e1fe748fd4.png">
+   
+- `7-애플리케이션 계층` => 메세지
+      - 응용 프로그램과 연관하여 사용자가 이용할 수 있는 통신서비스 형태로 만든다
+      - HTTP, FTP프로토콜
 
-<hr>
+- `6-프레젠테이션 계층` => 메세지
+      - 어플리케이션 계층(7계층)이 **다양한 데이터 타입을 다루는 부담을 덜어준다.**
+      - **인코딩/ 암호화** 등을 담당
+      - ex) 해당 데이터가 TEXT인지 그림인지 GIF인지 등을 구분
+   
+ - `5-세션 계층` => 메세지
+      - 데이터가 통신하기 위한 논리적인 연결을 말한다. 통신을 하기위한 대문이라고 보면 된다.
+      - 세션 설정, 유지 등 TCP/IP 세션을 만들고 없애는 책임
+    
+ - `4-트랜스포트 계층` => TCP(세그멘테이션) / UDP(데이터그램)
+      - 신뢰성 있는 데이터를 주고받을 수 있게 함 
+      - 포트 번호를 통해 애플리케이션 프로토콜 식별
+      - TCP / UDP 프로토콜 
+      
+ - `3-네트워크 계층` => 통신 단위 **패킷**
+      - **IP주소**를 부여
+      - 목적지까지 가기위한 경로를 설정하는 역할 (길을 찾는 역할)→ **Routing(라우팅)**
+      - 라우터의 입력 포트에서 출력 포트로 패킷을 이동시키는 역할 → **Forwarding(포워딩)**
+      - 대표적인 장비로는 **Router**: IP헤더에 기록된 목적지의 IP주소를 보고 다음 전송처 결정
+   
+- `2-데이터링크 계층` => 통신 단위 **프레임**
+      - 인접한 네트워크 노드들끼리 데이터를 전송하는 기능과 절차 제공
+      - 네트워크 인터페이스 카드에 적혀있는 MAC주소를 가지고 통신한다
+      - 물리계층에서 생길 수 있는 오류 감지하고 수정
+      - 이더넷(Ethernet)
+  
+ - `1-물리 계층` => 통신 단위 **비트**
+      - 데이터<->신호
+      - 변환방법은 통신매체에 의존하기 때문에 프로토콜이 정해져 있지 않다
+      - 케이블, 허브 장비 사용
+ 
+   
+- `TCP / IP 계층과 OSI 7 계층의 차이`
+  - TCP / IP 계층이 OSI 7계층 보다 먼저 개발되었음
+  - OSI 7계층은 장비, 개발, 통신, 설계를 위한 표준으로 사용되지만, **실제 통신에서는 TCP / IP**를 사용한다
+  - TCP / IP는 **지속적인 표준화로 신뢰성이 높지만**, OSI 7계층은 적은 구현으로 인해 신뢰성이 다소 낮다  
+   
 </details>
+
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>DNS가 무엇인가요?</strong></span></summary>
-<hr>
-   <p>IP주소를 문자로 표현한 주소로 바꾸는 시스템 혹은 서버</p>
 
-<hr>
+ - **도메인이나 호스트 이름을 숫자로 된 ip 주소로 바꾸어 주는 장비**
+
+        ex) [naver.com](http://naver.com) 은 도메인이고 dns에서는 이것을 34.32.222와 같은 ip주소로 바꿔준다.
+
+- DNS는 **분산계층 데이터 베이스**이다
+
+     → DNS를 여러 서버로 나누고, 이들을 계층 형태로 구성해 전세계로 분산시켜두었다.  
+   
+- DNS 서버에서  IP 주소를 찾는 과정
+   
+   <img width="500" alt="01" src="https://user-images.githubusercontent.com/84564695/187702819-41df8a9e-d53b-4cb0-b539-217aa7f49884.png">
+
+
+(1) 브라우저가 설치된 컴퓨터는 www.naver.com IP를 알아내기 위해서 ***Local DNS 서버*** naver.com의 IP를 문의 
+
+(2) ***Local DNS 서버***가 IP를 알고 있다면 즉시 IP 주소 줌 하지만 IP 주소를 모르면 ***Root DNS서버***에게 문의
+
+(3) ***Root DNS서버***는 도메인의 최상위 도메인 .com인 것을 보고 ***.com 관리하는 네임서버***의 IP를 전달 =  "나는 IP 주소를 가지고 있지 않지만, .com 네임서버에게 물어보면 도와줄꺼야" 
+
+(4) ***Local DNS 서버*** 는 ***.com 관리하는 네임서버***을 관리하는 네임서버에게 문의한다. 
+
+(5) ***.com 관리하는 네임서버***는 ***naver 네임서버*** IP 주소를 알려준다. 
+
+(6) ***Local DNS 서버***는 ***naver 네임서버***에게 문의하고, 
+
+(7) ***www 의 네임서버***를 알려준다. 
+
+(8) 최종적으로 ***www 네임서버***에게 문의 후 
+
+(9) www.naver.com의 IP 주소를 얻는다. 
+
+(10) ***Local DNS 서버***는 이 IP 주소를 클라이언트에게 알려준다. 클라이언트 컴퓨터는 이 IP를 브라우저에게 알려주면 브라우저는 이 IP에 해당하는 컴퓨터에 접속 할 수 있게 된다.
+   
 </details>
 
 
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>www.naver.com에 접속할때 일어나는 일에 대해 설명해주세요.</strong></span></summary>
-<hr>
-   <ol>
-      <li>사용자가 브라우저에 도메인 네임(<a href="http://www.naver.xn--com%29-8040a/">www.naver.com)을</a> <strong>입력</strong>한다.</li>
-   </ol>
-   <ol>
-      <li>사용자가 입력한 URL 주소 중에서 <strong>도메인 네임(Domain Name) 부분을 DNS 서버에서 검색</strong>하고, DNS 서버에서 해당 도메인 네임에 해당하는 <strong>IP 주소를 찾아 사용자가 입력한 URL 정보와 함께 전달</strong>한다.</li>
-   </ol>
-   <ol>
-      <li>페이지 URL 정보와 전달받은 IP 주소는 <strong>HTTP 프로토콜을 사용하여 HTTP 요청 메시지를 생성</strong>하고, 이렇게 생성된 HTTP 요청 메시지는 <strong>TCP 프로토콜을 사용하여 인터넷을 거쳐 해당 IP 주소의 컴퓨터로 전송</strong>된다.</li>
-   </ol>
-   <ol>
-      <li>이렇게 도착한 HTTP 요청 메시지는 HTTP 프로토콜을 사용하여 웹 페이지 URL 정보로 변환되어 <strong>웹 페이지 URL 정보에 해당하는 데이터를 검색</strong>한다.</li>
-   </ol>
-   <ol>
-      <li>검색된 웹 페이지 데이터는 또 다시 <strong>HTTP 프로토콜을 사용하여 HTTP 응답 메시지를 생성</strong>하고 <strong>TCP 프로토콜을 사용하여 인터넷을 거쳐 원래 컴퓨터로 전송</strong>된다.</li>
-   </ol>
-   <ol>
-      <li>도착한 <strong>HTTP 응답 메시지는 HTTP 프로토콜을 사용하여 웹 페이지 데이터로 변환</strong>되어 웹 브라우저에 의해 출력되어 사용자가 볼 수 있게 된다.</li>
-   </ol>
-
-<hr>
-</details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>도메인 이름으로 실제 IP를 어떻게 찾을 수 있는지 흐름을 설명해 주세요.</strong></span></summary>
-<hr>
-   <p><strong>Recursive Query를 통해 접근 : Local DNS 서버 -&gt; Root DNS 서버 -&gt; com DNS 서버 -&gt; naver.com DNS 서버</strong></p>
-   <ol>
-      <li>로컬 DNS서버에 해당 url이 등록되어있는지 확인</li>
-   </ol>
-   <ol>
-      <li>루트 DNS서버에 문의 후 최상위 도메인 .com이 등록된 네임 서버의 IP주소 전달</li>
-   </ol>
-   <ol>
-      <li>로컬 DNS서버는 com DNS 서버에 해당 url을 문의함. 로컬 DNS서버에 naver.com DNS 서버의 IP 주소 알려줌</li>
-   </ol>
-   <ol>
-      <li>naver..com에 해당 url 문의함. 로컬 DNS는 IP 주소를 받을수있음</li>
-   </ol>
-   <figure/></a></figure>
-
-<hr>
-</details>
 
 
 <details>
