@@ -40,15 +40,53 @@
  </details>
  
    <details>
-<summary><span style="border-bottom:0.05em solid"><strong>Activity란? </strong></span></summary>   
+  <summary><span style="border-bottom:0.05em solid"><strong>📌안드로이드의 메모리 관리 방식? </strong></span></summary>    
 <br />
    
+- 안드로이드는 액티비티, 서비스리시버, 콘텐츠프로바이더를 실행하기 위해 앱이 실행되는 과정에서 프로세스 생성
+  - 실행중인 모든 앱은 컴포넌트가 모두 종료되어도 다음에 이앱을 다시 실행할 가능성이 높음->프로세스 바로 제거X
+  - 사용자에 의해 다시 앱이 실행되면 남아있던 프로세스가 존재하는 경우 바로 실행됨
+  
+- 이 과정에서 쌓여있던 많은 프로세스로 인해 메모리가 부족해지면
+  - 프로세스 우선순위=사용빈도에 따라 프로세스를 종료하여 메모리 확보
+   
+***
+ </details>
+ 
+ ***
+ 
+   <details>
+<summary><span style="border-bottom:0.05em solid"><strong>Activity란? </strong></span></summary>   
+<br />
+  
 - `정의`
   - Android 앱의 필수적인 기본 구성 요소(컴포넌트) 중 하나입니다 
   - Activity는 사용자와 상호작용하기 위한 진입점입니다. 
   - 사용자 인터페이스(UI) 화면을 구성하는 컴포넌트입니다 
   - 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다.  
+- `구조`  
+  - Activity는 ContextThemewrapper클래스를 상속, 이외 여러 인터페이스를 구현하고 있음
+  - 실제 Activity컴포넌트를 사용하기 위해선  Android의 다양한 API Level을 지원하기 위해 만들어진 Activity class의 하위 클래스인 AppCompatActivity를 상속받은 class를 생성
+- `사용방법`
+  - AppCompatActivity를 상속받는 하위 클래스 생성
+  - manifest에 등록: 필수속성인 activity class name지정, intent filter를 사용해 launcher로 지정가능
+  - 수명주기: Activity 클래스가 생성되거나, 중단 또는 다시 시작하거나, 종료되는 등의 'Activity의 상태'인 수명주기 콜백을 활용해 상태변화에 따라 수행될 코드 작성
+  
+- `유사기술` = Fragment
+  - 안드로이드 4대 컴포넌트는 아님
+  - Activity의 한계 
+    - 1) Activity 안에 코드가 길어지게 되면 코드가 길어지니까 유지보수할 때 관리가 어려워짐
+    - 2) 안드로이드 디바이스는 휴대폰,태블릿 등 다양하기 때문에 태블릿UI를 고려할 때 단순 Activity로 화면을 그리기에 한계가 있음
  
+  <br>
+  
+  (장단점)
+  
+- 💡Activity간 정보를 교환하려면 어떻게 해야하나요?
+- 💡Activity 수명주기
+- 💡Activity 3가지 상태
+    <br>
+  
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
    
 ***
@@ -59,18 +97,39 @@
    
 - `정의`
    - 프래그먼트는 앱의 전체 UI에서 어딘가에 반복적으로 재사용 가능한 부분을 말합니다.  
-- `등장배경`
-   - 1) Activity 안에 코드가 길어지게 되면 코드가 길어지니까 유지보수할 때 관리가 어려워짐
-     2) 안드로이드 디바이스는 휴대폰,태블릿 등 다양하기 때문에 태블릿UI를 고려할 때 단순 Activity로 화면을 그리기에 한계가 있음
-- `특징`
-   - 1) 프래그먼트는 자체 레이아웃(xml파일을 정의할 수 있음)을 가질 수 있으며 자체 생명 주기를 보유
-   - 2) 프래그먼트는 독립적으로 존재할 수 없고, 반드시 Activity나 다른 프래그먼트에 호스칭 되어야함
-   - 3) 프래그먼트는 자체 UI를 개별적인 청크로써 사용할 수 있습니다. 개별 청크 단위로 다른 곳에서 재사용
+   - `등장배경`
+     - 1) Activity 안에 코드가 길어지게 되면 코드가 길어지니까 유지보수할 때 관리가 어려워짐
+     - 2) 안드로이드 디바이스는 휴대폰,태블릿 등 다양하기 때문에 태블릿UI를 고려할 때 단순 Activity로 화면을 그리기에 한계가 있음
+  
+- `구조`
+   - Object클래스 상속, 그외 다양한 인터페이스 구현
+  
 - `사용법`
-   - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
-   - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너(=이 위치에 프래그먼트 자체 UI가 배치될 것입니다~ 라고 위치를 지정해두는 것)를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
+   - Fragment클래스 의 하위 클래스 생성
+   - Activity / Fragment에 호스팅
+     - 이때 Activity는  FragmentActivity 를 상속하는 Activity여야함 (AppCompactActivity가 상속중)
+     - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
+     - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너(=이 위치에 프래그먼트 자체 UI가 배치될 것입니다~ 라고 위치를 지정해두는 것)를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
   * 주의할 점은 두 방법 모두 Activity UI 레이아웃 안에 FragmentContainerView 를 정의함으로써 해당 프래그먼트가 배치될 위치를 정의해야 한다는 점입니다.
+    - 프래그먼트를 추가/교체/삭제
+      - 백 스택(Back Stack) 에 프래그먼트 작업에 의한 변경 사항을 push 및 pop 하는 작업을 담당하는 클래스인 FragmentManager필요
+      - 프래그먼트 추가/교체/삭제 작업을 제공하는 메서드는 추상클래스인 FragmentTransaction이 정의       - FragmentTransaction 하위클래스인 FragmentManager클래스 인스턴스화한후 beginTransaction호출해서 FragmentTransactioin인스턴스 얻음
+      - 트랜잭션을 생성 후 프래그먼트 작업 명시한 후 commit()
+      - commit함수를 호출해야만 FramgmentManager가 해당 FramgmentTransaction 수행을 예약 합니다
+  
+- `유사기술` = Activity
    
+- `특징`
+   - 1) 프래그먼트는 자체 레이아웃(xml파일을 정의할 수 있음)을 가질 수 있으며 **자체 생명 주기**를 보유
+   - 2) 프래그먼트는 독립적으로 존재할 수 없고, 반드시 Activity나 다른 프래그먼트에 **호스팅** 되어야함
+   - 3) 프래그먼트는 자체 UI를 **개별적인 청크**로써 사용할 수 있습니다. 개별 청크 단위로 다른 곳에서 재사용  
+
+- 💡commi(), commitNow() 차이
+- 💡fragmentTransaction에서 제공하는 프래그먼트 조작 함수 
+- 💡백스택에 프래그먼트 트랜잭션 기록하는법? 
+  
+  <br>
+  
  👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)
 ***
  </details>
@@ -119,25 +178,27 @@
 ***
  </details>
  
+***
+ 
 <details>
     <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView란?  </strong></span></summary>    
 <br />
    
  - [정의](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
    - 리사이클러뷰는 사용자가 관리하는 많은 수의 데이터 집합(Data Set)을 개별 아이템 단위로 구성하여 화면에 출력하는 뷰그룹(ViewGroup)이며, 한 화면에 표시되기 힘든 많은 수의 데이터를 스크롤 가능한 리스트로 표시해주는 위젯입니다
-- `등장배경`
-   - 리사이클러뷰 전에 스크롤 가능한 리스트로 표현하기 위해서 ListView를 사용했었습ㄴ,ㅣ다. ListView는 한번에 ItemView를 그리기 어려웠음->속임수1)눈에 보이는 ItemView만 생성->속임수2)맨위에 있던 ItemView를 그려져야할 위치에 재사용->문제1)개발자들 요구사항 증가->문제2)다른 뷰에서 제공하는 비슷한 기능이 ListView에 추가되며 혼란->문제3)애니메이션 처리 문제->문제3)재사용될 ItemView인지 분기처리 필요->문제4)Adapter는 변경된 Item Data의 Position알 수 없음===>저 구글인데요 미안합니다 RecyclerView만들게요 ㅠㅠ ㅎㅎ
+   - `등장배경`
+    - 리사이클러뷰 전에 스크롤 가능한 리스트로 표현하기 위해서 ListView를 사용했었습ㄴ,ㅣ다. ListView는 한번에 ItemView를 그리기 어려웠음->속임수1)눈에 보이는 ItemView만 생성->속임수2)맨위에 있던 ItemView를 그려져야할 위치에 재사용->문제1)개발자들 요구사항 증가->문제2)다른 뷰에서 제공하는 비슷한 기능이 ListView에 추가되며 혼란->문제3)애니메이션 처리 문제->문제3)재사용될 ItemView인지 분기처리 필요->문제4)Adapter는 변경된 Item Data의 Position알 수 없음===>저 구글인데요 미안합니다 RecyclerView만들게요 ㅠㅠ ㅎㅎ
    
- - [특징](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
-   -  RecyclerView의 내부 아키텍쳐는 컴포넌트(Component)기반 아키텍쳐입니다.
-   - 그 중 Layout Manager, Item Animator, Adapter 라는 3가지 컴포넌트가 가장 중요합니다
+- 구조  
+  -  RecyclerView의 내부 아키텍쳐는 컴포넌트(Component)기반 아키텍쳐입니다.
+  - 그 중 Layout Manager, Item Animator, Adapter 라는 3가지 컴포넌트가 가장 중요합니다
     - **Layout Manager** :RecyclerView의 모양 책임. ItemView를 올바른 위치에 배치해주는 컴포넌트 
       - 선형/격자형/엇갈린 격자형
       - 때문에 RecyclerView 본인은 자기 자신이 선형 모양이 될지, 격자형 모양이 될지, 엇갈린 격자형 모양이 될지에 관해 알고 있지 않고, 각 ItemView가 어느 위치에 놓여야 하는지에 관해서도 관여하지 않습니다.
     - **ItemAnimator** :ItemView의 애니메이션을 담당하는 컴포넌트
     - **Adapter** :RecyclerView에 ItemView를 생성/제공/data set이 변경되었을 때 리사이클러뷰에게 알리는 컴포넌트
       - ItemView외에도 ListView와 다르게 ViewHolder 생성 강제
-   
+  
  - [동작원리](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-RecyclerView%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83-2%ED%83%84ViewHolder%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
    ![image](https://user-images.githubusercontent.com/84564695/187114067-896686a6-c52b-40f3-9782-8fa09f5fa7a6.jpg)
 1) 사용자 스크롤이 일어나면 레이아웃 매니저가 RecyclerView에게 view를 요청
@@ -150,7 +211,10 @@
 
    *캐시와 Recycled Pool은 RecyclerView안에 이미 선언되어있음.
    *캐시 사이즈 변경 가능 기본용량 2개
-   *pool 사이즈 변경 가능 기본용량 5개
+   *pool 사이즈 변경 가능 기본용량 5개 
+ 
+- `유사기술` = ListView
+  
    
   
    
@@ -192,6 +256,89 @@
    
 ***
  </details>
+ 
+ ***
+ 
+ 
+<details>
+      <summary><span style="border-bottom:0.05em solid"><strong>ViewPager?</strong></span></summary>    
+  
+<br />
+  
+- `정의`
+   - 데이터를 페이지 단위로 표시하고, 뷰를 스와이프해서 페이지를 전환할 수 있도록 만들어주는 컨테이너
+   
+- `사용방법`
+   - 추상클래스인 PagerAdapter의 하위클래스인 Fragment/Pager/Adater, Fragment/State/Pager/Adapter 중 하나를 상속받아 만들 수 있음
+   - **`FragmentPagerAdapter`** => attach / detach
+     - PagerAdapter를 상속하고 있는 추상 클래스입니다
+     - 모든 프래그먼트를 메모리에 저장해두기 때문에 빠르게 스와이핑해도 메모리에 로드된 프래그먼트를 가져다 쓰므로 버벅이지 않고 화면이 잘 넘어갑니다.
+     - 하지만 많은 개수의 프래그먼트를 가지고 있다면 저장해야할 프래그먼트도 많아지므로 메모리 측면에서 부담이 될 수 있습니다
+     -  fragment의 인스턴스는 메모리에 모두 저장해두고 화면에 보이거나 사라지는 fragment의 View만 붙였다가(attach) 떼면서(datach) ViewPager를 구현
+   - **`FragmentStatePagerAdapter`** => add / remove
+     - PagerAdapter를 상속하고 있는 추상 클래스입니다
+     - 필요에 따라 메모리에서 Fragment를 제거하고 다시 생성하며 상태를 유지합니다.
+     - 메모리에는 각 프래그먼트의 상태값만 계속 저장하기 때문에 메모리 입장에서는 부담이 덜합니다.
+     - 상태(프래그먼트 로벌변수값/프래그먼트 뷰의 상태)를 저장해두고 인스턴스를 add()메소드 호출로 다시 생성 후 저장해둔 상태값으로 세팅하기 때문에 인스턴스가 재생성되어도 페이지를 보여주는데 필요한 데이터들이 초기화되지 않는 것
+
+   
+- `둘의 차이`
+   - FragmentPagerAdapter는 프래그먼트를 제거하지 않고 View만 붙였다 떼었다했지만, FragmentStatePagerAdapter는 프래그먼트는 제거하고 상태만 저장한다
+
+- `attach/detach  add/remove 시점`
+   - 사용자가 보고있는 position의 "다음" position의 view를 미리 attach/add한다는 것과 동시에 position의 2번째 이전 position의 view를 detach/remove한다는 것입니다.
+   - viewPager를 사용할 때 양 사이드의 화면을 조금 보여줘야 하는 상황이 있을 수 있기때문
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+ </details>
+ 
+ 
+<details>
+    <summary><span style="border-bottom:0.05em solid"><strong>ViewPager2?</strong></span></summary>    
+<br />
+  
+- `등장배경`
+   - 2019년 ViewPager2가 등장했습니다. 
+   - PagerAdapter.notifyDataSetChanged()를 호출하면 메모리에 저장되어 있는 모든 페이지의 인스턴스에 대해 갱신처리가 이루어지는 로직입니다 
+   - 이때 내부적으로 PagerAdapter.getItemPosition() 메소드를 호출해 새로운 포지션을 가져오게끔 되어있는데, getItemPosition()이 리턴하는 값이 POSITION_UNCHANGED(포지션에 변경이 없음)으로 고정되어 있던 것입니다.
+   - 따라서 notifyDataSetChanged()를 호출해 페이지 갱신 로직을 요청해도 페이지에 변경이 없다는 상태로 고정되어있어 갱신이 이루어지지 않은 것입니다.이러한 문제점으로 인해 구글은 ViewPager2를 새롭게 등장시켰습니다!
+   
+- `변경점`
+  - **Vertical Scrolling 지원**: ViewPager는 좌우 슬와이핑만 가능했지만 ViewPager2는 위아래 스와이핑도 지원합니다
+  - **Right to Left Scrolling**: 오른쪽에서 왼쪽으로 읽는 문화권의 나라를 위해 오른쪽->왼쪽 방향의 스와이핑을 지원합니다
+
+- `개선된 기능`
+  - **데이터 갱신 이슈**: ViewPager의 문제였던 notifyDataSetChanged의 문제를 해결했습니다
+  - **View 재활용 가능**: ViewPager의 PagerAdapter를 이용해 View를 item으로 할때는 View 재활용이 불가능했지만 ViewPager2에서는 RecyclerView.Adapter를 이용하기 때문에 DiffUtil 통한 View 재활용이 가능합니다
+   
+- `마이그레이션`
+  - FragmentPagerAdapter, FragmentStatePagerAdapter->FragmentStateAdapter
+  - PagerAdapter->RecyclerView.Adapter
+  - getCount()->getItemCount()
+  - getItem()->getCreateItem()
+
+- `구현방법`
+ - **page를 view로 구현: RecyclerView.Adapter**
+    - RecyclerView.Adapter를 상속하므로->ViewHodler를 재활용(FrameLayout)
+ - **page를 Fragment로 구현: FragmentStateAdapter**
+    - fragment 인스턴스를 페이지 수만큼 생성해 메모리에 올려두는게 아니라 position에 가까워지면 생성(add)하고 멀어지면 remove
+    - 추상클래스
+    - 내부적으로 RecyclerView.Adapter상속
+    - 추상메서드인 createFragment, getItemCount 오버라이딩
+    - 이외 다른 RecyclerView.Adapter의 콜백메소드는 FragmentStateAdaper가 오버라이딩하고있음
+   
+- `생성자 함수`
+  - **1. fragmentManager, lifecycle** ->2,3이 내부적으로 호출하는 찐 생성자 함수
+  - **2. fragmentActivity** ->Fragment가 호스팅되어있는 Activity인 인스턴스 / ViewPager2를 Activity에 배치할때 사용
+  - **3. fragment** ->fragment 인스턴스 / ViewPager2를 Fragment에 배치할때 사용
+   
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager2%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
+ 
+***
+   
+  </details>
+  
+  ***
  
   <details>
     <summary><span style="border-bottom:0.05em solid"><strong> 📌View가 그려지는 과정  </strong></span></summary>    
@@ -360,19 +507,6 @@
 ***
  </details>
  
-  <details>
-  <summary><span style="border-bottom:0.05em solid"><strong>📌안드로이드의 메모리 관리 방식? </strong></span></summary>    
-<br />
-   
-- 안드로이드는 액티비티, 서비스리시버, 콘텐츠프로바이더를 실행하기 위해 앱이 실행되는 과정에서 프로세스 생성
-  - 실행중인 모든 앱은 컴포넌트가 모두 종료되어도 다음에 이앱을 다시 실행할 가능성이 높음->프로세스 바로 제거X
-  - 사용자에 의해 다시 앱이 실행되면 남아있던 프로세스가 존재하는 경우 바로 실행됨
-  
-- 이 과정에서 쌓여있던 많은 프로세스로 인해 메모리가 부족해지면
-  - 프로세스 우선순위=사용빈도에 따라 프로세스를 종료하여 메모리 확보
-   
-***
- </details>
  
 <details>
     <summary><span style="border-bottom:0.05em solid"><strong>📌어노테이션이란?</strong></span></summary>    
@@ -389,84 +523,6 @@
    
 ***
 </details>
-
-<details>
-      <summary><span style="border-bottom:0.05em solid"><strong>ViewPager?</strong></span></summary>    
-  
-<br />
-  
-- `정의`
-   - 데이터를 페이지 단위로 표시하고, 뷰를 스와이프해서 페이지를 전환할 수 있도록 만들어주는 컨테이너
-   
-- `사용방법`
-   - 추상클래스인 PagerAdapter의 하위클래스인 Fragment/Pager/Adater, Fragment/State/Pager/Adapter 중 하나를 상속받아 만들 수 있음
-   - **`FragmentPagerAdapter`** => attach / detach
-     - PagerAdapter를 상속하고 있는 추상 클래스입니다
-     - 모든 프래그먼트를 메모리에 저장해두기 때문에 빠르게 스와이핑해도 메모리에 로드된 프래그먼트를 가져다 쓰므로 버벅이지 않고 화면이 잘 넘어갑니다.
-     - 하지만 많은 개수의 프래그먼트를 가지고 있다면 저장해야할 프래그먼트도 많아지므로 메모리 측면에서 부담이 될 수 있습니다
-     -  fragment의 인스턴스는 메모리에 모두 저장해두고 화면에 보이거나 사라지는 fragment의 View만 붙였다가(attach) 떼면서(datach) ViewPager를 구현
-   - **`FragmentStatePagerAdapter`** => add / remove
-     - PagerAdapter를 상속하고 있는 추상 클래스입니다
-     - 필요에 따라 메모리에서 Fragment를 제거하고 다시 생성하며 상태를 유지합니다.
-     - 메모리에는 각 프래그먼트의 상태값만 계속 저장하기 때문에 메모리 입장에서는 부담이 덜합니다.
-     - 상태(프래그먼트 로벌변수값/프래그먼트 뷰의 상태)를 저장해두고 인스턴스를 add()메소드 호출로 다시 생성 후 저장해둔 상태값으로 세팅하기 때문에 인스턴스가 재생성되어도 페이지를 보여주는데 필요한 데이터들이 초기화되지 않는 것
-
-   
-- `둘의 차이`
-   - FragmentPagerAdapter는 프래그먼트를 제거하지 않고 View만 붙였다 떼었다했지만, FragmentStatePagerAdapter는 프래그먼트는 제거하고 상태만 저장한다
-
-- `attach/detach  add/remove 시점`
-   - 사용자가 보고있는 position의 "다음" position의 view를 미리 attach/add한다는 것과 동시에 position의 2번째 이전 position의 view를 detach/remove한다는 것입니다.
-   - viewPager를 사용할 때 양 사이드의 화면을 조금 보여줘야 하는 상황이 있을 수 있기때문
-   
-👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
- </details>
- 
- 
-<details>
-    <summary><span style="border-bottom:0.05em solid"><strong>ViewPager2?</strong></span></summary>    
-<br />
-  
-- `등장배경`
-   - 2019년 ViewPager2가 등장했습니다. 
-   - PagerAdapter.notifyDataSetChanged()를 호출하면 메모리에 저장되어 있는 모든 페이지의 인스턴스에 대해 갱신처리가 이루어지는 로직입니다 
-   - 이때 내부적으로 PagerAdapter.getItemPosition() 메소드를 호출해 새로운 포지션을 가져오게끔 되어있는데, getItemPosition()이 리턴하는 값이 POSITION_UNCHANGED(포지션에 변경이 없음)으로 고정되어 있던 것입니다.
-   - 따라서 notifyDataSetChanged()를 호출해 페이지 갱신 로직을 요청해도 페이지에 변경이 없다는 상태로 고정되어있어 갱신이 이루어지지 않은 것입니다.이러한 문제점으로 인해 구글은 ViewPager2를 새롭게 등장시켰습니다!
-   
-- `변경점`
-  - **Vertical Scrolling 지원**: ViewPager는 좌우 슬와이핑만 가능했지만 ViewPager2는 위아래 스와이핑도 지원합니다
-  - **Right to Left Scrolling**: 오른쪽에서 왼쪽으로 읽는 문화권의 나라를 위해 오른쪽->왼쪽 방향의 스와이핑을 지원합니다
-
-- `개선된 기능`
-  - **데이터 갱신 이슈**: ViewPager의 문제였던 notifyDataSetChanged의 문제를 해결했습니다
-  - **View 재활용 가능**: ViewPager의 PagerAdapter를 이용해 View를 item으로 할때는 View 재활용이 불가능했지만 ViewPager2에서는 RecyclerView.Adapter를 이용하기 때문에 DiffUtil 통한 View 재활용이 가능합니다
-   
-- `마이그레이션`
-  - FragmentPagerAdapter, FragmentStatePagerAdapter->FragmentStateAdapter
-  - PagerAdapter->RecyclerView.Adapter
-  - getCount()->getItemCount()
-  - getItem()->getCreateItem()
-
-- `구현방법`
- - **page를 view로 구현: RecyclerView.Adapter**
-    - RecyclerView.Adapter를 상속하므로->ViewHodler를 재활용(FrameLayout)
- - **page를 Fragment로 구현: FragmentStateAdapter**
-    - fragment 인스턴스를 페이지 수만큼 생성해 메모리에 올려두는게 아니라 position에 가까워지면 생성(add)하고 멀어지면 remove
-    - 추상클래스
-    - 내부적으로 RecyclerView.Adapter상속
-    - 추상메서드인 createFragment, getItemCount 오버라이딩
-    - 이외 다른 RecyclerView.Adapter의 콜백메소드는 FragmentStateAdaper가 오버라이딩하고있음
-   
-- `생성자 함수`
-  - **1. fragmentManager, lifecycle** ->2,3이 내부적으로 호출하는 찐 생성자 함수
-  - **2. fragmentActivity** ->Fragment가 호스팅되어있는 Activity인 인스턴스 / ViewPager2를 Activity에 배치할때 사용
-  - **3. fragment** ->fragment 인스턴스 / ViewPager2를 Fragment에 배치할때 사용
-   
-👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-ViewPager2%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83)
- 
-***
-   
-  </details>
 
 <p></p>
 <h2>🐋안드로이드 심화</h2>
