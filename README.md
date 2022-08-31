@@ -51,3 +51,15 @@
 - [object/companion object 상속/익스텐션](https://velog.io/@dabin/Kotlin-objectcompanion-object-%EC%83%81%EC%86%8D%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98#%EB%A9%94%EC%84%9C%EB%93%9C-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9)
 - [data class](https://velog.io/@dabin/Kotlindata-class)
 - [sealed class, ENUM과의 차이](https://velog.io/@dabin/Kotlin-Sealed-class)
+
+
+## 👉 기술 면접1
+
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md"><img width="15px" src="/image/android.png"/> <b>Android</b></a>
+- <a href="/직무/Kotlin.md"><img width="15px" src="/image/kotlin.svg"/> <b>Kotlin</b></a>
+- <a href="/직무/OperatingSystem.md"><img width="15px" src="/image/os.png"/> <b>Operating System</b></a>
+- <a href="/직무/Algorithm.md"><img width="15px" src="/image/algorithm.png"/> <b>Algorithm</b></a>
+- <a href="/직무/Network.md"><img width="15px" src="/image/network.png"/> <b>Network</b></a>
+- <a href="/직무/Git.md"><img width="15px" src="/image/git.png"/> <b>Git</b></a>
+- <a href="/직무/Coding.md">✏️ **손코딩 문제**</a>
+<br>
