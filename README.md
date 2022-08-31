@@ -1,4 +1,4 @@
-# 규칙  
+## 👉 규칙  
 #### Android Developers 파헤치기 시리즈   
 사용법이 아닌 등장배경, 동작원리, 장단점 등을 중심으로!   
 공식문서(Document/Medium/Youtube)를 1순위로 참고할 것     
@@ -13,8 +13,7 @@
 사용방법을 더 알고 싶을 때 다른 기술 블로그를 참고할 것  
 
 
-# Android Developers 파헤치기
-✍️[면접질문 정리](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md) 
+## 👉 Android Developers 파헤치기
 - [Activity](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)  
 - [Fragment - 1편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)  
 - [Fragment - 2편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CFragment-2%ED%8E%B8FragmentR)  
@@ -33,8 +32,7 @@
 - [LiveData - 2편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-LiveData%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83-2%ED%8E%B8MutableLiveData)
 - [HTTP 통신 라이브러리: HttpClient~Retrofit](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)
 
-# 운영체제
-✍️[면접질문 정리](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md) 
+## 👉 운영체제
 - [운영체제 개요](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%A0%95%EC%9D%98-%EC%97%AD%ED%95%A0-%EB%AA%A9%ED%91%9C-%EC%97%AD%ED%95%A0-%EA%B5%AC%EC%84%B1)
 - [컴퓨터 구조와 성능향상](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-1.-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94-%EC%BB%B4%ED%93%A8%ED%84%B0-%EA%B5%AC%EC%84%B1-CPU%EC%99%80-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%A2%85%EB%A5%98-%EB%B6%80%ED%8C%85-%EC%84%B1%EB%8A%A5%ED%96%A5%EC%83%81-%EB%B3%91%EB%A0%AC%EC%B2%98%EB%A6%AC)
 - [프로세스와 스레드](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-3.-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%AC%B8%EB%A7%A5%EA%B5%90%ED%99%98%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%83%81%ED%83%9C)
@@ -42,7 +40,7 @@
 - [프로세스 동기화](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-5.-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EB%8F%99%EA%B8%B0%ED%99%94)
 - [교착상태](https://velog.io/@dabin/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-6.-%EA%B5%90%EC%B0%A9%EC%83%81%ED%83%9C)
 
-# Kotlin
+## 👉 Kotlin
 - [java와 Kotlin 차이점](https://velog.io/@dabin/Kotlin-java%EC%99%80-Kotlin-%EC%B0%A8%EC%9D%B4%EC%A0%90)
 - [val, var, const val](https://velog.io/@dabin/Kotlin%EB%B3%80%EC%88%98%EC%84%A0%EC%96%B8-val-var)
 - [?, ?., ?:, is, as, as?](https://velog.io/@dabin/Kotlin-%EC%A0%9C%EC%96%B4%EB%AC%B8%EC%A1%B0%EA%B1%B4%EB%AC%B8if-%EA%B0%92%EC%9D%84-%EB%A6%AC%ED%84%B4%ED%95%98%EB%8A%94-if%EB%AC%B8%EB%B3%80%EC%88%98%EC%97%90-%EC%A7%81%EC%A0%91-if%EB%AC%B8-%EC%82%AC%EC%9A%A9-.-as)
@@ -55,11 +53,11 @@
 
 ## 👉 기술 면접1
 
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md"><img width="15px" src="/image/android.png"/> <b>Android</b></a>
-- <a href="/직무/Kotlin.md"><img width="15px" src="/image/kotlin.svg"/> <b>Kotlin</b></a>
-- <a href="/직무/OperatingSystem.md"><img width="15px" src="/image/os.png"/> <b>Operating System</b></a>
-- <a href="/직무/Algorithm.md"><img width="15px" src="/image/algorithm.png"/> <b>Algorithm</b></a>
-- <a href="/직무/Network.md"><img width="15px" src="/image/network.png"/> <b>Network</b></a>
-- <a href="/직무/Git.md"><img width="15px" src="/image/git.png"/> <b>Git</b></a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md"><b>👽Android</b></a>
+- <a href="/직무/Kotlin.md"> <b>😈Kotlin</b></a>
+- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md"><b>💻Operating System</b></a>
+- <a href="/직무/Algorithm.md"><b>🧠Algorithm</b></a>
+- <a href="/직무/Network.md"><b>🌐Network</b></a>
+- <a href="/직무/Git.md"><b>🤖Git</b></a>
 - <a href="/직무/Coding.md">✏️ **손코딩 문제**</a>
 <br>
