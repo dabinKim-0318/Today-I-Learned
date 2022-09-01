@@ -465,6 +465,49 @@
 </details>
 
 <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>REST / REST원칙 / REST API에 대해서 설명해 주세요.</strong></span></summary>
+
+- `REST= Representational State Transfer`
+  -  HTTP를 잘 활용하기 위한 원칙이자 네트워크 아키텍쳐 스타일(청사진이  
+
+- `REST원칙` = 행위+자원
+   - URI로 자원을 표현하는 데에 집중하고, 자원의 상태(행위)에 대한 정의는 HTTP METHOD
+
+   
+-  `RESTful API`   
+   - REST원칙을 잘 지킨 API
+      - CRUD 기능을 POST로만 하는 경우
+      - GET /members/delete/1 -> DELETE /members/1
+        - URI는 자원을 표현하는데 중점을 두어야 한다. delete와 같은 행위에 대한 표현이 들어가서는 안된다.
+   
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>API Gateway란 무엇인가요?</strong></span></summary>
+
+ - 서비스로 전달되는 모든 api요청의 관문역할
+ - 서버 시스템의 아키텍쳐를 내부로 숨기고 외부 요청에 대한 응답만을 적절한 형태로 전달
+   - 클라이언트는 서버 내부 구조 상관없이 서로 약속된 형태의 api요청만 서버로 보내면됨
+   
+ - 장점
+   - 클라이언트의 요청을 일괄적으로 처리
+   - 시스템 내부에 아키텍쳐를 숨길 수 있음
+   - 시스템상에 오고가는 요청과 응답에 대해 모니터링 가능
+   
+   
+</details>
+
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>🦑API Gateway가 다운되면 모든 API를 사용 못할지도 모르는데, 어떤 방안을 마련해야 할까요?</strong></span></summary>
+<hr>
+
+<hr>
+</details>   
+   
+   
+<details>
    <summary><span style="border-bottom:0.05em solid"><strong>웹브라우저에서 서버로 요청했을 때, 흐름을 설명해주세요.</strong></span></summary>
 <hr>
    <p>웹 브라우저가 URL해석-&gt;URL이 문법맞으면 Punycode encoding을 url의 host부분에 적용-&gt; HSTS (HTTP Strict Transport Security 목록 로드해서 체크 -&gt;DNS 확인-&gt; ARP로 IP/MAC 확인 -&gt;TCP 통신을 통해 Socket을 열고 .HTTP 프로토콜로 요청 -&gt; HTTP 서버가 응답 -&gt;  웹 브라우저가 그린다.</p>
@@ -486,7 +529,7 @@
 <hr>
    <p><strong>웹 서버</strong></p>
    <ul>
-      <li>항상 동일한 데이터를 주는 정적 콘텐츠를 제공</li>
+      <li>사용자가 웹브라우저에 어떤 페이지 요청하면 정적컨텐츠(단순HTML문서,CSS,javascript) 제공하는 서버</li>
    </ul>
    <ul>
       <li>동적 콘텐츠 제공을 위해 WAS에 클라이언트의 요청을 보내고 결과를 전달</li>
@@ -509,39 +552,7 @@
 </details>
 
 
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>REST API에 대해서 설명해 주세요.</strong></span></summary>
-<hr>
-   <p>HTTP를 통해 자원을 주고 받을 때 HTTP URI를 통해 자원을 명시하고 HTTP Method를 통해 자원의 CRUD를 수행하는 것을 말합니다.</p>
 
-<hr>
-</details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>REST ful</strong></span></summary>
-<hr>
-   <p>REST의 원리를 따르는 시스템을 말합니다. </p>
-   <p>RESTful하지 못한 경우로는 (1) CRUD 기능을 POST로만 처리하는 경우나 (2) URI에 resource, id 외의 정보가 들어가는 경우입니다. </p>
-
-<hr>
-</details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>API Gateway란 무엇인가요?</strong></span></summary>
-<hr>
-
-<hr>
-</details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>API Gateway가 다운되면 모든 API를 사용 못할지도 모르는데, 어떤 방안을 마련해야 할까요?</strong></span></summary>
-<hr>
-
-<hr>
-</details>
 
 <p></p>
 <h2>기타</h2>
