@@ -135,61 +135,41 @@
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>TCP와 UDP의 차이에 대해서 설명해 주세요.</strong></span></summary>
-<hr>
-   <p><strong>TCP</strong></p>
-   <ul>
-      <li>신뢰성 있는 데이터 전송을 지원하는 연결 지향형 프로토콜</li>
-   </ul>
-   <ul>
-      <li>흐름제어, 혼잡제어, 오류제어 지원</li>
-   </ul>
-   <ul>
-      <li>연결 설정시 3 way handshake를, 연결 해제시 4 way handshake 진행</li>
-   </ul>
-   <ul>
-      <li>UDP보다 속도가 느리다</li>
-   </ul>
-   <ul>
-      <li><strong>EX)</strong> 웹 http 통신, 이메일, 파일 전송</li>
-   </ul>
-   <p><strong>UDP</strong></p>
-   <ul>
-      <li>데이터를 데이터그램 단위로 처리하는 프로토콜</li>
-   </ul>
-   <ul>
-      <li>신뢰성 낮음</li>
-   </ul>
-   <ul>
-      <li>속도가 빠르고 부하가 적다</li>
-   </ul>
-   <ul>
-      <li><strong>EX)</strong> Real Time Protocol(RTP), Multicast, DNS</li>
-   </ul>
 
-<hr>
+- `ICMP`
+ - IP 계층에서 생긴 **오류**를 보고하는 역할
+ - 위험한 상황에 대한 경보
+ - **오류에 대한 해결은 못함**  - IP 프로토콜과 함께 쓰임
+   
+- `TCP와 UDP가 등장하게 된 배경은?`
+  - IP 프로토콜로 송신자를 찾아갈 수 있지만, 그 안에서 여러 프로세스가 동작하고 있을 경우 어떤 프로세스에게 메세지를 전달해야 할지 알지 못하기 때문
+  - IP 계층에서 오류가 발생했을 때, 해결이 필요함 → IP 계층의 ICMP 프로토콜은 **오류 보고**만 가능, **해결은 불가능**
+   
+   <img width="500" alt="01" src="https://user-images.githubusercontent.com/84564695/187839359-a567046b-540d-4099-ad25-954b1e8c35a5.png">
+   
+- 신뢰성: 순서 / 재전송 / 흐름제어, 혼잡제어
+- 속도
+- 데이터 스트림(경계X) / 데이터그램(경계O)
+   
 </details>
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>TCP 헤더에 대해서 설명해 주세요.</strong></span></summary>
-<hr>
+   <summary><span style="border-bottom:0.05em solid"><strong>🦑TCP 헤더에 대해서 설명해 주세요.</strong></span></summary>
 
-<hr>
+   https://www.notion.so/TCP-UDP-676ca61cb16f4b7796d4ff1b7f780eb1
+   
 </details>
 
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>MTU가 무엇인가요?</strong></span></summary>
-<hr>
-   <p><strong>Maximum Transmission Unit</strong></p>
-   <ul>
-      <li>패킷이나 프레임의 최대 크기</li>
-   </ul>
-   <ul>
-      <li>데이터의 크기가 크다면 단편화해야함</li>
-   </ul>
 
-<hr>
+- `MTU(maximum transmission unit)`:데이터 링크 계층 프레임이 전달할 수 있는 최대 데이터 양
+   - 모든 데이터 링크계층 프로토콜이 같은 크기의 데이터를 전달할 수 없다 프로토콜마다 다름  
+- `단편화`: MTU 보다 큰 데이터그램은 전송이 불가능 하기 때문에 MTU 보다 작은 크기로 만들어 주는 과정
+
+
 </details>
 
 
@@ -232,7 +212,7 @@
       <li><strong><mark class="highlight-yellow_background">클라이언트</mark></strong>→ <strong><mark class="highlight-purple_background">서버</mark></strong> : <mark class="highlight-red">연결 해제하겠다는 </mark><strong><mark class="highlight-red">FIN 패킷</mark></strong> 보냄</li>
    </ol>
    <ol>
-      <li><strong><mark class="highlight-purple_background">서버</mark></strong> → <strong><mark class="highlight-yellow_background">클라이언트</mark></strong> : <mark class="highlight-orange">응답으로</mark><strong><mark class="highlight-orange"> ACK 패킷</mark></strong> 보냄</li>
+      <li><strong><mark class="highlight-purple_background">서버</mark></strong> → <strong><mark class="highlight-yellow_background">클라이언트</mark></strong> : <mark class="highlight-orange">응답으로</mark><strong><mark class="highlight-orange"> ACK 패킷</mark></strong> 보냄(서버는 본인이 전송할 데이터 남았으면 마저 다 전송 필요)</li>
    </ol>
    <ol>
       <li><strong><mark class="highlight-purple_background">서버</mark></strong> → <strong><mark class="highlight-yellow_background">클라이언트</mark></strong>: 처리해야할 모든 통신 끝내고 <mark class="highlight-teal">연결 종료하겠다는 </mark><strong><mark class="highlight-teal">FIN 패킷</mark></strong> 보냄</li>
@@ -251,6 +231,13 @@
    </ul>
 
 <hr>
+
+- TCP의 연결 설정 과정(3단계)과 연결 종료 과정(4단계)이 단계가 차이나는 이유?
+ - 클라이언트가 데이터 전송을 마쳤다고 하더라도 서버는 아직 보낼 데이터가 남아있을 수 있기 때문에,곧바로 클라이언트에게 FIN 메세지를 보내지 않고,  FIN에 대한 ACK만 먼저 보내고, 남은 데이터를 모두 전송하는 단계 필요
+
+- **만약 Server에서 FIN 플래그를 전송하기 전에 전송한 패킷이 Routing 지연이나 패킷 유실로 인한 재전송 등으로 인해 FIN 패킷보다 늦게 도착하는 상황이 발생하면 어떻게 될까?**
+  - 해당 패킷이 도착하기 전에 연결이 close된 상태라면, 해당 패킷은 유실되고 drop 될 것이다. 이를 방지하기 위해, client에서는 FIN응답을 받은 이후, 바로 연결을 close하지 않고 일정시간 동안 time-wait 상태로 패킷을 기다리며 세션을 유지하고 있는다.
+
 </details>
 
 <p></p>
