@@ -195,15 +195,7 @@
    <ol>
       <li><strong><mark class="highlight-yellow_background">클라이언트</mark></strong> → <strong><mark class="highlight-purple_background">서버</mark></strong> : <mark class="highlight-blue">확인 응답으로 </mark><mark class="highlight-blue"><strong>ACK 패킷</strong></mark> 보냄</li>
    </ol>
-   <ul>
-      <li>
-         <details>
-            <summary>사진</summary>
-<hr>
-            <figure/></a></figure>
-         </details>
-      </li>
-   </ul>
+
    <h3>4 way handshake</h3>
    <ul>
       <li>연결 설정 해제함</li>
@@ -220,15 +212,7 @@
    <ol>
       <li><strong><mark class="highlight-yellow_background">클라이언트</mark></strong>→ <strong><mark class="highlight-purple_background">서버</mark></strong> : <mark class="highlight-blue">확인 응답으로 </mark><strong><mark class="highlight-blue">ACK 패킷</mark></strong> 보냄</li>
    </ol>
-   <ul>
-      <li>
-         <details>
-            <summary>사진</summary>
-<hr>
-            <figure/></a></figure>
-         </details>
-      </li>
-   </ul>
+ 
 
 <hr>
 
