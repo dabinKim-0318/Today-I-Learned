@@ -59,5 +59,5 @@
 - <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Algorithm.md"><b>🧠Algorithm</b></a>
 - <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Network.md"><b>🌐Network</b></a>
 - <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Git.md"><b>🤖Git</b></a>
-- <a href="https://github.com/dabinKim-0318/Today-I-Learned/blob/main/%EC%86%90%EC%BD%94%EB%94%A9.md">✏️ **손코딩 문제**</a>
+
 <br>
