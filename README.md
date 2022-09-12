@@ -52,7 +52,5 @@
 - [지연초기화 lateinit과 by lazy](https://velog.io/@dabin/Kotlin%EC%A7%80%EC%97%B0%EC%B4%88%EA%B8%B0%ED%99%94-lateinitlazy)
 - [object/companion object 상속/익스텐션](https://velog.io/@dabin/Kotlin-objectcompanion-object-%EC%83%81%EC%86%8D%EC%9D%B5%EC%8A%A4%ED%85%90%EC%85%98#%EB%A9%94%EC%84%9C%EB%93%9C-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9)
 - [data class](https://velog.io/@dabin/Kotlindata-class)
-- [sealed class, ENUM과의 차이](https://velog.io/@dabin/Kotlin-Sealed-class)
-
 
 <br>
