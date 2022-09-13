@@ -54,3 +54,9 @@
 - [data class](https://velog.io/@dabin/Kotlindata-class)
 
 <br>
+
+
+## 👉 기술 면접
+
+- <a href="/직무/Coding.md">✏️ **손코딩 문제**</a>
+<br>
