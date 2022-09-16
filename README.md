@@ -59,9 +59,13 @@
 
 <br>
 
-
 ## 👉 기술 면접
 
-- <a href="/직무/Coding.md">✏️ **안드로이드**</a>
+- <a href="/직무/Android.md"> <b>Android</b></a>
+- <a href="/직무/Kotlin.md"> <b>Kotlin</b></a>
+- <a href="/직무/OperatingSystem.md"> <b>Operating System</b></a>
+- <a href="/직무/Algorithm.md"> <b>Algorithm</b></a>
+- <a href="/직무/Network.md"><b>Network</b></a>
+- <a href="/직무/Git.md"><b>Git</b></a>
 - <a href="/직무/Coding.md">✏️ **손코딩 문제**</a>
 <br>
