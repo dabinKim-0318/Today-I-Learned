@@ -67,5 +67,4 @@
 - <a href="/직무/Algorithm.md"> <b>Algorithm</b></a>
 - <a href="/직무/Network.md"><b>Network</b></a>
 - <a href="/직무/Git.md"><b>Git</b></a>
-- <a href="/직무/Coding.md">✏️ **손코딩 문제**</a>
 <br>
