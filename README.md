@@ -61,10 +61,7 @@
 
 ## 👉 기술 면접
 
-- <a href="/직무/Android.md"> <b>Android</b></a>
-- <a href="/직무/Kotlin.md"> <b>Kotlin</b></a>
-- <a href="/직무/OperatingSystem.md"> <b>Operating System</b></a>
-- <a href="/직무/Algorithm.md"> <b>Algorithm</b></a>
-- <a href="/직무/Network.md"><b>Network</b></a>
-- <a href="/직무/Git.md"><b>Git</b></a>
-<br>
+- [Android](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md)
+- [OS](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md)
+- [Network](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Network.md)
+
