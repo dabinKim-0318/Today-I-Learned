@@ -1034,7 +1034,7 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 </details>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Trashing/strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>Trashing</strong></span></summary>
 <hr>
 메모리 영역에 접근하게 될 때, 메모리에 페이지 부재(=페이지 폴트(Page fault)율이 높은 것을 의미한다.
 Page Fault, Page Replacement가 발생하면서 다양한 프로세스가 메모리에 올라오면 메모리의 유효공간은 줄어들고 CPU의 가동시간이 올라가면서 자원을 최대한 활용하는 상태에 이른다.
