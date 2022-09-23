@@ -927,6 +927,13 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 ***
 
 <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>메모리 관리</strong></span></summary>
+<hr>
+각각의 프로세스는 독립된 메모리 공간을 갖고, 운영체제 혹은 다른 프로세스의 메모리 공간에 접근할 수 없는 제한이 걸려있다. 단지, 운영체제 만이 운영체제 메모리 영역과 사용자 메모리 영역의 접근에 영향을 받지 않는다. 따라서 메모리에는 적절하게 관리되어 사용되야 한다.
+<hr>
+</details>
+
+<details>
    <summary><span style="border-bottom:0.05em solid"><strong>메모리 구조의 순서가 어떻게 되는가? CPU에서 가까운 순으로 말해보시오.</strong></span></summary>
 <hr>
    <p>레지스터, 캐시, 주기억장치, 보조기억장치 순서입니다.</p>
@@ -967,7 +974,20 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
    <p><strong>캐시 적중률</strong>은 CPU가 사용할 데이터를 캐시에서 탐색 했을 때, 원하는 데이터가 캐시에 존재할 확률을 의미합니다. </p>
    <p><strong>캐시 적중률</strong>을 높이기 위해서는 캐시 메모리의 크기를 늘리는 방법과 앞으로 많이 사용될 데이터를 캐시에 저장하는 방법이 있습니다. </p>
    <p>앞으로 많이 사용될 데이터를 저장하기 위해서는 <strong>캐시 지역성</strong>을 이용할 수 있습니다. 캐시 지역성은 현재 사용하고 있는 메모리 위치에서 가까운 데이터를 사용할 확률이 높다는 개념입니다. 따라서, 현재 접근하고 있는 메모리 근처의 값들을 캐시에 저장해놓는다면 캐시 적중률을 높일 수 있습니다.</p>
+   
+캐시 메모리는 CPU와 메모리 사이의 속도 차이를 완화하기 위한 역할 을 한다.
+캐시는 메모리의 데이터를 미리 가져와 저장해두는 임시 장소로 앞으로 사용될 것으로 예상되는 데이터를 미리 저장해 놓는다.
+즉, 프로세서(CPU) 가까이에 위치하면서 빈번하게 사용되는 데이터를 놔두는 장소 이다.
+이러한 역할을 수행하기 위해서는 CPU가 어떤 데이터를 원할 것인가를 어느정도 예측하고 있어야 한다.
+캐시의 성능은 작은 용량의 캐시 메모리에 CPU가 이후에 참조할, 쓸모 있는 정보가 어느정도 들어있느냐에 따라 좌우되기 때문이다.
+적중률(Hit rate)를 극대화 시키기 위해 데이터 지역성(Locality)의 원리를 사용한다.
 
+시간 지역성
+최근에 참조된 주소의 내용은 곧 다음에 다시 참조되는 특성
+공간 지역성
+참조된 주소와 인접한 주소의 내용이 다시 참조되는 특성
+이런 지역성을 이용해 현재 접근하고 있는 메모리의 근처 값들을 캐시에 저장해 놓는다면 캐시 적중률을 높일 수 있다.
+   
 <hr>
 </details>
 
@@ -979,15 +999,6 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 
 <hr>
 </details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Heap 메모리는 무엇이고 사용하는 이유는 무엇인가</strong></span></summary>
-<hr>
-
-<hr>
-</details>
-
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Heap과 Stack의 장단점 비교 (속도, 크기 등)</strong></span></summary>
@@ -1003,26 +1014,13 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
    <summary><span style="border-bottom:0.05em solid"><strong>Memory Corruption이란?</strong></span></summary>
 <hr>
    <p>버그로 인한 메모리 오염, 예상되지 않은 메모리 값 변경 등에 의해 일어남</p>
+- Program이 개발자가 의도하지 않은 방식으로 동작하여, 접근해서는 안되는 메모리 영역에 Write기능을 수행하여 Memory 내용이 corruption(변형)되는 것을 의미 합니다. 대부분 Programming error로 인해 Memory Corruption이 발생합니다.
 
+- Memory Corruption의 대표적인 유형으로, Buffer Overflow가 있습니다. 즉 할당된 Buffer 크기를 너머서는 Write 작업이 이루어지면 발생됩니다. Buffer Overflow는 Stack Buffer Overflow 와 Heap Buffer Overflow 두 가지 유형으로 구분합니다
+
+   
 <hr>
 </details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>Heap Corruption에 대해 설명하시오</strong></span></summary>
-<hr>
-
-<hr>
-</details>
-
-
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>거짓 공유에 대해 설명하시오</strong></span></summary>
-<hr>
-
-<hr>
-</details>
-
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>DMA란?</strong></span></summary>
@@ -1034,3 +1032,21 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 
 <hr>
 </details>
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Trashing/strong></span></summary>
+<hr>
+메모리 영역에 접근하게 될 때, 메모리에 페이지 부재(=페이지 폴트(Page fault)율이 높은 것을 의미한다.
+Page Fault, Page Replacement가 발생하면서 다양한 프로세스가 메모리에 올라오면 메모리의 유효공간은 줄어들고 CPU의 가동시간이 올라가면서 자원을 최대한 활용하는 상태에 이른다.
+시간이 흐르면 CPU 사용률이 떨어지게 되는데 이는 메모리에 프로세스가 많아지면서 프로세스당 물리 메모리를 사용할 수 있는 프레임의 개수가 줄어들고, 페이지가 물리 메모리에 적게 올라온 프로세스는 명령을 조금만 수행해도 Page Fault가 발생하여 Page Replacement를 진행 하게 되기 때문이다.
+Page Replacement로 Swap 공간에서 페이지를 가져오기까지 상대적으로 오랜 시간이 걸리기 때문에 그동안 다른 프로세스가 CPU를 넘겨받지만 그 프로세스도 곧 Page Replacement를 진행하게 된다.
+결과적으로 모든 프로세스들이 페이지를 교체하느라 바쁘고 CPU는 할일이 없어서 쉬게 되는데 CPU가 놀고있는 것을 발견한 운영체제는 더 많은 프로세스를 메모리에 올리면서 악순환이 반복된다.
+이 현상을 Trashing이라고 한다.
+Trashing을 해소하기 위해 운영체제는 Working Set 알고리즘과 Page Fault Frequency 알고리즘 을 사용한다.
+Working Set 알고리즘은 대부분의 프로세스가 일정한 페이지만 집중적으로 참조한다는 성격을 이용해서 특정 시간동안 참조되는 페이지 개수를 파악하여 그 페이지 개수만큼 프레임이 확보되면 그때 페이지들을 메모리에 올리는 알고리즘이다.
+Page Replacement 활동을 진행할 때도 프로세스마다 Working Set 단위로 페이지를 쫓아낸다.
+Page Fault Frequency 알고리즘은 Page Fault 퍼센트의 상한과 하한을 두고 상한을 넘으면 지급하는 프레임 개수를 늘리고, 하한을 넘으면 지급 프레임 개수를 줄인다.
+이도 남는 프레임이 없으면 프로세스 단위로 페이지를 쫓아낸다
+<hr>
+</details>
+
