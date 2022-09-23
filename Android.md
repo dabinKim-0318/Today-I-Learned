@@ -182,11 +182,29 @@
  </details>
  
  <details>
-       <summary><span style="border-bottom:0.05em solid"><strong>  FragmentTransact</strong></span></summary>    
+       <summary><span style="border-bottom:0.05em solid"><strong>  ☘FragmentTransaction</strong></span></summary>    
 <br />
    
-![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
-
+- FragmentTransaction 클래스는 abstract 클래스(추상 클래스)입니다. 
+  - FragmentManager 클래스에 구현되어 있기 때문에 FragmentTransaction 클래스를 사용하기 위해 FragmentManager 클래스가 제공하는 beginTransaction함수 호출을 통해 FragmentTransaction 인스턴스를 생성해야합니다
+  - FragmentManager가 수행할 단일 단위
+  - 따라서 하나의 FramgmentTransaction 단위 내에 FramgmentTransaction 클래스가 제공하는 프래그먼트 추가/삭제/교체 작업 등을 명시하면 됩니다
+  
+- FragmentTransaction가 제공하는 함수  
+  - `add`: 프래그먼트를 추가. 호스트 Activity의 수명 주기에 프래그먼트 수명 주기를 추가하는 것
+  - `remove`: 생성되어 있는 프래그먼트 중 remove() 함수 인자로 전달한 프래그먼트를 제거
+    - onDestroyView->onDestroy->onDetach까지 호출되며 메모리에서 "제거"
+  - `replace`: 생성되어 있는 프래그먼트 중 replace() 함수 인자로 지정된 프래그먼트를 제외한 나머지 모든 프래그먼트가 제거(remove)됩니다. 
+    - 프래그먼트 컨테이너에 남아있는 프래그먼트 자체 UI레이아웃은 replace()함수의 인자로 지정된 프래그먼트 뿐이기 때문에 사용자의 눈에는 해당 프래그먼트만 보이게 됩니다.  
+    - 결과만 보면 replace()를 호출하는건 호스트 Activity에 생성되어 있는 모든 프래그먼트를 remove() 한 후 replace()함수의 인자로 전달한 프래그먼트를 add()하는 것과 같습니다
+  - `attach`: 프래그먼트가 deflate되어있던 자신의 자체 UI와 다시 inflate됩니다 
+    - UI 뷰 계층은 다시 재생성되어 프래그먼트 컨테이너에 다시 쌓여 사용자 눈에 보이게 됩니다
+  - `detach`: 프래그먼트가 자신의 자체 UI로부터 떼지고(=inflate되어 있던 프래그먼트 클래스와 자체 UI가 deflate된다는 의미) 자체 UI 뷰 계층은 파괴(destroying)됩니다. 
+    - detach는 해당 프래그먼트가 자신의 자체 UI로부터 떼지고(=inflate되어 있던 프래그먼트 클래스와 자체 UI가 deflate된다는 의미) 자체 UI 뷰 계층은 파괴되는 것입니다. 
+    - 따라서 fragment객체는 메모리에 남아있고 onDestroyView까지만 호출되는 것을 확인할 수 있습니다.
+  - `show()/hide()`: 프래그먼트 컨테이너에 쌓인 자체 UI 순서에 영향을 주지 않고 자신이 쌓여있는 위치에서 사용자 눈에서 보이기/안보이기 설정만 바뀌는 겁니다  
+  
+  
 👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
  
 ***
@@ -372,13 +390,38 @@
     <summary><span style="border-bottom:0.05em solid"><strong> ☘LiveData </strong></span></summary>    
 <br />
    
-- 액티비티가 포커스를 얻으면 자신의 레이아웃을 그리도록 한다
-- 액티비티에 레이아웃의 계층구조 중 루트 노드를 제공해야함
-- 레이아웃의 루트노드에서 시작해 레이아웃 트리를 따라 이동
-- 부모 뷰는 자식 뷰 이전에 그려짐
-- 자식 뷰는 전위순회 방식으로 그려짐
-- measure, layout 단계가 있음
+  
+- `LiveData`: UI Controller인 Activity, Fragment는 Owner의 이벤트를 받음(유저의 클릭 이벤트 같은 것)->이런 Owner의 이벤트를 관찰하고 바로 업데이트할 수 있는 데이터 홀더 클래스
+   - "LiveData는 관찰자 패턴을 따릅니다. LiveData는 기본 데이터가 변경될 때 Observer 객체에 알립니다."
+  
+- `Observer`: 인터페이스
+   - 이 인터페이스를 구현한 Observer객체는 관찰자(고양이, 강아지)임
+   - LiveData의 업데이트 알림을 받아 처리되는 로직인 onChange() 메서드가 정의되어 있음
    
+- observe(..) 함수: LiveData 클래스에 정의된 함수
+  - LiveData에 Observer 인스턴스를 연결해서 Observer가 라이브데이터를 관찰하도록 함 
+  
+  
+```
+- 뷰모델.LiveData.observe(라이프사이클,Observer객체)
+  
+- UI Controller(Activity,Fragment)에서 LiveData에 observer()를 호출한다=강아지 고양이보고 event 발생 관찰하라고 관찰자를 등록한다(LiveData 객체에 Observer 객체를 연결해서 Observer가 구독)
+- 이때 첫번째 인자로 라이프사이클을 전달하니까 UI Controller가 resume()이거나 start() 상태일때만 강아지 고양이가 활성상태라고 간주해서 onChange() 되었다고 알리기 위해서다
+- 두번째 인자로 Observer객체를 전달하는건, Observer 객체인 강아지가 LiveData 객체를 구독하여 변경사항에 관한 알림을 받아 해야할 작업을 정의하기 위함이다(UI를 업데이트 하는 작업을 작성)
+```
+  
+- 장점
+  - 1. UI와 데이터 상태의 일치 보장 / 최신 데이터 유지
+    - = Observer패턴을 따른다->강아지가 알아서 onChange()된다->데이터 변경시 UI알아서 업데이트 된다
+  - 2. 메모리 누수 없음 / 수명 주기를 더 이상 수동으로 처리하지 않음
+    - 관찰자는 Lifecycle 객체에 결합되어 있으며 연결된 수명 주기가 끝나면 자동으로 삭제됩니다.
+    - LiveData는 관찰하는 동안 관련 수명 주기 상태의 변경을 인식하므로 이 모든 것을 자동으로 관리합니다.
+  - 3. 중지된 Activity로 인한 비정상 종료 없음
+    - 활동이 백 스택에 있을 때를 비롯하여 관찰자의 수명 주기가 비활성 상태에 있으면 관찰자는 어떤 LiveData 이벤트도 받지 않습니다.
+  
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-LiveData%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83#%EA%B3%B5%EB%B6%80%EB%B0%B0%EA%B2%BD)
+     
+  
 ***
  </details>
  
