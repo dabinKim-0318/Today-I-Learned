@@ -432,6 +432,7 @@
    <summary><span style="border-bottom:0.05em solid"><strong>www.naver.com에 접속할때 일어나는 일</strong></span></summary>
    
    https://hongjuzzang.github.io/web/web_browser2/
+   [잘 정리된 벨로그](https://velog.io/@tnehd1998/%EC%A3%BC%EC%86%8C%EC%B0%BD%EC%97%90-www.google.com%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%96%88%EC%9D%84-%EB%95%8C-%EC%9D%BC%EC%96%B4%EB%82%98%EB%8A%94-%EA%B3%BC%EC%A0%95)
    
 ```kotlin
 1. 브라우저 주소창에 www.naver.com을 입력한다  
