@@ -218,7 +218,7 @@
    
  - [정의](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
    - 리사이클러뷰는 사용자가 관리하는 많은 수의 데이터 집합(Data Set)을 개별 아이템 단위로 구성하여 화면에 출력하는 뷰그룹(ViewGroup)이며, 한 화면에 표시되기 힘든 많은 수의 데이터를 스크롤 가능한 리스트로 표시해주는 위젯입니다
-   - `등장배경`
+ - `등장배경`
     - 리사이클러뷰 전에 스크롤 가능한 리스트로 표현하기 위해서 ListView를 사용했었습ㄴ,ㅣ다. ListView는 한번에 ItemView를 그리기 어려웠음->속임수1)눈에 보이는 ItemView만 생성->속임수2)맨위에 있던 ItemView를 그려져야할 위치에 재사용->문제1)개발자들 요구사항 증가->문제2)다른 뷰에서 제공하는 비슷한 기능이 ListView에 추가되며 혼란->문제3)애니메이션 처리 문제->문제3)재사용될 ItemView인지 분기처리 필요->문제4)Adapter는 변경된 Item Data의 Position알 수 없음===>저 구글인데요 미안합니다 RecyclerView만들게요 ㅠㅠ ㅎㅎ
    
 - 구조  
@@ -391,23 +391,26 @@
 <br />
    
   
-- `LiveData`: UI Controller인 Activity, Fragment는 Owner의 이벤트를 받음(유저의 클릭 이벤트 같은 것)->이런 Owner의 이벤트를 관찰하고 바로 업데이트할 수 있는 데이터 홀더 클래스
-   - "LiveData는 관찰자 패턴을 따릅니다. LiveData는 기본 데이터가 변경될 때 Observer 객체에 알립니다."
+- `LiveData`: 관찰자 패턴을 따르는 데이터 홀더 클래스
   
 - `Observer`: 인터페이스
-   - 이 인터페이스를 구현한 Observer객체는 관찰자(고양이, 강아지)임
    - LiveData의 업데이트 알림을 받아 처리되는 로직인 onChange() 메서드가 정의되어 있음
+   - LiveData는 데이터가 변경될 때 Observer 객체에 알림
    
 - observe(..) 함수: LiveData 클래스에 정의된 함수
-  - LiveData에 Observer 인스턴스를 연결해서 Observer가 라이브데이터를 관찰하도록 함 
-  
+  - LiveData 객체에 Observer 객체를 **연결**합니다. 
+  - observe() 메서드는 LifecycleOwner 객체를 사용합니다. 
+  - 이렇게 하면 Observer 객체가 LiveData 객체를 **구독**하여 변경사항에 관한 알림을 받습니다. 
+  - UI 컨트롤러에 Observer 객체를 연결합니다.
   
 ```
 - 뷰모델.LiveData.observe(라이프사이클,Observer객체)
   
-- UI Controller(Activity,Fragment)에서 LiveData에 observer()를 호출한다=강아지 고양이보고 event 발생 관찰하라고 관찰자를 등록한다(LiveData 객체에 Observer 객체를 연결해서 Observer가 구독)
-- 이때 첫번째 인자로 라이프사이클을 전달하니까 UI Controller가 resume()이거나 start() 상태일때만 강아지 고양이가 활성상태라고 간주해서 onChange() 되었다고 알리기 위해서다
-- 두번째 인자로 Observer객체를 전달하는건, Observer 객체인 강아지가 LiveData 객체를 구독하여 변경사항에 관한 알림을 받아 해야할 작업을 정의하기 위함이다(UI를 업데이트 하는 작업을 작성)
+- UI Controller(Activity,Fragment)에서 LiveData에 observer()를 호출한다 
+  =강아지 고양이보고 event 발생 관찰하라고 관찰자를 등록한다(LiveData 객체에 Observer 객체를 연결해서 Observer가 구독)
+- 이때 첫번째 인자로 라이프사이클을 전달하니까 UI Controller가 resume()이거나 start() 상태일때만 
+  관찰자가 활성상태라고 간주해서 onChange() 되었다고 알리기 위해서다
+- 두번째 인자로 Observer객체를 전달하는건, Observer 객체인 관찰자가 LiveData 객체를 구독하여 변경사항에 관한 알림을 받아 해야할 작업을 정의하기 위함이다(UI를 업데이트 하는 작업을 작성)
 ```
   
 - 장점
@@ -759,6 +762,105 @@
   
 </details>
 
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘안드로이드 권장 아키텍쳐</strong></span></summary>
+
+-안드로이드에서 자주 사용되는 '아키텍쳐 패턴'에는 MVC패턴,MVP패턴,MVVM패턴이 있음
+
+- 안드로이드 공식문서에서 설명하는 '권장하는 아키텍쳐란' MVVM과 같은 아키텍쳐 패턴을 사용하면서, 프로젝트에서 계층을 나눠 관심사를 분리시킨 '설계구조'라고 할 수 있습니다.
+
+- 모바일 앱 사용자 환경
+  - 사용자는 모바일 환경에서 다양한 앱을 시도때도 없이 바꾸기도 하고 전화나 알림 등의 작업도 동시에 하기 때문에 앱에서 이런 사용자 흐름이 중단되지 않고 자연스럽게 흘러가도록 올바르게 처리
+  - 앱 구성요소에 앱 데이터나 상태를 저장 X =>  앱 구성요소가 저장하고 있는 데이터는 유실
+
+- Android Clean Architecture 두 가지 원칙  
+  - 1. "UI 기반 클래스를 가볍게 하라"
+   - UI 기반 클래스는 UI를 핸들링하거나 수명주기에 따라 발생할 수 있는 상황에 대처하는 코드만 작성
+  
+  - 2. "UI와 Model(모델)을 분리하라"
+    - UI 기반 클래스에 데이터나 상태를 저장하지 말라
+  
+- 안드로이드 권장 아키텍쳐
+  - 안드로이드에서 권장하는 앱 아키텍쳐는 최소 2개 이상의 Layer로 구성되어야 합니다
+  - `UI Layer`: 화면에 애플리케이션 데이터를 표시하는 UI 레이어
+    - UI : UI element(버튼) + UI State를 결합한 것 ex)로그인 버튼 활성화 되어있는 화면
+    - UI 컨트롤러(Fragment/Activity) : UI에 View를 그리거나 사용자 event를 trigger하는 등 UI관련 동작을 캡쳐함
+    - UI 데이터 : 사용자 눈에 보여야 하는 데이터
+    - stateHolders(ViewModel) : UI State를 생성하는 역할을 하며 생성 작업에 필요한 로직을 포함하는 클래스
+    - UI element : 버튼같은 컴포넌트
+  - `Data Layer`: 앱의 비즈니스 로직을 포함하고 애플리케이션 데이터를 노출
+    - Domain Layer나 UI Layer는 데이터 소스에 직접 액세스 하면 안됩니다. 
+    - 데이터 영역의 진입점은 항상 Repository클래스여야 합니다. 
+    - 여러개의 DataSource로 추상화되어있는 Repository로 구성
+    - local / remote / repository구현체
+  - `Domain Layer`: UI와 데이터 레이어 간의 상호작용을 간소화하고 재사용하기 위함
+    - UseCase
+    - UI 레이어와 데이터 레이어 사이에 있는 선택적 레이어
+    - 복잡한 비즈니스 로직이나 여러 ViewModel에서 재사용되는 간단한 비즈니스 로직의 캡슐화
+    - UI Layer->Domain Layer->Data Layer 순대로 의존성이 높습니다
+ 
+  
+</details>
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘Room</strong></span></summary>
+
+- `SQLite`
+  - 데이터베이스는 안드로이드에서 제공하는 관계형 데이터베이스이자 경량 데이터베이스다
+  - 관계형 데이터 베이스는 테이블, 컬럼(속성), 레코드(로우,튜플)로 이루어져 있음
+  - SQL: RDB가 데이터를 조작, 제어하는 용도로 사용하는 언어
+  - SQL구문(쿼리): SQL언어로 쓴 명령어
+  - SQLite을 사용하기 위해선 안드로이드의 컨텍스트가 가지고 있는 SQLiteOpenHelper 클래스를 상속받아 사용해야 한다
+  
+-`Room`
+  - 개념
+   - 안드로이드는 SQLite를 코드 관점에서 접근할 수 있도록 ORM 라이브러리인 Room을 제공함
+   - SQLite보다 쉽고(쿼리를 직접 안짜도됨) 기기가 네트워크에 액세스할 수 없을 때 즉 서버 연동없이 오프라인 상태인 동안에도 사용 가능함
+ - SQLite 단점
+  - SQL 쿼리에 대한 컴파일 체크가 없다. 실제 DB에 없는 틀린 열 이름으로 쿼리를 작성하면 런타임 동안 예외가 발생하고 컴파일하는 동안 이 문제를 잡을 수 없다.
+  - 스키마가 바뀌면 영향 받는 SQL 쿼리를 수동 업데이트해야 한다. 여기서 시간이 오래 걸리거나 다른 오류가 발생할 수도 있다.
+  - SQL 쿼리와 자바 데이터 객체 간 변환 처리를 하려면 많은 상용구 코드를 작성해야 한다.
+ - Room DB 장점
+  - Room은 컴파일하는 시간에 SQL 유효성 검사를 수행한다.
+  - 스키마가 바뀌었을 때 영향 받는 SQL 쿼리를 직접 바꾸지 않아도 된다.
+  - 상용구 코드 없이 DB 객체를 자바 객체에 매핑한다.
+  
+ - Room사용
+  ![images_dabin_post_0f7e62c8-ea78-4494-9d16-04f51b50fb49_image](https://user-images.githubusercontent.com/84564695/191971243-37b77f25-83dc-475e-9e95-efc3db1cd2df.png)
+
+- 총 4개의 파일을 만들게 된다(리스트 형태로 사용하려면 어댑터 추가..)
+- `Entities`: 데이터베이스의 테이블 역할을 하는 클래스라고 보면됨. Entities클래스 하나 당 테이블 하나를 만드는 것
+ - Entity(개체)와 Object(객체)는 비슷해 보이지만 다른 의미를 가지고 있다.객체는 개체를 포함한 더 큰 개념이다.
+대상에 대한 정보뿐만 아니라 동작, 기능, 절차 등을 포함하는 것이 객체이다.
+ - `DAO`:Room은 데이터를 읽고 쓰는 메서드를 인터페이스 형태로 설계하고 사용함. 코드 없이 이름만 명시하는 형태로 인터페이스를 만들면 Room이 알아서 나머지 코드 작성해줌 즉 DAO는 데이터베이스에 접근해서 DML쿼리(CRUD수행하는 쿼리)를 실행하는 메서드의 모음
+ - `Room Database`:Room 라이브러리가 제공하는 데이터베이스인 RoomDatabase는 RoomDatabase를 상속받아 클래스(RoomHelper)를 만들면 됨. 추상클래스로 만들어야함
+Rest of The App:나머지 부분 코드를 작성!
+  
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CSQLite)
+  
+</details>
+
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘sharedpreferences </strong></span></summary>
+
+- `정의`
+  - Key-Value 방식
+  - 목적: 공유된 사용자의 기호 방식
+  - 하드하게 데이터베이스 시스템 구축 불가
+  
+- `사용`
+ ```kotlin
+              val sharedPreference = getSharedPreferences("sp1", MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreference.edit()
+            editor.putString("hello", "안녕하세요")  //key-value값으로 저장
+            val value2 = sharedPreference.getString("goodbye", "데이터 없음2") 
+ ```
+ 
+  [👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CSharedpreference%EC%8B%A4%EC%A0%84)
+  
+  
+</details>
 
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>액티비티 스택에 대해 설명하시오</strong></span></summary>
