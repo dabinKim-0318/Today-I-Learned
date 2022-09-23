@@ -154,7 +154,7 @@
 ***
  </details>
  
-   <details>
+<details>
       <summary><span style="border-bottom:0.05em solid"><strong>  Activity의 LifeCycle </strong></span></summary>    
 <br />
 
@@ -168,10 +168,21 @@
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0#%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0%EB%9E%80)
     
 ***
- </details>
+</details>
 
-   <details>
+<details>
        <summary><span style="border-bottom:0.05em solid"><strong>  Fragment의 LifeCycle  </strong></span></summary>    
+<br />
+   
+![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
+
+👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
+ 
+***
+ </details>
+ 
+ <details>
+       <summary><span style="border-bottom:0.05em solid"><strong>  FragmentTransact</strong></span></summary>    
 <br />
    
 ![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
@@ -184,7 +195,7 @@
 ***
  
 <details>
-    <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView란?  </strong></span></summary>    
+    <summary><span style="border-bottom:0.05em solid"><strong>  ☘RecyclerView란?  </strong></span></summary>    
 <br />
    
  - [정의](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CRecycle-View)
@@ -225,7 +236,7 @@
  </details>
  
  <details>
- <summary><span style="border-bottom:0.05em solid"><strong>  RecyclerView와 ListView의 차이?   </strong></span></summary>  
+ <summary><span style="border-bottom:0.05em solid"><strong>  ☘RecyclerView와 ListView의 차이?   </strong></span></summary>  
   
 - `AdapterView`
    - AdapterView는 많은 양의 data를 효율적으로 표시하고 Adapter가 관리하는 데이터를 출력(data set의 형태로 눈에 보이도록)할 수 있게 해주는 View이다.
@@ -264,7 +275,7 @@
  
  
 <details>
-      <summary><span style="border-bottom:0.05em solid"><strong>ViewPager?</strong></span></summary>    
+      <summary><span style="border-bottom:0.05em solid"><strong>☘ViewPager?</strong></span></summary>    
   
 <br />
   
@@ -297,7 +308,7 @@
  
  
 <details>
-    <summary><span style="border-bottom:0.05em solid"><strong>ViewPager2?</strong></span></summary>    
+    <summary><span style="border-bottom:0.05em solid"><strong>☘ViewPager2?</strong></span></summary>    
 <br />
   
 - `등장배경`
@@ -344,7 +355,7 @@
   ***
  
   <details>
-    <summary><span style="border-bottom:0.05em solid"><strong> 📌View가 그려지는 과정  </strong></span></summary>    
+    <summary><span style="border-bottom:0.05em solid"><strong> 📌☘View가 그려지는 과정  </strong></span></summary>    
 <br />
    
 - 액티비티가 포커스를 얻으면 자신의 레이아웃을 그리도록 한다
@@ -356,6 +367,22 @@
    
 ***
  </details>
+ 
+   <details>
+    <summary><span style="border-bottom:0.05em solid"><strong> ☘LiveData </strong></span></summary>    
+<br />
+   
+- 액티비티가 포커스를 얻으면 자신의 레이아웃을 그리도록 한다
+- 액티비티에 레이아웃의 계층구조 중 루트 노드를 제공해야함
+- 레이아웃의 루트노드에서 시작해 레이아웃 트리를 따라 이동
+- 부모 뷰는 자식 뷰 이전에 그려짐
+- 자식 뷰는 전위순회 방식으로 그려짐
+- measure, layout 단계가 있음
+   
+***
+ </details>
+ 
+ 
  
   <details>
      <summary><span style="border-bottom:0.05em solid"><strong>Intent와 IntentFilter란? </strong></span></summary>    
@@ -630,7 +657,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>MVC, MVP, MVVM에 대해서 설명하시오</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘MVC, MVP, MVVM에 대해서 설명하시오</strong></span></summary>
 
 - `아키텍쳐`
   - 시스템 구성과 동작 원리 등 최상의 소프트웨어를 구성하는 설계도
@@ -641,7 +668,16 @@
   - VIEW: Activity, Fragment
   - Model: Room이나 서버에서 데이터 처리하는 로직(Call해서 데이터 가져오기 등)
   - Controller: 사용자의 이벤트를 처리하고 데이터를 xml에 꽂아주는 로직
-  - Model이 해야하는 일을 View에서 하면서 Model과 View사이 의존성
+   -  화면에 보이는 애는 VIEW가 데이터는 MODERL이 그 사이에서 controller가 컨트롤함
+   - setOnClickListener같은 사용자의 Action이 Controller에 들어옵니다
+   - Controller는 Model을 나타내줄 View를 선택합니다
+   - View는 Model을 이용하여 화면을 나타냅니다
+   - 단점
+      - 하나의 파일에 이벤트 처리, 서버 통신처리 등의 컨트롤하는 로직이 전부 들어가니까 복잡합니다
+      - 서버랑 통신할때의 call하는 로직을 activity,fragment에서 처리했었음 근데 서버 통신은 '데이터 처리' 작업의 일종인데 이걸 view에서 처리하고 있던 것입니다 
+      - 즉, Model이 해야하는 일을 View에서 하면서 Model과 View사이 의존성이 생깁니다. 이는 객체지향 관점에서도 좋은 현상이 아닙니다
+      - Model에서 뭐 하나가 수정되면 View에서도 전부 수정해야하는 문제가 발생합니다
+  
   
 - `MVP`
   - MVC는 View내부에서 데이터 요청, 이벤트 모두 처리했는데
@@ -655,6 +691,27 @@
   - ViewModel: View를 나타내 주기 위한 Model이자 View를 나타내기 위한 데이터 처리를 하는 부분
   - ViewModel은 View를 참조하지 않기 때문에 독립적
   
+  - MVVM을 왜 쓸까?
+    - 구글에서 공식적으로 MVVM을 사용하기 쉽도록 제공하는 AAC들이 있습니다. 그래서, 아키텍처를 쓸때 대표적인게 MVVM입니다
+    - ✔동작  
+      - 모든 입력(Input)들은 View로 전달됩니다.
+      - View는 ViewModel한테 데이터를 요청하거나 ViewModel은 View가 입력 들어왔다고 알려주면 해당하는 Presentation Logic을 처리합니다
+      - (Presentation Logic : 실제 눈에 보이는 GUI 화면을 구성하는 코드를 말하며 여기서는 실제로 화면에 보여지는 데이터를 처리하는 로직을 말합니다.)
+      - View Model은 View에게 데이터 전달하는게 아니라 View가 View Model을 관찰할 뿐 View에게 관여안합니다(MVP는 Model에게 받아온 데이터 처리하고 View에게 전달까지 했다!)
+    - ✔특징  
+      - ViewModel은 View를 참조하지 않기 때문에 독립적입니다
+      - (ViewModel과 View는 1:n 관계다.)
+      - 따라서 View가 이용할 ViewModel을 선택해 바인딩하여 업데이트를 받게 됩니다.
+      - (Command 패턴이나 Data Binding을 이용하여 V-VM간 의존성을 없앨 수 있다.)
+      - Command 패턴:View에 입력이 들어오면 커맨드 패턴으로 ViewModel에 명령합니다
+    - ✔장점  
+      - View와 Model 사이의 의존성이 없습니다
+      - View와 ViewModel 사이의 의존성 또한 크지 않습니다
+      - 각 View, ViewModel, Model 부분은 독립적이어서 모듈화하여 개발 가능합니다
+    - ✔단점  
+      - ViewModel설계가 어려울 수 있습니다
+  
+👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CMVVM)  
 ***  
   
 </details>
@@ -839,7 +896,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>데이터바인딩이란?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘데이터바인딩이란?</strong></span></summary>
    
 ![ㅁㄴㅇ2](https://user-images.githubusercontent.com/84564695/187128272-fddd333a-4695-4661-bd9a-4f1d9d95dbb3.jpg)
 
