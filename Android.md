@@ -585,6 +585,15 @@
  
  
 <details>
+    <summary><span style="border-bottom:0.05em solid"><strong>🦑Memory leak에 대한 경험 및 처리하고 개선한 방안</strong></span></summary>    
+
+
+<br />
+   
+***
+</details>
+
+<details>
     <summary><span style="border-bottom:0.05em solid"><strong>📌어노테이션이란?</strong></span></summary>    
 
  <br/>
@@ -599,6 +608,7 @@
    
 ***
 </details>
+
 
 <p></p>
 <h2>🐋안드로이드 심화</h2>
