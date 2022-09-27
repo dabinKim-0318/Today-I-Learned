@@ -1184,12 +1184,7 @@
   
 # 👒가자가자
   
-<details>
-   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
 
- ***
-</details>
-  
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
 
