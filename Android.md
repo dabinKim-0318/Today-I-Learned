@@ -87,7 +87,17 @@
   
 - 💡Activity간 정보를 교환하려면 어떻게 해야하나요?
 - 💡Activity 수명주기
+- 💡투명한 Activity b가 Activity a 위에 띄워질 시
+- 💡finish 버튼 눌러서 Activity b 종료
+- 💡액티비티에서 뒤로가기 버튼을 누르면?
+- 💡투명한 Activity b가 Activity a 위에 띄워질 시
+- 💡액티비티에서 홈 버튼을 눌렀을 때, 콜백 함수?
+- 💡현재 A 액티비티가 포그라운드 상태. 이 때 B액티비티로 전환 되면 발생하는 lifecycle Callback 함수는?
+- 💡B 액티비티에서 finish() 함수를 호출하게 되면 발생하는 Lifecycle 순서는?
+- 💡Activity위에 dialog가 띄워질때 Activity수명주기는?
 - 💡Activity 3가지 상태
+- 💡Launch Mode 4가지 ?  
+- 💡onSaveInstanceState
     <br>
   
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
@@ -1137,4 +1147,124 @@
 [👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Android-%ED%86%B5%EC%8B%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%EC%97%AD%EC%82%AC)   
    
    
+</details>
+ 
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> ANR 탐지하는 방법</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Memory leak에 대한 경험 및 처리하고 개선한 방안</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드 O에서 가장 인상깊었던 것</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Fragment를 왜 public으로 해야하고 생성자에 인자가 없어야하는지</strong></span></summary>
+
+ ***
+</details>
+
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>액션바 VS 툴바</strong></span></summary>
+
+ ***
+</details>  
+  
+# 👒가자가자
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>왜 메인스레드에서 돌리면 안되는지 커널 관점에서 설명?</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>지금까지 개발해왔던 경험들을 바탕으로, 기술적인부분에서의 간략한 자기소개 부탁드립니다.</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드 스튜디오의 Thread 에 대해 설명해보세요. Main Thread와 Worker Thread 등을 구분하는 이유와 Main Thread에서 반드시 동작해야하는 함수가 있는지도 설명해보세요</strong></span></summary>
+
+  안드로이드 스튜디오는 크게 2가지 Thread로 분류됩니다. Main Thread(UI Thread ) 와 Worker Thread.
+
+​
+
+Main Thread는 액티비티와 컴포넌트들의 사용을 담당하고 연동하는 역할을 합니다. UI 컴포넌트들과 밀접한 연관이 있는 Thread 이다보니 UI
+
+Thread라고도 부릅니다. 즉, System Call-Back Method , LifeCycle 에 관련된 Method 등은 반드시 Main Thead에서 관리되어야 합니다.
+
+​
+
+그런데 다른 작업들에 의해 Main Thread가 UI와 동기화되지 못하고 지연되는 경우에는 문제가 발생합니다. 이러한 오류를 ANR(Application Not Responding, UI 관련 작업이 일정기간 이상 반응되지 못하면 발생) 이라 부릅니다. (ANR이 무엇인지 또한 면접중에 물어보셨습니다.)
+
+​
+
+이러한 문제점을 막기위해 불안정한 UI관련 작업이나 비동기 작업(애니메이션 등) , High Cost의 연산작업 (Database 처리등) 등은 Worker Thread를 따로 만들어 처리하도록 합니다.
+
+​
+
+하지만 View 등의 UI 관련 컴포넌트를 업데이트 하는 작업은 UI Thread에서 진행되어야 하는데 애니메이션등의 비동기작업을 진행하며 UI를 수정해야 한다면, Async Task등을 이용하는 것이 바람직합니다.
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드에서 스레드란?</strong></span></summary>
+  
+안드로이드(Android)에서 메인 스레드(Main Thread)란 무엇인가? 어플리케이션이 실행됐을 때, 시스템에서는 "Main"이라 불리는 어플리케이션을 실행하는 스레드를 생성한다.
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>View Model을 사용하는 이유는 무엇인가요? Counter Animation을 사용하는 어플리케이션에서 실행 중에 화면을 돌려 Activity가 회전한다면 Counter 의 값이 Reset 될까요?</strong></span></summary>
+
+View Model은 Activity 나 Fragment에 자료가 제한되는 것을 방지하고, UI 관련 데이터를 수명주기에 관계없이 보존하기 위해 만들어졌습니다. 위의 예시에서 View Model을 사용하지 않는다면 런타임중에 Call-Back Method에 의해 Activity가 재시작되고, Activity 내에서 저장되던 Counter 관련 변수 또한 초기화됩니다. 하지만 View Model 은 Activity 나 Fragment의 수명주기에 영향을 받지 않고, Live Data를 통해 UI에 Data를 업데이트하기에 유용하게 사용될 수 있습니다. 
+ 
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>onStart() 와 onResume() 함수가 구분되어 있는데 둘의 차이점은 무엇인가요?</strong></span></summary>
+
+ onStart() 는 액티비티가 사용자에서 보여지기 직전에 호출되고, onResume() 은 사용자에게 보이지만 사용자와 상호작용하기 직전상태일때 실행됩니다.  
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> Jetpack 에서 사용해본 기능은?</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>  Custom View 를 사용해 본 적이 있는지?</strong></span></summary>
+
+ ***
 </details>
