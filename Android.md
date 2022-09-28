@@ -1184,18 +1184,84 @@
   
 # 👒가자가자
   
-
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드?</strong></span></summary>
 
+- 안드로이드= 오픈소스 소프트웨어 스택
+- 가장 밑에 리눅스 커널->HAL/HID->Native Libraries+Android Runtime->Android Framwork->Apps 소프트웨어가 스택 형태로 차례로 쌓여있는 구조
+- '오픈소스' 소프트웨어 스택인 이유는 누구나 Android를 구성하고 각 소프트웨어의 소스코드를 볼 수 있음(구글이 주도하는 오픈소스 프로젝트)
+ 
+  
+ ***
+</details>
+   
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드 프레임워크?</strong></span></summary>
+
+```
+  Android 프레임워크:=java API Framework=java API
+```
+
+
+- 4번째 층에 Android Framwork가 있는데 Android Framwork는 java API Framework라고도 부름
+- Android 프레임워크(=java API Framework)는 모든 안드로이드 App이 사용하는 toolkit임. 
+  - 따라서 구글에서 만든 앱이든, 나 자신이 만든 앱이든 모든 앱은 같은 Android 프레임워크(=java API Framework=java API)를 사용해서 만들어짐
+- 당연히 Android 프레임워크(=java API Framework=java API)는 모두 java로 구현되어있음
+- Android Framework는 여러 Manager들로 구성되어 있음
+- 안드로이드 앱 개발자는 Android Framework가 제공하는 API를 사용하여 사용법에 맞게 코드만 작성하면 됨. 나머지 내부 동작들은 Android Framework의 몫임  
+
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EB%9E%80%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%8B%9C%EC%8A%A4%ED%85%9C#android%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C)  
+  
  ***
 </details>
   
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>왜 메인스레드에서 돌리면 안되는지 커널 관점에서 설명?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드의 버전별 차이점?</strong></span></summary>
+  
+![images_dabin_post_d6df141a-328b-4ecb-a23d-9f993f7602f6_버전](https://user-images.githubusercontent.com/84564695/192705101-8c834950-0168-450b-8fb3-e400111bbf53.jpg)
 
+- 플랫폼 버전/API레벨/버전코드
+- 안드로이드(플랫폼/운영체제/시스템)는 새롭고 개선된 기능을 포함해 지속적으로 새로운 안드로이드 버전을 출시하고 있음
+- 하나의 API 레벨에 여러 개의 플랫폼 버전이 존재 가능 
+- Android 플랫폼은 애플리케이션이 기본 Android 시스템과 상호작용하는 데 사용할 수 있는 프레임워크 API를 제공
+  - 즉 안드로이드 플랫폼 버전은 자잘하게 업데이트 될 수 있고 그 안에 안드로이드 시스템과 상호작용하는 데 사용할 수 있는 프레임워크 API를 제공함 이게 API레벨
+  - API 레벨= Android 플랫폼 버전에서 제공되는 프레임워크 API 수정 버전을 고유하게 식별하는 정수 값
+
+
+![images_dabin_post_37316c98-4bb7-4221-9455-2d617feef444_image](https://user-images.githubusercontent.com/84564695/192706500-f93009da-3b1e-4b68-aea3-293ced93866c.png)
+  
+  
+- 안드로이드 앱을 개발할땐, 이 앱이 어떤 안드로이드 버전(플랫폼 버전)에서 동작할 것인지 지정해 줘야함
+- 안드로이드는 계속해서 새로운 버전이 릴리즈 되고 기능이 업데이트 되기 때문에 개발자가 앱 개발 시 사용한 API레벨이 모든 안드로이드 버전에서 동작한다는 보장이 없음
+- CalendarProvider API는 플랫폼 버전4.0(API레벨 14)이 출시될 때 나온 API임
+- 개발시 캘린더 API를 사용했다면 이 기능이 포함된 앱은 플랫폼 버전4.0이하 버전이 설치된 디바이스에서는 이 앱을 설치해 실행하면 4.0이전 버전에는 캘린터API가 존재하지 않음으로 앱이 정상 실행되지 않음.
+- API레벨 문제를 해결하기 위해선 안드로이드 프로젝트의 build.gradle 파일에 존재하는 minSdkVersion(최소 Sdk 버전)이라는 설정의 값을 14(API 레벨)로 지정해줘야 함. 
+- 이는 이 앱을 실행하려면 디바이스 기기에 최소한 API 레벨 14는 설치되어 있어야 함을 의미. 즉 이 앱이 API 레벨 14가 존재하는 디바이스 기기까지와는 호환 된다는 것
+
+[👉click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%B9%8C%EB%93%9C%EB%9F%B0%ED%83%80%EC%9E%84APK-ing#%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EB%B2%84%EC%A0%84)    
+  
  ***
 </details>
+  
+ 
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> PX/DP/DPI?</strong></span></summary>
+
+- 픽셀(화소)
+  - 디지털 화상을 구성하는 최소 단위
+  - PX 단위는 화면의 전체 화면 크기와 상관없이 지정한 수치만큼 표시되는 절대적 표시 단위이므로 안드로이드에서는 PX보다는 DP 단위를 사용
+
+- dp(Density Independent Pixcel)
+  - DP는 픽셀 독립 단위
+  - 화면의 크기가 달라도 동일한 비율로 보여주기 위해 안드로이드에서 정의한 단위이며 dp단위를 사용하면 기기마다의 차이를 고민하지 않고도 인터페이스를 디자인할 수 있어서 안드로이드에서 주로 사용되는 단위  
+  
+- dpi(Dot Per Inch)
+ - 1cm화면에 픽셀 갯수 몇개?를 나타내는 단위 ex)100dpi는 1인치에 픽셀 100개  
+ 
+- 안드로이드는 mdpi폰을 기준으로 크기를 조정하며 mdpi폰에서 1dp는 1px임 
+  
+ ***
+</details>  
   
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>지금까지 개발해왔던 경험들을 바탕으로, 기술적인부분에서의 간략한 자기소개 부탁드립니다.</strong></span></summary>
