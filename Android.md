@@ -1323,10 +1323,17 @@ View Model은 Activity 나 Fragment에 자료가 제한되는 것을 방지하�
 </details>
   
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong> Jetpack 에서 사용해본 기능은?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong> ☘Jetpack 에서 사용해본 기능은?</strong></span></summary>
 
  ***
 </details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> ☘안드로이드 APP간 통신하는 법?</strong></span></summary>
+
+ ***
+</details>
+  
   
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>  Custom View 를 사용해 본 적이 있는지?</strong></span></summary>
