@@ -4,7 +4,7 @@
 <h2>전산 기본</h2>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>TCP/IP</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘TCP/IP</strong></span></summary>
    
 - TCP/IP는 **패킷 통신**을 위한 통신 규약이다.
 - **현재의 인터넷에서 컴퓨터들이 서로 정보를 주고받는데 쓰이는 프로토콜의 모음**
@@ -134,7 +134,7 @@
 <h2>TCP/UDP</h2>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>TCP와 UDP의 차이에 대해서 설명해 주세요.</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘TCP와 UDP의 차이에 대해서 설명해 주세요.</strong></span></summary>
 
 - `ICMP`
  - IP 계층에서 생긴 **오류**를 보고하는 역할
@@ -228,7 +228,7 @@
 <h2>HTTP</h2>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>HTTP 프로토콜에 대해서 아는대로 말해주세요.</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘HTTP 프로토콜에 대해서 아는대로 말해주세요.</strong></span></summary>
 <hr>
 
 - HTTP(HyperText Transfer Protocol =하이퍼텍스트 트랜스펄 프로토콜=웹페이지 교환 프로토콜)
@@ -263,7 +263,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>HTTP와 HTTPS 의 차이는 무엇인가요?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘HTTP와 HTTPS 의 차이는 무엇인가요?</strong></span></summary>
 <hr>
 
 - HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)
@@ -278,7 +278,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>HTTPS가 동작하는 방식에 대해서 설명해 주세요.</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘HTTPS가 동작하는 방식에 대해서 설명해 주세요.</strong></span></summary>
 <hr>
 ## **HTTPS의 동작 과정**
 
@@ -299,7 +299,7 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>HTTP Method 종류 및 역할</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘HTTP Method 종류 및 역할</strong></span></summary>
 
 - `기타 메소드` : 잘 사용되지 않는 메소드들
    - HEAD : GET과 동일하지만 메시지 바디를 제외하고 반환
@@ -403,7 +403,7 @@
 </details>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>쿠키와 세션에 대해서 설명해 주세요.</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘쿠키와 세션에 대해서 설명해 주세요.</strong></span></summary>
 
 [얄코](https://www.youtube.com/watch?v=OpoVuwxGRDI)   
    
@@ -473,7 +473,7 @@
 <h2>웹</h2>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>www.naver.com에 접속할때 일어나는 일</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘www.naver.com에 접속할때 일어나는 일</strong></span></summary>
    
    https://hongjuzzang.github.io/web/web_browser2/
    [잘 정리된 벨로그](https://velog.io/@tnehd1998/%EC%A3%BC%EC%86%8C%EC%B0%BD%EC%97%90-www.google.com%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%96%88%EC%9D%84-%EB%95%8C-%EC%9D%BC%EC%96%B4%EB%82%98%EB%8A%94-%EA%B3%BC%EC%A0%95)
@@ -510,7 +510,7 @@
 </details>
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>REST / REST원칙 / REST API에 대해서 설명해 주세요.</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘REST / REST원칙 / REST API에 대해서 설명해 주세요.</strong></span></summary>
 
 - `REST= Representational State Transfer`
   -  HTTP를 잘 활용하기 위한 원칙이자 네트워크 아키텍쳐 스타일(청사진이  
