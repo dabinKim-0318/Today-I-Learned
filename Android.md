@@ -1333,3 +1333,164 @@ View Model은 Activity 나 Fragment에 자료가 제한되는 것을 방지하�
 
  ***
 </details>
+  
+  
+# 🤔기본일 수도 있다!
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드에서 View란 무엇인가?</strong></span></summary>
+
+- 화면을 구성하는 최소 단위로 화면에 보이는 모든 것
+- 뷰= 위젯 / 뷰그룹=레이아웃
+- 대표적으로 imageView, TextView 등이 View를 상속 받아 만들 클래스
+  
+ ***
+</details>
+
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>View / ViewGroup 차이?</strong></span></summary>
+
+
+- ViewGroup은 N개의 View를 담을 수 있는 컨테이너로 ViewGroup 또한 View를 상속받아 만든 클래스
+- ViewGroup안에 View, ViewGroup 모두 담기 가능
+- 대표적으로 ContraintLayout, RelativeLayout 등이 있음
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>ConstrintLayout</strong></span></summary>
+
+- ViewGroup 중 하나
+- 복잡한 레이아웃을 계층구조를 이용해 표현할 수 있는 레이아웃
+- 형제 View들과의 관계를 정의해서 레이아웃을 구성, RelativeLayout과 비슷하지만 ContraintLayout은 자식 뷰간 상호관계 정의 가능
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>APK 포맷?</strong></span></summary>
+
+ - 안드로이드 운영체제에서 앱을 설치하기 위해 사용하는 파일
+ - APK파일은 ZIP형식의 압축파일로 되어 있으며 인증을 위한 서명이 추가되어 있음
+
+ ***
+</details>
+  
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Application 클래스? </strong></span></summary>
+
+  - 어플리케이션 컴포넌트들 사이에서 공동으로 멤버들을 사용할 수 있게 해주는 공유 클래스
+  - 어디서든 context를 이용한 접근 가능
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>JVM/DVM/ART </strong></span></summary>
+
+- JVM: test.java 파일을 test.class로 컴파일 했을 시 윈도우, 맥 등 어느 OS에 관계없이 JVM이 실행될 수 있다면 새로 컴파일할 필요 없이 실행 가능
+- DVM: 안드로이드 앱을 실행할 수 있는 가상머신, 모바일 기기 환경에 최적화된 가상머신
+   - 자바->클래스 파일로 컴파일된 것들을 dex파일로 ㅂㄴ경해서 DVM에서 실행가능하게 만들어서 사용하게 함
+   - .java->.class->.dex->APK 내 실행
+  - 최종적으로 dex랑 기타 라이브러리를 압축해서 APK를 생성
+- ART: DVM 안쓰고ART사용
+  - ART컴파일러 쓰면 앱 실행시간 단축, 배터리 수명 향상이라는 장점
+  
+ 
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드에서 메모리 관리 </strong></span></summary>
+
+- GC를 이용해 진행됨
+- GC루트에서 모든 객체 참조에 대해 활성객체를 표시하고 활성되지 않은 객체는 메모리에서 지워짐
+  
+ ***
+</details>
+
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> 디자인 패턴</strong></span></summary>
+
+- 아키텍처란?
+시스템 구성과 동작 원리 등 최상의 소프트웨어를 구성하는 설계도
+
+- 디자인 패턴이란?
+좋은 코드를 설계하기 위한 방법론
+ ***
+</details>
+
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>RepositoryPattern</strong></span></summary>
+
+- 데이터의 출처와 관계없이 동일 인터페이스로 데이터에 접속할 수 있도록 만드는 것
+- 모델을 가져오기 위해 dataSource가 몇개 필요한지 알 필요없음 
+- DataSource의 변경이 일어나도 다른 계층은 영향을 받지 않음
+  
+
+ ***
+</details>
+  
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>빌드타입?</strong></span></summary>
+
+ - 현재 사용하고 있는 라이브러리, 모듈 등의 빌드 방법을 정의
+- 안드로이드 앱이 패키징되고, 빌드될 때 그래들을 사용해 빌드 타입 정의 가능
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>안드로이드 빌드 프로세스?</strong></span></summary>
+
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>XML</strong></span></summary>
+
+- 문자기반 마크업 언어
+- 사람과 기계가 동시에 읽기 편한 구조로 되어있음
+- HTML처럼 데이터를 보여주는 목적이 아닌 데이터를 저장하고 전달하는 목적으로 만들어짐
+
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Android Application 구조</strong></span></summary>
+
+- manifest: 안드로이드 어플리케이션 구동에 필요한 패키지명, 권한 등의 설정값이 모아진 파일
+- java: 클래스들을 관리하는 폴더
+- res: UI관련 파일, 디자인 리소스, 문자열 리소스를 담고 있는 폴더
+  - drawable / mipmap / value
+- gradle: build tool임. 안드로이드 스튜디오는 코드 편집만을 담당할 뿐 빌드는 Gradle을 통해 수행됨  
+  
+  
+ ***
+</details>
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>.apk 확장자</strong></span></summary>
+  
+- 안드로이드 운영체제에서 사용하는 기본 파일 형식
+- '어플리케이션 패키지 키트'는 모바일 앱에 설치돼 사용
+- APK 파일은 확장자가 .apk인 zip 형식의 아카이브 파일
+- APK파일에는 리소스 파일, 인증서, 매니페이스 파일 및 기타 코드가 포함
+  
+  
+ ***
+</details>
+  
+ 
+
