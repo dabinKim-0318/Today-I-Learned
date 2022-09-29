@@ -766,7 +766,7 @@ HTTP 1.1부터는 defualt로 keep-alive를 지원한다.
  <details>
    <summary><span style="border-bottom:0.05em solid"><strong>URI</strong></span></summary>
 
-</details>
+
  
 - URI는 인터넷 자원을 식별하기 위한 문자열 이다.
 - URI는 인터넷 주소 같은 것으로 정보 리소스를 유일하게 식별하고 위치를 지정할 수 있다.
@@ -776,6 +776,7 @@ http://test.com/company/location
 http://test.com/member/jobhope
 URI의 하위 개념으로 URL, URN이 있다.
 ```
+</details>
 
  <details>
    <summary><span style="border-bottom:0.05em solid"><strong>URL</strong></span></summary>
