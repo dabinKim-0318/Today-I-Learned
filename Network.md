@@ -79,9 +79,9 @@
 
 
 <details>
-   <summary><span style="border-bottom:0.05em solid"><strong>DNS가 무엇인가요?</strong></span></summary>
+   <summary><span style="border-bottom:0.05em solid"><strong>☘DNS가 무엇인가요?</strong></span></summary>
 
- - **도메인이나 호스트 이름을 숫자로 된 ip 주소로 바꾸어 주는 장비**
+ - **IP주소를 문자로 표현한 주소로 바꾸는 시스템 혹은 서버**
 
         ex) [naver.com](http://naver.com) 은 도메인이고 dns에서는 이것을 34.32.222와 같은 ip주소로 바꿔준다.
 
@@ -695,3 +695,122 @@
 
 <p></p>
 </div>
+   
+  
+ <h2>back</h2>
+   
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>Server에서 FIN 플래그를 전송하기 전에 전송한 패킷이 Routing 지연이나 패킷 유실로 인한 재전송 등으로 인해 FIN 패킷보다 늦게 도작한 상황이 발생하면?</strong></span></summary>
+
+이러한 현상을 대비하여 Client는 Server로부터 FIN 플래그를 수신하더라도 일정기간 time wait동안 세션을 남겨 놓고 잉여 패킷을 기다리는 과정을 거친다.
+   
+</details>
+   
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>포트와 소켓</strong></span></summary>
+
+- 포트
+  - 네트워크를 통해 데이터를 주고받는 **프로세스를 식별하기 위해 호스트 내부적으로 프로세스가 할당받는 고유한 값**
+  - 하나의 IP 주소 내에 개별적으로 부여된 통신 프로세스
+    
+- 소켓
+  - 네트워크상에서 동작하는 프로그램 간 통신의 종착점(Endpoint)
+  - **두 시스템 사이의 네트워크 연결을 나타내는 객체**
+  - 소켓을 열기 위해선 호스트에 할당된 IP, 포트 번호, 프로토콜이 필요하다.
+  - 위 세가지가 소켓을 정의할 수 있지만 유일하게 식별하지는 않는다.
+  - 보내는 쪽과 받는 쪽 모두 소켓을 열어야 한다.
+  - 하나의 프로세스가 같은 포트를 갖고 여러 개의 소켓을 열 수 있다.
+
+   
+</details>
+   
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>keep-alive 헤더</strong></span></summary>
+HTTP는 매번 연결을 끊고 새로 생성한다.
+특정 시간까지는 access가 없더라도 기다리고 연결상태를 유지하는 헤더이다.
+HTTP 1.1부터는 defualt로 keep-alive를 지원한다.
+   
+</details>
+
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>세션은 서버에 저장되고, 쿠키는 클라이언트에 저장된다고 하셨는데, 그럼 쿠키가 안되는 상황에서도 세션은 사용할 수 있나요?</strong></span></summary>
+
+ 쿠키를 사용할 수 없을 때는 url 뒤쪽에 파라미터 값으로 전달하는 경우가 있다.
+
+  
+</details>
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>JWT</strong></span></summary>
+
+- 보통 로그인 방식으로는 세션과 쿠기를 통해 구현한다.
+세션에 저장된 정보는 고유 세션ID가 부여되는데 사용자가 로그인을 하면 서버는 쿠키에 세션ID를 실어서 보낸다. 
+- 브라우저는 쿠키를 쿠키저장소에 갖고 있다가 다음 페이지를 요청할 때 해당 유저의 쿠키를 다시 요청헤더에 포함해서 전송한다. 
+- 서버는 쿠키 내부의 세션ID를 통해 세션 내부에 일치하는 유저 정보를 가져와서 처음에 로그인한 유저가 맞는지 확인하는 작업이 반복되면서 로그인 상태가 유지된다.
+- 세션은 서버의 메모리 내부에 저장되기 때문에 많아지는 만큼 메모리에 부하가 걸리게 되고, 확장 시 세션을 분산시키는 기술을 따로 설계해야 한다.
+- JWT는 토큰을 만들어 발행하는 방식 으로 쿠키에 담거나 HTTP 헤더에 담아서 보낼 수 있다. 따로 서버에서 저장하지 않기 때문에 토큰이 유효한지 검증하는 과정만 있으면 된다.
+- 하지만 탈취에 의해 악의적으로 사용될 가능성이 있기에 보통 유효시간을 짧게 가져가고 Refresh 토큰을 사용하는 방식으로 구현한다.
+쿠키는 웹브라우저에서 사용할 수 있는 기능이므로 모바일 애플리케이션에서는 JWT를 사용한 인증방식이 최적이다.
+   
+</details>
+
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>OAuth</strong></span></summary>
+자신이 소유한 리소스에 소프트웨어 애플리케이션이 접근할 수 있도록 허용해 줌으로써 접근 권한을 위임해주는 개방형 표준 프로토콜
+
+</details>
+   
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>URI</strong></span></summary>
+
+</details>
+ 
+- URI는 인터넷 자원을 식별하기 위한 문자열 이다.
+- URI는 인터넷 주소 같은 것으로 정보 리소스를 유일하게 식별하고 위치를 지정할 수 있다.
+
+```
+http://test.com/company/location
+http://test.com/member/jobhope
+URI의 하위 개념으로 URL, URN이 있다.
+```
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>URL</strong></span></summary>
+
+- 웹에서 자원의 위치를 나타낸다. 즉, 특정 서버의 한 리소스에 대해 구체적인 위치 를 표현한다.
+
+```    
+safefood.com 서버에서 food폴더 안의 salad.png를 요청하는 URL
+>> http://safefood.com/food/salad.png
+
+http://example.com/mypage.html - 실제 사이트 URL
+http://img.naver.net/static/www/dl_qr_naver.png - 네이버 앱QR코드의 이미지에 대한 URL
+```
+    
+</details>
+   
+
+ <details>
+   <summary><span style="border-bottom:0.05em solid"><strong>중간자 공격</strong></span></summary>
+
+두 사람이 서로 통신을 주고 받는데, 중간에 제 3의 인물이 끼여서 데이터를 중계한다면, 이 제3자는 그 내용을 모두 알 수 있고, 데이터를 위/변조할 경우 두 사람에게 서로 잘못된 정보를 전달하게 만들 수도 있다. 중간에서 데이터를 가로채는 것이 중간자 공격이다.
+중간자 공격은 4가지가 있다.
+
+- 스니핑
+  - 시스템 및 네트워크에서 들어오고 나가는 데이터 패킷을 캡쳐한다.
+- 패킷 주입
+  - 공격자가 일반 데이터와 함께 악의적인 데이터를 주입한다.
+- 세션 하이재킹
+  - 세션 가로채기라고도 불리며 두 시스템 간 연결이 활성화된 상태를 가로채는 것
+- 보안 소켓 계층 스트리핑
+  - 공격자는 SSL/TLS 연결을 차단하여 프로토콜 보안성이 있는 HTTPS에서 안전하지 않은 HTTP로 전환한다.
+
+    
+ 이 공격법을 방어하기 위한 목적으로 만들어진 것이 TLS 통신이다. TLS 통신은 클라이언트가 연결을 요청하면 서버에서 자신의 공개키가 포함된 인증서를 보내고, 클라이언트는 인증서의 내용을 연결 프로그램(웹 브라우저 등) 또는 운영체제에 내장된 루트 인증서 정보와 비교하여 무결성을 검증한 뒤, 인증서에 있는 공개키로 대칭형 암호화 키를 만들 수 있는 난수 정보를 공개키로 암호화해 서버로 보내며, 클라이언트와 서버가 각각 이 난수에서 암호화 키를 만들어내 암호화 연결이 개시된다.   
+    
+</details>
+   
+
