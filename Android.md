@@ -168,6 +168,10 @@
       <summary><span style="border-bottom:0.05em solid"><strong>  Activity의 LifeCycle </strong></span></summary>    
 <br />
 
+  
+- 수명주기란 Activity 클래스가 생성되거나, 중단 또는 다시 시작하거나, 종료되는 등의 'Activity의 상태'를 수명주기라고 할 수 있습니다
+- Activity 는 수명 주기 단계 간 상태전환을 알아차릴 수 있는 6가지 콜백 onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy() 제공합니다 이러한 수명주기 콜백을 잘 구현하면 아래와 같은 문제가 발생하지 않도록 예방하는 데 도움이 될 수 있습니다.
+  
 - 액티비티는 크게 3가지 상태가 존재합니다.
    - running 실행 상태는 액티비티 스택의 최상위에 있으며 포커스를 가지고 있어 사용자에게 보이는 상태입니다. 
    - pasued 일시 중지 상태는 사용자에게 보이기는 하지만 다른 액티비티가 위에 있어 포커스를 받지 못하는 상태입니다.
