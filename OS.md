@@ -1036,9 +1036,16 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong>Trashing</strong></span></summary>
 <hr>
+   
 - 메모리 영역에 접근하게 될 때, 메모리에 페이지 부재(=페이지 폴트(Page fault)율이 높은 것을 의미한다.
+   
+   
 - Page Fault, Page Replacement가 발생하면서 다양한 프로세스가 메모리에 올라오면 메모리의 유효공간은 줄어들고 CPU의 가동시간이 올라가면서 자원을 최대한 활용하는 상태에 이른다.
+   
+   
 - 시간이 흐르면 CPU 사용률이 떨어지게 되는데 이는 메모리에 프로세스가 많아지면서 프로세스당 물리 메모리를 사용할 수 있는 프레임의 개수가 줄어들고, 페이지가 물리 메모리에 적게 올라온 프로세스는 명령을 조금만 수행해도 Page Fault가 발생하여 Page Replacement를 진행 하게 되기 때문이다.
+   
+   
 - Page Replacement로 Swap 공간에서 페이지를 가져오기까지 상대적으로 오랜 시간이 걸리기 때문에 그동안 다른 프로세스가 CPU를 넘겨받지만 그 프로세스도 곧 Page Replacement를 진행하게 된다.
 - 결과적으로 모든 프로세스들이 페이지를 교체하느라 바쁘고 CPU는 할일이 없어서 쉬게 되는데 CPU가 놀고있는 것을 발견한 운영체제는 더 많은 프로세스를 메모리에 올리면서 악순환이 반복된다.
 - 이 현상을 Trashing이라고 한다.
@@ -1047,6 +1054,7 @@ exec()를 사용하는 경우는 child 에서는 parent 와 다른 동작을 하
 - Page Replacement 활동을 진행할 때도 프로세스마다 Working Set 단위로 페이지를 쫓아낸다.
 - Page Fault Frequency 알고리즘은 Page Fault 퍼센트의 상한과 하한을 두고 상한을 넘으면 지급하는 프레임 개수를 늘리고, 하한을 넘으면 지급 프레임 개수를 줄인다.
 - 이도 남는 프레임이 없으면 프로세스 단위로 페이지를 쫓아낸다
+   
 <hr>
 </details>
 
