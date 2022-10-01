@@ -534,6 +534,8 @@
  <details>
    <summary><span style="border-bottom:0.05em solid"><strong> Thread, Looper, Handler에 대해 설명하라 </strong></span></summary>    
 <br />
+  
+메인 스레드의 실행에 영향을 줄 수 있는 기능을 새로운 스레드에서 실행하고, 기능이 완료되면 메인 스레드 핸들러로 메시지를 전달한다.  
 
 - 안드로이드는 메인스레드와 백그라운드 스레드 및 스레드간 통신을 위해 핸들러(Handler)와 루퍼(Looper)을 제공함
 - `루퍼`
@@ -1500,4 +1502,14 @@ View Model은 Activity 나 Fragment에 자료가 제한되는 것을 방지하�
 </details>
   
  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>AsyncTask</strong></span></summary>
 
+AsyncTask는 그 이름에서도 알 수 있듯이, 비동기(Asynchronous)적으로 실행될 필요가 있는 작업(Task)을 위해 사용하는 클래스입니다. 특히 Thread, Handler, Message, Runnable 등을 직접 다루지 않아도, 메인 스레드와 별개로 "비동기(Asynchronous) 실행"이 필요한 작업에 사용할 수 있습니다.  
+  
+- AsyncTask 는 사용하기 편리하다는 장점이 있었지만, 사실 치명적인 문제점들이 많다. 우선 사용상으로의 단점으로는 다들 알다시피 오직 한 번만 실행되어 재사용이 불가능하다는 점, 종료를 직접 해주지 않으면 종료가 되지 않아 메모리 누수가 발생한다는 점, 항상 UI 쓰레드 상에서 호출해야 한다는 점 등이 있었다.  
+- 이러한 이유로 Deprecated 되었고 비동기 처리를 위해선 Coroutine이나 RxJava
+  
+ ***
+</details>
+  
