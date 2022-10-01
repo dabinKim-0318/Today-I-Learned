@@ -467,7 +467,7 @@
    - 메인스레드인 UI스레드는 제약사항이 있는데요. 반드시 화면 UI그리기를 담당하는 것입니다
    - UI를 순차적으로 그려내기 위해 메인 스레드 하나에서만 UI작업을 합니다
    - 만약 UI이벤트 작업에 5초 안에 응답하지 않으면 
-   - 안드로이드 시스템은 ANR(Android Not Responsing)이라는 팝업창을 띄웁니다
+   - 안드로이드 시스템은 ANR(Aplication Not Responsing)이라는 팝업창을 띄웁니다
  
  - `해결방안`
    - 이러한 문제점을 막기위해 불안정한 UI관련 작업이나 비동기 작업(애니메이션 등) , High Cost의 연산작업 (Database 처리등) 등은 Worker Thread를 따로 만들어 처리하도록 합니다.
@@ -1160,6 +1160,10 @@
 <details>
    <summary><span style="border-bottom:0.05em solid"><strong> ANR 탐지하는 방법</strong></span></summary>
 
+- Android vitals
+- 앱을 이미 게시한 경우, ANR이 과도하게 발생하면 Play Console을 통해 알림을 보낸다. 
+- Android vitals는 앱이 다음과 같을 때 ANR이 과도하다고 간주한다. 
+  
  ***
 </details>
   
