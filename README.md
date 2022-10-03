@@ -61,7 +61,6 @@
 
 ## 👉 기술 면접
 
-- [Android](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Android.md)
 - [OS](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/OS.md)
 - [Network](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Network.md)
 - [Algorithm](https://github.com/dabinKim-0318/Today-I-Learned/blob/main/Algorithm.md)
