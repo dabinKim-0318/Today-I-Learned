@@ -87,17 +87,14 @@
   
 - 💡Activity간 정보를 교환하려면 어떻게 해야하나요?
 - 💡Activity 수명주기
-- 💡투명한 Activity b가 Activity a 위에 띄워질 시
-- 💡finish 버튼 눌러서 Activity b 종료
-- 💡액티비티에서 뒤로가기 버튼을 누르면?
-- 💡투명한 Activity b가 Activity a 위에 띄워질 시
-- 💡액티비티에서 홈 버튼을 눌렀을 때, 콜백 함수?
-- 💡현재 A 액티비티가 포그라운드 상태. 이 때 B액티비티로 전환 되면 발생하는 lifecycle Callback 함수는?
-- 💡B 액티비티에서 finish() 함수를 호출하게 되면 발생하는 Lifecycle 순서는?
-- 💡Activity위에 dialog가 띄워질때 Activity수명주기는?
-- 💡Activity 3가지 상태
-- 💡Launch Mode 4가지 ?  
-- 💡onSaveInstanceState
+- 💡투명한 Activity b가 Activity a 위에 띄워질 시: onPause
+- 💡finish 버튼 눌러서 Activity b 종료: onDestroy
+- 💡액티비티에서 뒤로가기 버튼을 누르면?: onBackPress
+- 💡액티비티에서 홈 버튼을 눌렀을 때, 콜백 함수?: onUserLeaveHint
+- 💡Activity위에 dialog가 띄워질때 Activity수명주기는? 변화X
+- 💡Activity 3가지 상태: active / pause / stop
+- 💡Launch Mode 4가지 ?  standard / singleTop / singleInstance
+- 💡onSaveInstanceState: onStop에서 호출됨. UI데이터 저장 목적 onCreate()나 onRestoreInstanceState에서 
     <br>
   
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)
@@ -118,17 +115,32 @@
    - Object클래스 상속, 그외 다양한 인터페이스 구현
   
 - `사용법`
-   - Fragment클래스 의 하위 클래스 생성
+   - Fragment 라이브러리 추가
+   - Fragment클래스의 하위 클래스 생성
+   - Fragment의 2가지 생성자 중 선택, default생성자를 사용했을 시 onCreateView를 구현해야함
    - Activity / Fragment에 호스팅
+  
      - 이때 Activity는  FragmentActivity 를 상속하는 Activity여야함 (AppCompactActivity가 상속중)
-     - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
-     - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너(=이 위치에 프래그먼트 자체 UI가 배치될 것입니다~ 라고 위치를 지정해두는 것)를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
-  * 주의할 점은 두 방법 모두 Activity UI 레이아웃 안에 FragmentContainerView 를 정의함으로써 해당 프래그먼트가 배치될 위치를 정의해야 한다는 점입니다.
-    - 프래그먼트를 추가/교체/삭제
+  
+     - 1) Activity UI 레이아웃 안에 프래그먼트 존재를 name속성을 이용해 정의하여 Activity UI가 Activity 클래스에 inflate될 때 프래그먼트 자체 UI도 자동으로 프래그먼트 클래스에 inflate 시키는 방법
+       - android:name 속성의 내부 동작은 다음과 같습니다. Activity UI 레이아웃이 inflate되는 과정에서 FragmentContainerView가 inflate될 때 자동으로 android:name 속성에 지정된 프래그먼트를 새로운 인스턴스로 생성
+  
+     - 2) Activity UI 레이아웃 안에 프래그먼트 컨테이너를 정의하고 프로그래밍적으로 해당 컨테이너 안에 프래그먼트를 추가(Add)하는 방법
+      - Activity가 running 상태일 동안(=런타임 동안 =사용자가 앱을 사용할 동안) 프래그먼트 컨테이너 안에 프로그래밍적으로 프래그먼트를 추가/교체/삭제
       - 백 스택(Back Stack) 에 프래그먼트 작업에 의한 변경 사항을 push 및 pop 하는 작업을 담당하는 클래스인 FragmentManager필요
-      - 프래그먼트 추가/교체/삭제 작업을 제공하는 메서드는 추상클래스인 FragmentTransaction이 정의       - FragmentTransaction 하위클래스인 FragmentManager클래스 인스턴스화한후 beginTransaction호출해서 FragmentTransactioin인스턴스 얻음
+      - 프래그먼트 추가/교체/삭제 작업을 제공하는 메서드는 추상클래스인 FragmentTransaction이 정의
+      - FragmentManager 클래스도 public 클래스가 아닌 abstract 클래스(추상 클래스)입니다. 이 추상 클래스는 FragmentActivity 클래스에 구현되어 있기 때문에 getSupportFragmentManager() 함수를 호출해 매니저를 얻음
+      - FragmentTransaction 하위클래스인 FragmentManager클래스 인스턴스화한후 beginTransaction호출해서 FragmentTransactioin인스턴스 얻음
       - 트랜잭션을 생성 후 프래그먼트 작업 명시한 후 commit()
       - commit함수를 호출해야만 FramgmentManager가 해당 FramgmentTransaction 수행을 예약 합니다
+        - commit: 호출하면 호출한 순간에 해단 트랜잭션이 즉시 수행되는 것이 아니라 메인쓰레드에 해당 트랜잭션이 예약됩니다
+        - commitNow:  메인 쓰레드에서 커밋한 순간 즉시 수행, 호출하면 호출한 즉시 해당 프래그먼트 트랜잭션이 동기적으로 수행=동기적
+          - 그러나 commitNow() 함수를 호출하여 프래그먼트 트랜잭션을 커밋하면 addToBackStack() 함수가 예상한대로 동작하지 않을 수 있다는 점
+          - addToBackStack() 함수를 포함하는 여러 트랜잭션이 존재하고 이를 commit() 과 commitNow() 함수를 혼용하여 커밋한다면 개발자가 의도한 백 스택 저장 순서를 100% 보장할 수 없습니다.
+  
+  
+  * 주의할 점은 두 방법 모두 Activity UI 레이아웃 안에 FragmentContainerView 를 정의함으로써 해당 프래그먼트가 배치될 위치를 정의해야 한다는 점입니다.
+    
   
 - `유사기술` = Activity
    
@@ -165,18 +177,28 @@
  </details>
  
 <details>
-      <summary><span style="border-bottom:0.05em solid"><strong>  Activity의 LifeCycle </strong></span></summary>    
+      <summary><span style="border-bottom:0.05em solid"><strong>  🤞Activity의 LifeCycle </strong></span></summary>    
 <br />
 
   
 - 수명주기란 Activity 클래스가 생성되거나, 중단 또는 다시 시작하거나, 종료되는 등의 'Activity의 상태'를 수명주기라고 할 수 있습니다
-- Activity 는 수명 주기 단계 간 상태전환을 알아차릴 수 있는 6가지 콜백 onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy() 제공합니다 이러한 수명주기 콜백을 잘 구현하면 아래와 같은 문제가 발생하지 않도록 예방하는 데 도움이 될 수 있습니다.
+- Activity 는 수명 주기 단계 간 상태전환을 알아차릴 수 있는 6가지 콜백 onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy() 제공합니다 
+- 각 상태변화에 적합한 작업을 실행할 수 있도록 개발자는 Activity의 수명주기를 제대로 아는 것이 중요합니다
+
+- 각 수명주기 설명하면서,,
+  - 최초로 activity 가 실행되면 수명주기는 사용자와 상호작용하는 onResume상태에 머물게 됩니다
+  - onPause: activity가 백그라운드로 진입할떄나 일부가 가려질때, 투명한 Activity가 기존 Activity 위에 띄워질 때 호출됩니다
+  - onStop: Activity가 완전히 가려질 때 호출되고 다시 사용자 눈에 보이는 시점에 onRestart가 호출되어 onStart를 호출합니다. 
+  - onDestroy: finish(), 뒤로가기 버튼 onBackPress, 기기 회전
+- 그 외에 Activity위에 dialog를 띄울때는 어떠한 수명주기 호출도 되지 않고, 사용자가 홈버튼을 누를때 콜백되는 onUserLeaveHint 콜백을 이용해서도 Activity 상태전환에 따른 로직을 작성할 수 있습니다   
+  
   
 - 액티비티는 크게 3가지 상태가 존재합니다.
    - running 실행 상태는 액티비티 스택의 최상위에 있으며 포커스를 가지고 있어 사용자에게 보이는 상태입니다. 
    - pasued 일시 중지 상태는 사용자에게 보이기는 하지만 다른 액티비티가 위에 있어 포커스를 받지 못하는 상태입니다.
    - stopped 중지 상태는 다른 액티비티에 의해 완전히 가려져 보이지 않는 상태를 말합니다.
-   
+  
+  
    ![image (1)](https://user-images.githubusercontent.com/84564695/187110702-3f13eb5c-d5bb-4ead-a403-ba0e27f84d31.png)
 
 👉[click](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0#%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0%EB%9E%80)
@@ -185,9 +207,14 @@
 </details>
 
 <details>
-       <summary><span style="border-bottom:0.05em solid"><strong>  Fragment의 LifeCycle  </strong></span></summary>    
+       <summary><span style="border-bottom:0.05em solid"><strong>  🤞Fragment의 LifeCycle  </strong></span></summary>    
 <br />
    
+- onCreateView: layout이 inflate되어 view가 초기화되는 단계
+- onViewCreate: view가 완전히 만들어진 시점이므로 view참조를 안전하게 할 수 있음
+- onDestroyViwew: 프래그먼트와 연결된 view제거
+  *Fragment는 view의 수명주기가 Fragment자체 생명주기보다 짧아서 view는 소멸했는데 Fragment인스턴스가 view를 참조하고 있을 수 있음. 따라서 onDestroyView에서 binding참조 변수를 bull로 초기화하는 코드를 작성해 메모리에서 지워줘야함
+  
 ![ㅁㅁ](https://user-images.githubusercontent.com/84564695/187110664-a727c532-9afe-427f-a2be-104b74c1e6cf.jpg)
 
 👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
@@ -196,11 +223,12 @@
  </details>
  
  <details>
-       <summary><span style="border-bottom:0.05em solid"><strong>  ☘FragmentTransaction</strong></span></summary>    
+       <summary><span style="border-bottom:0.05em solid"><strong>  ☘🤞FragmentTransaction</strong></span></summary>    
 <br />
    
 - FragmentTransaction 클래스는 abstract 클래스(추상 클래스)입니다. 
   - FragmentManager 클래스에 구현되어 있기 때문에 FragmentTransaction 클래스를 사용하기 위해 FragmentManager 클래스가 제공하는 beginTransaction함수 호출을 통해 FragmentTransaction 인스턴스를 생성해야합니다
+  - FragmentManager도 추상 클래스이고 해당 클래스는 ActivityFragment가 상속하기 때문에 AppCompackActivity하위 클래스에서 사용가능
   - FragmentManager가 수행할 단일 단위
   - 따라서 하나의 FramgmentTransaction 단위 내에 FramgmentTransaction 클래스가 제공하는 프래그먼트 추가/삭제/교체 작업 등을 명시하면 됩니다
   
@@ -217,6 +245,11 @@
     - detach는 해당 프래그먼트가 자신의 자체 UI로부터 떼지고(=inflate되어 있던 프래그먼트 클래스와 자체 UI가 deflate된다는 의미) 자체 UI 뷰 계층은 파괴되는 것입니다. 
     - 따라서 fragment객체는 메모리에 남아있고 onDestroyView까지만 호출되는 것을 확인할 수 있습니다.
   - `show()/hide()`: 프래그먼트 컨테이너에 쌓인 자체 UI 순서에 영향을 주지 않고 자신이 쌓여있는 위치에서 사용자 눈에서 보이기/안보이기 설정만 바뀌는 겁니다  
+ 
+  
+ - 백스택에 프래그먼트 트랜잭션 기록하기
+  - Activity는 백스택에 Activity가 쌓이는 작업이 자동으로 되지만 프래그먼트는 자동으로 안됩니다. 따라서 프래그먼트 트랜잭션 내부에 백스택에 기록하겠다는 addToBackStack함수를 호출해야만 해당 프래그먼트 트랜잭션이 백스택에 저장됨
+  - FragmentTransaction 클래스가 제공하는 popBackStack() 함수를 호출하면 백스택에 저장되어 있는 프래그먼트 트랜잭션 중 스택의 가장 최상단에 존재하는 트랜잭션이 pop되어 사라집니다(프래그먼트 관리자가 백스택을 관리하는 역할을 함)     - 사용자가 뒤로 버튼을 눌렀을때 내부적으로 popBackStack() 함수가 호출됩니다
   
   
 👉[click](https://abundant-playground-8c8.notion.site/LifeCycle-Activity-Fragment-89e3dd9483c04ef68151187fe04b0a84)
