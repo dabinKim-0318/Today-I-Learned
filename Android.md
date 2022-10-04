@@ -1550,3 +1550,75 @@ AsyncTask는 그 이름에서도 알 수 있듯이, 비동기(Asynchronous)적�
  ***
 </details>
   
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong>스레드 VS 코루틴</strong></span></summary>
+  
+- `공통점`  
+- 스레드, 코루틴 둘다 '비동기 처리'를 하기 위함  
+- 둘다 '동시성 프로그래밍'을 위한 기술(병렬과 반대되어 task들을 잘개 쪼개 번갈아가며 수행하는 기법)
+- 동기 : 어떤 요청을 보낸 뒤, 그 요청의 결과값을 얻기까지 작업을 멈추는 것
+- 비동기 : 어떤 요청을 보낸 뒤, 그 요청의 결과값이 오기까지 멈추지 않고 또 다른 일을 수행하는 것
+  
+ - `차이점`
+  <img width="1342" alt="images_haero_kim_post_1d041a32-90b2-4c4d-b89b-b125494089b3_context-switch-between-threads" src="https://user-images.githubusercontent.com/84564695/193725914-6ae55815-593d-4d64-b494-8ca5c85123d8.png">
+
+ - 스레드 
+   - 작업 하나하나의 단위 : Thread
+   - 각 Thread 가 독립적인 Stack 메모리 영역 가짐
+   - 동시성 보장 수단 : Context Switching 
+   - Thread A 에서 Task 1 을 수행하다가 Task 2 의 결과가 필요할 때, 비동기적으로 Thread B 를 호출을 하게 된다. 이 때 Thread A 는 블로킹되고, Thread B 로 Context Switching 이 일어나 Task 2 를 수행한다. Task 2 가 완료되면, 다시 Thread A 로 Context Switching 이 일어나 결과값을 Task 1 에 반환한다.
+  
+<img width="1347" alt="images_haero_kim_post_96cd2cfd-4539-4417-9f13-ab905446e0e2_no-context-switch-between-coroutines" src="https://user-images.githubusercontent.com/84564695/193726168-93565e65-c78f-446f-a231-2a88a4456a8e.png">
+
+ - 코루틴
+   - 작업 하나하나의 단위 : Object
+   - 여러 작업 각각에 Object 를 할당함
+   - Coroutine Object 도 엄연한 객체이기 때문에 JVM Heap 에 적재 됨 (코틀린 기준)
+   - 동시성 보장 수단 : Context Switching 없음
+   - Suspend (Non-Blocking) : Object 1 이 Object 2 의 결과가 나오기까지 기다려야 한다면, Object 1 은 Suspend 되지만, Object 1 을 수행하던 Thread 는 그대로 유효하기 때문에 Object 2 도 Object 1 과 동일한 Thread 에서 실행될 수 있음
+   - 작업 단위는 Coroutine Object 이므로, Task 1 을 수행하다가 비동기 작업 Task 2 가 발생하더라도, Context Switching 없이 같은 Thread 에서 Task 2 를 수행할 수 있고, 맨 오른쪽 경우처럼 하나의 Thread 에서 여러 Coroutine Object 들을 같이 수행할 수도 있다. 한 쓰레드에서 다수의 Coroutine 을 수행할 수 있고, Context Switching 이 필요없는 특성에 따라 Coroutine 을 Light-weight Thread 라고 부르는 것이다.
+  
+- Coroutine 은 Thread 의 대안이 아니라, Thread 를 더 잘게 쪼개어 사용하기 위한 '경량 스레드'개념이다.
+- 작업의 단위를 Object 로 축소하면서 하나의 Thread 가 다수의 코루틴을 다룰 수 있기 때문에, 작업 하나하나에 Thread 를 할당하며 메모리 낭비, Context Switching 비용 낭비를 할 필요가 없음  
+- 코루틴이 쓰레드의 대안으로 등장한 것이 아니고, 효율성을 높일 수 있는 동시성 보장 방법
+  
+[click](https://velog.io/@haero_kim/Thread-vs-Coroutine-%EB%B9%84%EA%B5%90%ED%95%B4%EB%B3%B4%EA%B8%B0)  
+  
+ ***
+</details>
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> PNG와 JPG의 차이점은?</strong></span></summary>
+  
+PNG 파일은 비손실압축 방식이라 원본이 훼손이 되지 않습니다. 반면 JPG 파일은 손실압축으로 원본 자체가 훼손됩니다.
+
+ ***
+</details>  
+  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> ConstraintLayout의 장점은?</strong></span></summary>
+  
+- 복잡한 레이아웃을 단순한 계층 구조로 표현하여 이용할 수 있게하는 ViewGroup
+- 복잡한 계층 구조로 레이 아웃을 구성하는 방식에서 자유로워질 수 있다.
+- 형제 View들과 관계를 정의해서 레이아웃을 구성한다는 점이 RelativeLayout과 비슷하지만, 자식뷰들간의 관계 정의가 가능하고 RelativeLayout보다 유연하고 다양한 기능을 제공한다.
+  
+- Constraint (제약 조건)
+  - view의 위치를 정의하려면 보기의 가로/세로 제약 조건을 각각 하나 이상 추가해야한다.(match_parent로 두지 않은 경우)
+  - constraintLayout에서 자식 뷰의 위치를 잡는 기준 다른 뷰나 부모 레이아웃과의 정렬조건/ 연결 관계
+  - start, end 속성은 left, right 속성보다 우선됨
+  
+ ***
+</details>  
+  
+<details>
+   <summary><span style="border-bottom:0.05em solid"><strong> WeakReference?</strong></span></summary>
+  
+WeakReference는 Reference를 상속받고 있다. 
+Reference는 메모리 누수를 막기 위해서 사용된다.
+
+Reference의 종류는 StrongReference, PhantomReference, SoftReference, WeakReference가 있다.
+
+ ***
+</details>  
+    
