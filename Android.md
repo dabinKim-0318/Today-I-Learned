@@ -66,7 +66,8 @@
   - Android 앱의 필수적인 기본 구성 요소(컴포넌트) 중 하나입니다 
   - Activity는 사용자와 상호작용하기 위한 진입점입니다. 
   - 사용자 인터페이스(UI) 화면을 구성하는 컴포넌트입니다 
-  - 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다.  
+  - 대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있습니다.
+  - 각 Activity는 또 다른 Activity를 시작할 수 있습니다
 - `구조`  
   - Activity는 ContextThemewrapper클래스를 상속, 이외 여러 인터페이스를 구현하고 있음
   - 실제 Activity컴포넌트를 사용하기 위해선  Android의 다양한 API Level을 지원하기 위해 만들어진 Activity class의 하위 클래스인 AppCompatActivity를 상속받은 class를 생성
