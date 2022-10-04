@@ -188,7 +188,7 @@
 - 각 수명주기 설명하면서,,
   - 최초로 activity 가 실행되면 수명주기는 사용자와 상호작용하는 onResume상태에 머물게 됩니다
   - onPause: activity가 백그라운드로 진입할떄나 일부가 가려질때, 투명한 Activity가 기존 Activity 위에 띄워질 때 호출됩니다
-  - onStop: Activity가 완전히 가려질 때 호출되고 다시 사용자 눈에 보이는 시점에 onRestart가 호출되어 onStart를 호출합니다. 
+  - onStop: Activity가 완전히 가려질 때 호출, 홈버튼 누르면 onUserLeaveHint->onPause-> onStop호출-> 다시 사용자 눈에 보이는 시점에 onRestart가 호출되어 onStart를 호출
   - onDestroy: finish(), 뒤로가기 버튼 onBackPress, 기기 회전
 - 그 외에 Activity위에 dialog를 띄울때는 어떠한 수명주기 호출도 되지 않고, 사용자가 홈버튼을 누를때 콜백되는 onUserLeaveHint 콜백을 이용해서도 Activity 상태전환에 따른 로직을 작성할 수 있습니다   
   
