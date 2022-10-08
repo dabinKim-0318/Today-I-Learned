@@ -1,9 +1,6 @@
 ## 👉 규칙  
 #### Android Developers 파헤치기 시리즈   
-✔[Android Developer - Document](https://developer.android.com/?hl=ko)  
-✔[Android Developers - Medium](https://medium.com/androiddevelopers)   
-✔[Android Developer - Youtube](https://www.youtube.com/c/AndroidDevelopers)     
-✔[Git repositories on android](https://android.googlesource.com/)  
+
 사용법이 아닌 등장배경, 동작원리, 장단점 등을 중심으로!   
 공식문서(Document/Medium/Youtube)를 1순위로 참고할 것     
 그래도 이해가 되지 않을 때 다른 사람이 작성한 기술블로그를 보며 내용을 추가할 것 
