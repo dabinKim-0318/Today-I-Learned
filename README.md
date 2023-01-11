@@ -14,6 +14,10 @@
 사용방법을 더 알고 싶을 때 다른 기술 블로그를 참고할 것  
 
 
+
+https://user-images.githubusercontent.com/84564695/211893300-80e882fd-9cd8-4e18-ad63-b2bbe54508e0.mp4
+
+
 ## 👉 Android Developers 파헤치기
 - [Activity](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CActivity-LifeCycle%EC%88%98%EB%AA%85%EC%A3%BC%EA%B8%B0)  
 - [Fragment - 1편](https://velog.io/@dabin/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B81)  
